@@ -1,0 +1,263 @@
+<!-- Phần trang của shop -->
+<div class="row shopInfoPageContainer">
+    <!-- Phần top của Shop Page -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 topOfShopInfoPage">
+        <div class="shopInfo" *ngIf="dataUser">
+            <div class="shopAvatar">
+                <div class="shopAvatarDetail">
+                    <img [src]="baseUrl + dataUser.user_avt_img " alt="">
+                    <span class="shopName">{{ dataUser.user_name }}</span>
+                </div>
+                <div class="btnOfShopInfoContainer">
+                    <button><i class="fa-solid fa-plus"></i> THEO DÕI</button>
+                    <button><i class="fa-regular fa-message"></i> CHAT</button>
+                </div>
+            </div>
+            <div class="shopNumeral">
+                <div class="shopNumeralRating">
+                    <span>
+                        <i class="fa-solid fa-star" style="color: #222;"></i> Đánh Giá
+                    </span>
+                    <span style="color: #a61713; font-weight: 400;">
+                        1,2k
+                    </span>
+                </div>
+                <div class="shopNumeralProduct">
+                    <span>
+                        <i class="fa-solid fa-store" style="color: #222;"></i> Sản Phẩm
+                    </span>
+                    <span style="color: #a61713; font-weight: 400;"> 
+                        96
+                    </span>
+                </div>
+                <div class="shopNumeralJoin">
+                    <span>
+                        <i class="fa-solid fa-user-plus" style="color: #222;"></i> Tham Gia
+                    </span>
+                    <span style="color: #a61713; font-weight: 400;">
+                        {{ formatDate(dataUser.createdAt)  }}
+                    </span>
+                </div>
+                <div class="shopNumeralFollowers">
+                    <span>
+                        <i class="fa-solid fa-users" style="color: #222;"></i> Người Theo Dõi
+                    </span>
+                    <span style="color: #a61713; font-weight: 400;">
+                        3,5k
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="shopMenuNav">
+            <button class="checked">
+                Trang Chính
+            </button>
+            <button type="button" id="btnHomeID" (click)="productByCondition(1,'',''); handleClickTabShopPage('btnHomeID')">
+                Tất Cả Sản Phẩm
+            </button>
+            <ng-container *ngFor="let category of listCategory; let i = index">
+                <button type="button" id="btnAllProductID" (click)="productByCondition(1,'',category._id) ; handleClickTabShopPage('btnAllProductID')" class="">{{ category.category_name }}</button>
+            </ng-container>
+        </div>
+    </div>
+    <!-- Phần main của Shop Page -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 mainOfShopInfoPage">
+        <!-- Slide tin tức banner của shop -->
+        <div class="newsInShopPage">
+            <div id="slideNewsInShopPageID" class="slideNewsInShopPage">
+                <button id="btnLeftSlideNewsID" class="btnLeftSlideNews">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div id="slideNewsImageInShopPageID" class="slideNewsImageInShopPage">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m04765kvchovec_xxhdpi" alt="" style="margin-left: 0px;">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m08aekl0p0bxbb_xxhdpi" alt="">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m0478qxsq6j3d1_xxhdpi" alt="">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m08i96pe504t6d_xxhdpi" alt="">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m047ds0tqdfz69_xxhdpi" alt="">
+                    <img src="https://cf.shopee.vn/file/vn-11134258-7r98o-m047k5mrq5m577_xxhdpi" alt="" style="margin-right: 0px;">
+                </div>
+                <button id="btnRightSlideNewsID" class="btnRightSlideNews">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Phần list sản phẩm gợi ý -->
+        <div class="otherProductOfShopContainer">
+            <div class="topOfOtherProduct">
+                <span class="titleOtherProductOfShop">CÁC SẢN PHẨM ĐƯỢC ĐÁNH GIÁ CAO</span>
+                <div class="rightOfTopOtherProduct">
+                    <a href="#">Xem tất cả</a>
+                    <div class="btnMoveOtherProductContainer">
+                        <button id="btnMoveOtherProductLeftID">
+                            <i class="fa-solid fa-caret-left"></i>
+                        </button>
+                        <button id="btnMoveOtherProductRightID">
+                            <i class="fa-solid fa-caret-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row listOtherProductOfShop">
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22090-m8b81fd6hthva7@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvcrh2vd6gel00@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpje74h6iqt105@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/b8a07c67a7b0bff34e66aa8ace1c0aee@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+                <!-- Item -->
+                <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                    <button class="btnOtherProductOfShop">
+                        <div class="otherProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                        <span>Combo 3 chai Nước giặt OMO</span>
+                        <div class="otherProductOfShopPriceSale">
+                            <span class="otherProductOfShopPrice">171.000 đ</span>
+                            <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Phần list sản phẩm bán chạy -->
+        <div id="productListMainID" class="productListMain">
+            <div id="leftOfProductListID" class="leftOfProductList">
+                <!-- Nút đóng bộ lọc sản phẩm (trên điện thoại) -->
+                <div class="btnCloseFilterProductList">
+                    <button><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="titleFilterProductList">
+                    <span><i class="fa-solid fa-filter"></i> DANH MỤC</span>
+                </div>
+                <div class="filterBasePlace">
+                    <div class="filterBasePlaceCheckbox" ><span (click)="productByCondition(1,'','')"> Tất cả sản phẩm</span></div>
+                    <div class="filterBasePlaceCheckbox"  *ngFor="let category of listCategory; let i = index">
+                        <span (click)="productByCondition(1,'',category._id)">{{ category.category_name }} </span>
+                    </div>  
+                </div>
+            </div>
+            <div class="rightOfProductList">
+                <!-- Nút mở Bộ lọc sản phẩm trên điện thoại -->
+                <div class="btnOpenFilterProductList">
+                    <button><span><i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM</span></button>
+                </div>
+                <!-- List sản phẩm -->
+                <div class="row listSuggest">
+                    <!-- item -->
+                    <ng-container *ngIf="listProduct else null_product">
+                        <div class="col l-2 m-3 c-6 btnSuggestItemContainer" *ngFor="let product of listProduct">
+                            <button routerLink="/product-detail" class="btnSuggestItem">
+                                <div class="suggestItemSaleTag">
+                                    -50%
+                                </div>
+                                <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m0cs9d5vmtild0.webp" alt="">
+                                <span>{{ product.product_name }}</span>
+                                <div class="suggestItemPriceSale">
+                                    <span class="suggestItemPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
+                                    <span class="suggestItemSold">{{product.product_sold_quantity}} sold</span>
+                                </div>
+                                <span class="suggestItemSold">{{product.product_avg_rating}} rating</span>
+
+                            </button>
+                        </div>  
+                    </ng-container>
+                    <ng-template #null_product>
+                        <p>Không có sản phẩm nào.</p>
+                    </ng-template>
+                    <div class="col l-2 m-3 c-6 btnSuggestItemContainer">
+                        <button routerLink="/product-detail" class="btnSuggestItem">
+                            <div class="suggestItemSaleTag">
+                                -50%
+                            </div>
+                            <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m0cs9d5vmtild0.webp" alt="">
+                            <span>Laptop Asus</span>
+                            <div class="suggestItemPriceSale">
+                                <span class="suggestItemPrice">27.000đ</span>
+                                <span class="suggestItemSold">2.7k</span>
+                            </div>
+                            <span class="suggestItemSold">2.7k rating</span>
+                        </button>
+                    </div>
+                                 
+                </div>
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="" (click)="updatePage(1)">&laquo;</button>
+                    <button class="active" (click)="updatePage(1)">1</button>
+                    <button class="" (click)="updatePage(2)">2</button>
+                    <button class="" (click)="updatePage(3)">3</button>
+                    <button class="" (click)="updatePage(4)">4</button>
+                    <button class="" (click)="updatePage(5)">5</button>
+                    <button class="" (click)="updatePage(6)">6</button>
+                    <button class="" (click)="updatePage(7)">&raquo;</button>
+                  </div>
+                  
+            </div>
+        </div>
+    </div>
+</div>

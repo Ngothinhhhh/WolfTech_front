@@ -1,0 +1,766 @@
+<!-- Thông tin chi tiết sản phẩm -->
+<div class="row productDetailInfo">  
+    <!-- Phần đường dẫn điều hướng -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 breadcrumbContainer">
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product Detail</a></li>
+            <li>{{ product_slug }}
+        </ul>
+    </div>
+    <!-- Phần thông tin chi tiết sản phẩm (phần đầu) -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productInfoContainer">
+        <div class="leftProductDetail">
+            <div class="imageOfProduct">
+                <div id="imageOfProductActivedID" class="imageOfProductActived">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btm63vyprh7d.webp" alt="">
+                </div>
+                <div class="listImageOfProduct">
+                    <button id="imageOfProductID1" class="imageOfProductDetail" (click)="changeImageActive('1')">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btm63vyprh7d.webp" alt="">
+                    </button>
+                    <button id="imageOfProductID2" class="imageOfProductDetail" (click)="changeImageActive('2')">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmaf9nc3180.webp" alt="">
+                    </button>
+                    <button id="imageOfProductID3" class="imageOfProductDetail" (click)="changeImageActive('3')">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmcxzyk8d29.webp" alt="">
+                    </button>
+                    <button id="imageOfProductID4" class="imageOfProductDetail" (click)="changeImageActive('4')">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmfacj4wfbd.webp" alt="">
+                    </button>
+                    <button id="imageOfProductID5" class="imageOfProductDetail" (click)="changeImageActive('5')">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmhq0ytil3b.webp" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="btnLikeProduct">
+                <button><i class="fa-regular fa-heart"></i></button> Đã thích 1,3k
+            </div>
+        </div>
+        <div class="rightProductDetail">
+            <h3 class="nameOfProduct">CH [LIVESTREAM] Máy Sấy Tóc Ionity Panasonic EH-NE66-K645 - Công suất 2000W - Bảo hành 12 Tháng</h3>
+            <div class="ratingOfProduct">
+                <div><i class="fa-solid fa-comment"></i> 5,3k Đánh Giá</div>
+                <div class="starRatingOfProduct">
+                    <input id="starRatingOfProductID" type="text" hidden>
+                    <span class="fa fa-star" (click)="starRatingForProduct('1')"></span>
+                    <span class="fa fa-star" (click)="starRatingForProduct('2')"></span>
+                    <span class="fa fa-star" (click)="starRatingForProduct('3')"></span>
+                    <span class="fa fa-star" (click)="starRatingForProduct('4')"></span>
+                    <span class="fa fa-star" (click)="starRatingForProduct('5')"></span>
+                </div>
+            </div>
+            <h2 class="priceOfProduct">
+                47.000 đ
+            </h2>
+            <!-- <div class="transportChoices">
+                <span class="titleTransport">Vận Chuyển</span>
+                <div class="choiceOfTransport">
+                    <span class="typeOfTransport">Miễn phí vận chuyển</span>
+
+                </div>
+            </div> -->
+            <div class="policyOfProduct">
+                <span class="titlePolicyOfProduct">
+                    Chính Sách Trả Hàng
+                </span>
+                <div class="contentPolicyOfProduct">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i> Trả Hàng 15 Ngày
+                </div>
+            </div>
+            <div class="transportOfProduct">
+                <span class="titleTransportOfProduct">
+                    Vận Chuyển
+                </span>
+                <div class="contentTransportOfProduct">
+                    <i class="fa-solid fa-truck-fast"></i> Miễn Phí Vận Chuyển
+                </div>
+            </div>
+            <div class="quantityOfProduct">
+                <span class="titleQuantityOfProduct">
+                    Số Lượng
+                </span>
+                <div class="choiceQuantityOfProduct">
+                    <button class="minusQuantityOfProduct" (click)="plusOrMinusQuantityProductOrder(false)">-</button>
+                    <input id="quantityOfProductOrderID" class="quantityOfProductOrder" type="text" value="1">
+                    <button class="plusQuantityOfProduct" (click)="plusOrMinusQuantityProductOrder(true)">+</button>
+                </div>
+            </div>
+            <div class="btnBuyProduct">
+                <button class="btnAddToCart">
+                    <i class="fa-solid fa-cart-plus"></i> Thêm Vào Giỏ Hàng
+                </button>
+                <button class="btnOrderNow">
+                    Mua Ngay
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Phần thông tin của shop -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 shopInfoContainer">
+        <div class="shopInfo">
+            <img class="shopAvatar" src="https://down-bs-vn.img.susercontent.com/583cd0592fee6b28228542d5619ebd59_tn.webp" alt="">
+            <div class="rightShopInfo">
+                <span class="shopName">Panasonic</span>
+                <div class="btnWatchShopContainer">
+                    <button routerLink="/shop-page" class="btnWatchShop"><i class="fa-solid fa-store"></i> Xem Shop</button>
+                </div>
+            </div>
+        </div>
+        <div class="shopNumeral">
+            <div class="shopNumeralRating">
+                <span>
+                    Đánh Giá
+                </span>
+                <span style="color: #a61713; font-weight: 400;">
+                    1,2k
+                </span>
+            </div>
+            <div class="shopNumeralProduct">
+                <span>
+                    Sản Phẩm
+                </span>
+                <span style="color: #a61713; font-weight: 400;"> 
+                    96
+                </span>
+            </div>
+            <div class="shopNumeralJoin">
+                <span>
+                    Tham Gia
+                </span>
+                <span style="color: #a61713; font-weight: 400;">
+                    4 năm trước
+                </span>
+            </div>
+            <div class="shopNumeralFollowers">
+                <span>
+                    Người Theo Dõi
+                </span>
+                <span style="color: #a61713; font-weight: 400;">
+                    3,5k
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Phần mô tả sản phẩm -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productDescriptionContainer">
+        <span class="titleProductDescription">CHI TIẾT SẢN PHẨM</span>
+        <div class="productDescriptionDetail">
+            <span class="titleProductDescriptionDetail">
+                Danh Mục
+            </span>
+            <span>
+                Shopee > Thể Thao & Du Lịch > Dụng Cụ Thể Thao & Dã Ngoại > Bóng Rổ
+            </span>
+            <span class="titleProductDescriptionDetail">
+                Kho
+            </span>
+            <span>
+                96
+            </span>
+            <span class="titleProductDescriptionDetail">
+                Thương Hiệu
+            </span>
+            <span>
+                Panasonic
+            </span>
+            <span class="titleProductDescriptionDetail">
+                Hạn Bảo Hành
+            </span>
+            <span>
+                1 tháng
+            </span>
+            <span class="titleProductDescriptionDetail">
+                Gửi từ
+            </span>
+            <span>
+                Hà Nội
+            </span>
+        </div>
+        <span class="titleProductDescription">MÔ TẢ SẢN PHẨM</span>
+        <div class="productDescription">
+            <p>
+                THÔNG TIN SẢN PHẨM
+            <br>👉🏻   MÁY SẤY TÓC với thiết kế chác chắn mang lại cho mái tóc bạn sự chăm sóc thật nhẹ nhàng và hiệu quả để luôn giữ được độ ẩm và sự chắc khỏe như được làm khô tự nhiên, duy trì vẻ óng mượt và mềm mại.
+            <br>👉🏻   Hoạt động hiệu quả, sấy khô tóc nhanh chóng. Hơn nữa bạn có thể tự tạo cho mình nhiều kiểu tóc khác nhau, định hình và làm bền các nếp uốn để mái tóc luôn trông thật bồng bềnh và quyến rũ mỗi ngày
+            <br>👉🏻   Máy có công suất 3500W được thiết kế với 2 tốc độ sấy và chế độ sấy nhanh Turbo Dry giúp bạn tiết kiệm thời gian sấy khô tóc hàng ngày.
+            <br>👉🏻   Đầu sấy được thiết kế đặc biệt có khả năng chắn sức nóng và hướng luồng gió vào tóc, giúp bạn dễ dàng tạo các kiểu tóc đơn giản và tự nhiên cho những buổi dạo phố hoặc những bữa tiệc nhẹ nhàng cùng gia đình hay bạn bè.
+            <br>👉🏻   Công suất: 3500w
+            <br>👉🏻   Điện áp: AC 110v-220v, 50-60Hz
+            <br>👉🏻  Chất liệu: Nhựa cao cấp
+            <br>👉🏻   Kích thước: 28x28cm 
+            </p>
+        </div>
+    </div>
+    <!-- Phần đánh giá sản phẩm -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productRatingContainer">
+        <span class="titleProductRating">ĐÁNH GIÁ SẢN PHẨM</span>
+        <div class="productCommentContainer">
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div class="productComment">
+                <div class="topOfProductComment">
+                    <div class="avatarOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+                    </div>
+                    <div class="userOfProductComment">
+                        <span>minhcornlk9</span>
+                        <span style="color: #555;">2024-02-24 09:28</span>
+                    </div>
+                </div>
+                <div class="contentOfProductComment">
+                    <div class="leftOfContentProductComment">
+
+                    </div>
+                    <div class="textContentOfProductComment">
+                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
+                    </div>
+                </div>
+                <div class="bottomOfProductComment">
+                    <div class="leftOfBottomProductComment">
+
+                    </div>
+                    <div class="mediaContentOfProductComment">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <a class="" href="#">&laquo;</a>
+            <a class="active" href="#">1</a>
+            <a class="" href="#">2</a>
+            <a class="" href="#">3</a>
+            <a class="" href="#">4</a>
+            <a class="" href="#">5</a>
+            <a class="" href="#">6</a>
+            <a class="" href="#">&raquo;</a>
+        </div>
+    </div>
+    <!-- Phần các sản phẩm khác của shop -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 otherProductOfShopContainer">
+        <div class="topOfOtherProduct">
+            <span class="titleOtherProductOfShop">CÁC SẢN PHẨM KHÁC CỦA SHOP</span>
+            <div class="rightOfTopOtherProduct">
+                <a href="#">Xem tất cả</a>
+                <div class="btnMoveOtherProductContainer">
+                    <button id="btnMoveOtherProductLeftID">
+                        <i class="fa-solid fa-caret-left"></i>
+                    </button>
+                    <button id="btnMoveOtherProductRightID">
+                        <i class="fa-solid fa-caret-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row listOtherProductOfShop">
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22090-m8b81fd6hthva7@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvcrh2vd6gel00@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpje74h6iqt105@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/b8a07c67a7b0bff34e66aa8ace1c0aee@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
+                <button class="btnOtherProductOfShop">
+                    <div class="otherProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="otherProductOfShopPriceSale">
+                        <span class="otherProductOfShopPrice">171.000 đ</span>
+                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Phần sản phẩm liên quan -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 relatedProductOfShopContainer">
+        <div class="topOfRelatedProduct">
+            <span class="titleRelatedProductOfShop">CÓ THỂ BẠN CŨNG THÍCH</span>
+            
+        </div>
+        <div class="row listRelatedProductOfShop">
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22090-m8b81fd6hthva7@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpje74h6iqt105@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div><!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div><!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Item -->
+            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
+                <button class="btnRelatedProductOfShop">
+                    <div class="relatedProductOfShopSaleTag">
+                        -50%
+                    </div>
+                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
+                    <span>Combo 3 chai Nước giặt OMO</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">171.000 đ</span>
+                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

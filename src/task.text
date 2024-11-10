@@ -1,0 +1,16 @@
+- Trang profile người dùng. (ok)
+- Trang Cart. (ok)
+- Trang Đăng ký, Đăng nhập. (ok)
+- Phần hiển thị đánh giá trong chi tiết sản phẩm sửa thành dạng Pagition (phân trang). (ok)
+- Thêm phần top tìm kiếm dưới thanh tìm kiếm. (ok)
+- Cấu trúc lại folder components; (ok)
+- Trang mua hàng.
+- Phần Shop Admin:
+    + Trang đăng ký thành seller
+    + Trang quản lý sản phẩm (CRUD) (ok)
+
+
+- Shop page thiếu phần query. sắp xếp như ( price_asc, price_desc,...)
+- shop-page : xử lí sự kiện nếu click vào mục "Laptop xin xo" thì sẽ tự động roll đến phần "Danh mục" , và 3 cái vừa nói.
+- shope-page : kèm di con chuột vào phần danh mục, hiện con trỏ click được
+
