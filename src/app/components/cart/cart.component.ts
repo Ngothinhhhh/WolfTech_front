@@ -25,35 +25,45 @@ export class CartComponent {
 
   token:any
   product_cart : any[] = [] 
+  total_in_cart:number = 0
   baseUrl: string = 'http://localhost:3000/public/images/'
 
   ngOnInit(){
     this.token = localStorage.getItem("token")
-    this.user_service.user_cart(this.token).subscribe( data=>{
-      if(data.code == 200){
-        this.product_cart =  data.data[0].cart
-        console.log(this.product_cart);
-      }
-      else console.log(data.error);  
-    })
+    this.update_cart()
   }
 
   remove_cart(product:string,variant_id:string){
     return this.product_service.remove_cart(product,variant_id,this.token).subscribe( (data:any)=>{
       if(data.code == 200){
-        window.location.reload();
         alert("Xóa thành công")
+        this.update_cart()
       } 
       else console.log(data.error);
     })
   }
+
   change_quality(quantity:any,product:any,variant_id:any){
     return this.user_service.update_cart(quantity.value,product,variant_id,this.token).subscribe((data:any)=>{
       if(data.code == 200) {
         alert("Update thành công")
-        window.location.reload();
+        this.update_cart()
       } 
       console.log(data.error); 
     })
   }
+
+  update_cart(){
+    this.user_service.user_cart(this.token).subscribe( data=>{
+      if(data.code == 200){
+        this.product_cart =  data.data[0].cart
+        this.total_in_cart = 0 // update = 0 , để reset tổng về 0, sau mỗi lần update để tính tổng lại và cập nhật giá trị cho biến này!
+        this.product_cart.forEach( (element:any) => {
+          this.total_in_cart += element.product.product_variants[0].price * element.quantity
+        });
+      }
+      else console.log(data.error);  
+    })
+  }
+
 }

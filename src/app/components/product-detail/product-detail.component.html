@@ -3,8 +3,8 @@
     <!-- Phần đường dẫn điều hướng -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 breadcrumbContainer">
         <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Product Detail</a></li>
+            <li><span>Home</span></li>
+            <li><span>Product Detail</span></li>
             <li>{{ product_slug }}
         </ul>
     </div>
@@ -13,23 +13,11 @@
         <div class="leftProductDetail">
             <div class="imageOfProduct">
                 <div id="imageOfProductActivedID" class="imageOfProductActived">
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btm63vyprh7d.webp" alt="">
+                    <img [src]="baseUrl +  product_imgs[0].alt" alt="">
                 </div>
                 <div class="listImageOfProduct">
-                    <button id="imageOfProductID1" class="imageOfProductDetail" (click)="changeImageActive('1')">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btm63vyprh7d.webp" alt="">
-                    </button>
-                    <button id="imageOfProductID2" class="imageOfProductDetail" (click)="changeImageActive('2')">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmaf9nc3180.webp" alt="">
-                    </button>
-                    <button id="imageOfProductID3" class="imageOfProductDetail" (click)="changeImageActive('3')">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmcxzyk8d29.webp" alt="">
-                    </button>
-                    <button id="imageOfProductID4" class="imageOfProductDetail" (click)="changeImageActive('4')">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmfacj4wfbd.webp" alt="">
-                    </button>
-                    <button id="imageOfProductID5" class="imageOfProductDetail" (click)="changeImageActive('5')">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-m0btmhq0ytil3b.webp" alt="">
+                    <button id="imageOfProductID5" class="imageOfProductDetail" (click)="changeImageActive('3')" *ngFor="let image of product_imgs ; let i = index">
+                        <img [src]="baseUrl + image.alt" alt="">
                     </button>
                 </div>
             </div>
@@ -38,9 +26,9 @@
             </div>
         </div>
         <div class="rightProductDetail">
-            <h3 class="nameOfProduct">CH [LIVESTREAM] Máy Sấy Tóc Ionity Panasonic EH-NE66-K645 - Công suất 2000W - Bảo hành 12 Tháng</h3>
+            <h3 class="nameOfProduct">{{product_infor.product_name}}</h3>
             <div class="ratingOfProduct">
-                <div><i class="fa-solid fa-comment"></i> 5,3k Đánh Giá</div>
+                <div><i class="fa-solid fa-comment"></i>{{product_infor.review_count}} Đánh Giá</div>
                 <div class="starRatingOfProduct">
                     <input id="starRatingOfProductID" type="text" hidden>
                     <span class="fa fa-star" (click)="starRatingForProduct('1')"></span>
@@ -51,7 +39,7 @@
                 </div>
             </div>
             <h2 class="priceOfProduct">
-                47.000 đ
+                {{product_infor.product_supp_price | number : '1.0-0' }} đ
             </h2>
             <!-- <div class="transportChoices">
                 <span class="titleTransport">Vận Chuyển</span>
@@ -99,9 +87,9 @@
     <!-- Phần thông tin của shop -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 shopInfoContainer">
         <div class="shopInfo">
-            <img class="shopAvatar" src="https://down-bs-vn.img.susercontent.com/583cd0592fee6b28228542d5619ebd59_tn.webp" alt="">
+            <img class="shopAvatar" [src]="baseUrl + product_infor.userID.avatar" alt="">
             <div class="rightShopInfo">
-                <span class="shopName">Panasonic</span>
+                <span class="shopName">{{product_infor.userID.user_name}}</span>
                 <div class="btnWatchShopContainer">
                     <button routerLink="/shop-page" class="btnWatchShop"><i class="fa-solid fa-store"></i> Xem Shop</button>
                 </div>
@@ -129,7 +117,7 @@
                     Tham Gia
                 </span>
                 <span style="color: #a61713; font-weight: 400;">
-                    4 năm trước
+                    {{ formatDate(product_infor.userID.createdAt)}}
                 </span>
             </div>
             <div class="shopNumeralFollowers">
@@ -145,53 +133,31 @@
     <!-- Phần mô tả sản phẩm -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productDescriptionContainer">
         <span class="titleProductDescription">CHI TIẾT SẢN PHẨM</span>
-        <div class="productDescriptionDetail">
+        <div class="productDescriptionDetail" *ngIf="product_details.length > 0 ; else elseBlock">
             <span class="titleProductDescriptionDetail">
                 Danh Mục
             </span>
             <span>
-                Shopee > Thể Thao & Du Lịch > Dụng Cụ Thể Thao & Dã Ngoại > Bóng Rổ
+                Shopee >  {{ product_infor.category_name }}  >  {{product_infor.product_slug}} 
             </span>
-            <span class="titleProductDescriptionDetail">
-                Kho
-            </span>
-            <span>
-                96
-            </span>
-            <span class="titleProductDescriptionDetail">
-                Thương Hiệu
-            </span>
-            <span>
-                Panasonic
-            </span>
-            <span class="titleProductDescriptionDetail">
-                Hạn Bảo Hành
-            </span>
-            <span>
-                1 tháng
-            </span>
-            <span class="titleProductDescriptionDetail">
-                Gửi từ
-            </span>
-            <span>
-                Hà Nội
-            </span>
+            <ng-container *ngFor="let detail of product_details" >
+                <span class="titleProductDescriptionDetail">
+                    {{detail.name}}
+                </span>
+                <span>
+                    {{detail.value}}
+                </span>
+            </ng-container>
         </div>
+        <ng-template #elseBlock>...</ng-template>
+
         <span class="titleProductDescription">MÔ TẢ SẢN PHẨM</span>
         <div class="productDescription">
-            <p>
-                THÔNG TIN SẢN PHẨM
-            <br>👉🏻   MÁY SẤY TÓC với thiết kế chác chắn mang lại cho mái tóc bạn sự chăm sóc thật nhẹ nhàng và hiệu quả để luôn giữ được độ ẩm và sự chắc khỏe như được làm khô tự nhiên, duy trì vẻ óng mượt và mềm mại.
-            <br>👉🏻   Hoạt động hiệu quả, sấy khô tóc nhanh chóng. Hơn nữa bạn có thể tự tạo cho mình nhiều kiểu tóc khác nhau, định hình và làm bền các nếp uốn để mái tóc luôn trông thật bồng bềnh và quyến rũ mỗi ngày
-            <br>👉🏻   Máy có công suất 3500W được thiết kế với 2 tốc độ sấy và chế độ sấy nhanh Turbo Dry giúp bạn tiết kiệm thời gian sấy khô tóc hàng ngày.
-            <br>👉🏻   Đầu sấy được thiết kế đặc biệt có khả năng chắn sức nóng và hướng luồng gió vào tóc, giúp bạn dễ dàng tạo các kiểu tóc đơn giản và tự nhiên cho những buổi dạo phố hoặc những bữa tiệc nhẹ nhàng cùng gia đình hay bạn bè.
-            <br>👉🏻   Công suất: 3500w
-            <br>👉🏻   Điện áp: AC 110v-220v, 50-60Hz
-            <br>👉🏻  Chất liệu: Nhựa cao cấp
-            <br>👉🏻   Kích thước: 28x28cm 
-            </p>
+            <p><br>👉🏻 {{product_infor.product_short_description}}</p>
+            <p><br>👉🏻 {{product_infor.product_description}}</p>
         </div>
     </div>
+
     <!-- Phần đánh giá sản phẩm -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productRatingContainer">
         <span class="titleProductRating">ĐÁNH GIÁ SẢN PHẨM</span>

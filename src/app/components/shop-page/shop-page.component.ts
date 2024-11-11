@@ -92,9 +92,6 @@ export class ShopPageComponent {
   }
 
   productByCondition(page:number,sortBy:string,categoryId:string){
-    // console.log(categoryId);
-    // console.log(page);
-    // console.log(sortBy);
     return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
       if(data.code == 200 ){
         this.listProduct = data.data.listProduct

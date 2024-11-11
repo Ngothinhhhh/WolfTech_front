@@ -25,9 +25,13 @@ constructor(
 productId:string = ''
 product_slug :string = ''
 
-product_infor : any
-product_imgs : any[]= []
-product_detail : any[]= []
+product_infor:any
+product_details:any[] =[]
+product_imgs:any[] =[]
+product_variants:any[] =[]
+recent_reviews:any[] =[]
+recent_images:any[] =[]
+
 
 baseUrl: string = 'http://localhost:3000/public/images/'
 
@@ -39,17 +43,22 @@ ngOnInit(){
   })
   // get data from query in URL
   this.route.queryParamMap.subscribe( param=>{
-    this.productId = param.get("productId") || ''    
+    this.productId = param.get("idProduct") || ''    
     this.product_service.detail_product(this.productId).subscribe( (data:any)=>{
       this.product_infor = data.data
       this.product_imgs = this.product_infor.product_imgs
-      this.product_detail = this.product_infor.product_details
-      console.log(this.product_detail);
-      console.log(this.product_imgs);
+      this.product_details = this.product_infor.product_details
 
-      
     })
   })
+}
+
+formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Tháng bắt đầu từ 0
+  const year = date.getFullYear(); return `${day}-${month}-${year}`;
+  return `${day}-${month}-${year}`;
 }
 
 // tăng giảm số lượng sản phẩm muốn mua
