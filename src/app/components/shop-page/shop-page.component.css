@@ -143,7 +143,8 @@
     top: 130px;
     background-color: rgba(255, 255, 255, 0.815);
     z-index: 2;
-    box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px;
+    /* box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px; */
+    box-shadow: rgba(50, 50, 93, 0.25) -1px 2px 2px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     backdrop-filter: blur(15px);
 }
 .shopInfoPageContainer .shopMenuNav button{
@@ -417,7 +418,7 @@
     padding: 20px 0px;
     border-bottom: 1px solid rgba(0,0,0,.09);
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
 }   
 .productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox .categoryOfProduct{
     display: flex;
@@ -426,7 +427,9 @@
     cursor: pointer;
     transition: all .2s;
     padding: 3px;
+    margin: 2px 0px;
     border-radius: 4px;
+    font-size: 14px;
 }   
 .productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox .categoryOfProduct.active {
     background-color: #a61713;
@@ -526,23 +529,37 @@
     margin: 0;
     padding: 15px;
     /* background-color: #f5f5f5; */
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    display: flex;
+    flex-wrap: wrap;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItemContainer{
     padding: 5px;
+    width: 20%;
+    height: 315px;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem{
     border: .5px solid #0000001c;
-    /* padding: 10px; */
-    display: grid;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
     cursor: pointer;
-    /* margin: 15px 5px; */
     position: relative;
     background-color: white;
     padding: 0;
+    height: 100%;
+}
+.productListMain .rightOfProductList .listSuggest .btnSuggestItem .ratingOfProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+.productListMain .rightOfProductList .listSuggest .btnSuggestItem .ratingOfProduct .starRatingOfProduct .checked{ 
+    color: #a61713;
+    font-weight: 600;
+}
+.productListMain .rightOfProductList .listSuggest .btnSuggestItem .ratingOfProduct .starRatingOfProductBox{
+   display: flex;
+   align-items: center;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemSaleTag{
     background-color: #feeeeac8;
@@ -556,18 +573,22 @@
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem:hover{
     /* border: .5px solid orangered; */
-    border: .5px solid #a61713;
+    /* border: .5px solid #a61713; */
+    transition: all .2s;
+    transform: translateY(-2px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin: 8px 5px;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemPrice{
     /* color: orangered; */
     color: #a61713;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemSold{
     font-weight: 300;
@@ -576,15 +597,60 @@
 }
 .productListMain .rightOfProductList .listSuggest .btnSuggestItem img{
     width: 100%;
+    height: 60%;
+    object-fit: fill;
+    object-position: center;
     border-radius: 5px 5px 0px 0px;
 }
-.productListMain .rightOfProductList .listSuggest .btnSuggestItem span{
-    font-size: 16px;
+.productListMain .rightOfProductList .listSuggest .btnSuggestItem .productName{
+    font-size: 15px;
     font-weight: 400;
-    color: black;
+    color: #222;
     text-align: left;
+    margin: 5px;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.productListMain .rightOfProductList .filterByPrice{
+    margin: 0;
+    padding: 15px;
+    background-color: #efefef;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.productListMain .rightOfProductList .filterByPrice span{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 5px;
+}
+.productListMain .rightOfProductList .filterByPrice form button{
+    border: .5px solid #a61713;
+    background: #a61713;
     padding: 5px;
-    margin: 3px 0px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 400;
+}
+.productListMain .rightOfProductList .filterByPrice form button:hover{
+    background-color: #971612;
+}
+.productListMain .rightOfProductList .filterByPrice select{
+    margin: 0 5px;
+    padding: 5px;
+    border: .5px solid #efefef;
+    background-color: #fff;
+    color: #111;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
 }
 .productListMain .rightOfProductList .btnOpenFilterProductList {
     display: none;
@@ -641,7 +707,7 @@
 }
 /* Hết css phần tất cả sản phẩm trong Shop page */
 .topOfproductListMain{
-    height: 150px;
+    height: 160px;
 }
 
 /*                           MEDIA QUERY                          */
@@ -747,10 +813,10 @@
         top: 60px;
         background-color: rgba(255, 255, 255, 0.815);
         z-index: 2;
-        box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) -1px 2px 2px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         backdrop-filter: blur(15px);
     }
     .topOfproductListMain{
-        height: 80px;
+        height: 90px;
     }
 }

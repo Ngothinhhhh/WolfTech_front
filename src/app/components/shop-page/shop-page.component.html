@@ -58,9 +58,9 @@
         <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID')">
             Tất Cả Sản Phẩm
         </button>
-        <select name="" id="">            
+        <!-- <select name="" id="">            
             <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="productByCondition(1,'',category._id) ; handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
-        </select>
+        </select> -->
     </div>
     <!-- Phần main của Shop Page -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 mainOfShopInfoPage">
@@ -212,30 +212,57 @@
                 <div class="btnOpenFilterProductList">
                     <button><span><i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM</span></button>
                 </div>
+                <!-- Lọc theo giá -->
+                <div class="filterByPrice">
+                    <span>Sắp xếp theo</span>
+                    <form action="#" method="get">
+                        <select name="" id="">
+                            <option value="asc">Giá: Thấp đến Cao</option>
+                            <option value="desc">Giá: Cao đến Thấp</option>
+                        </select>
+                        <button type="submit">Áp dụng</button>
+                    </form>
+                </div>
                 <!-- List sản phẩm -->
                 <div class="row listSuggest">
                     <!-- item -->
                     <ng-container *ngIf="listProduct else null_product">
-                        <div class="col l-2 m-3 c-6 btnSuggestItemContainer" *ngFor="let product of listProduct">
+                        <div class="btnSuggestItemContainer" *ngFor="let product of listProduct">
                             <button routerLink="/product-detail" class="btnSuggestItem">
                                 <div class="suggestItemSaleTag">
                                     -50%
                                 </div>
-                                <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m0cs9d5vmtild0.webp" alt="">
-                                <span>{{ product.product_name }}</span>
+                                <img [src]="baseUrl + product.product_imgs[0].alt" alt="">
+                                <span class="productName">{{ product.product_name }}</span>
                                 <div class="suggestItemPriceSale">
                                     <span class="suggestItemPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
-                                    <span class="suggestItemSold">{{product.product_sold_quantity}} sold</span>
                                 </div>
-                                <span class="suggestItemSold">{{product.product_avg_rating}} rating</span>
-
+                                <div class="ratingOfProduct">
+                                    <div class="starRatingOfProductBox">
+                                        <div class="starRatingOfProduct">
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <span style="
+                                            font-weight: 300;
+                                            color: black;
+                                            font-size: 12px;
+                                            padding: 0px;
+                                            margin-left: 5px;
+                                            margin-top: 2px;"
+                                        >
+                                            {{product.product_avg_rating}}
+                                        </span>
+                                    </div>
+                                    <span class="suggestItemSold">Đã bán {{product.product_sold_quantity}}</span>
+                                </div>
                             </button>
-                        </div>  
+                        </div>
+                        
                     </ng-container>
                     <ng-template #null_product>
                         <p>Không có sản phẩm nào.</p>
                     </ng-template>
-                    <div class="col l-2 m-3 c-6 btnSuggestItemContainer">
+                    <!-- <div class="col l-2 m-3 c-6 btnSuggestItemContainer">
                         <button routerLink="/product-detail" class="btnSuggestItem">
                             <div class="suggestItemSaleTag">
                                 -50%
@@ -248,7 +275,7 @@
                             </div>
                             <span class="suggestItemSold">2.7k rating</span>
                         </button>
-                    </div>
+                    </div> -->
                                  
                 </div>
                 <!-- Pagination -->

@@ -10,7 +10,10 @@
     + Trang quản lý sản phẩm (CRUD) (ok)
 
 
-- Shop page thiếu phần query. sắp xếp như ( price_asc, price_desc,...)
-- shop-page : xử lí sự kiện nếu click vào mục "Laptop xin xo" thì sẽ tự động roll đến phần "Danh mục" , và 3 cái vừa nói.
-- shope-page : kèm di con chuột vào phần danh mục, hiện con trỏ click được
+- Shop page thiếu phần query. sắp xếp như ( price_asc, price_desc,...) (ok)
+- shop-page : xử lí sự kiện nếu click vào mục "Laptop xin xo" thì sẽ tự động roll đến phần "Danh mục" , và 3 cái vừa nói. (ok)
+- shope-page : kèm di con chuột vào phần danh mục, hiện con trỏ click được (ok)
+- phần Add Cart: phần hiển thị category đag chưa có name
+- phần Cart : name product nếu tên dài hơn n kí tự thì để thành dấu ... (ok)
+
 
