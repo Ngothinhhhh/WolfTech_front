@@ -48,17 +48,19 @@
                 </div>
             </div>
         </div>
-        <div class="shopMenuNav">
-            <button class="checked">
-                Trang Chính
-            </button>
-            <button type="button" id="btnHomeID" (click)="productByCondition(1,'',''); handleClickTabShopPage('btnHomeID')">
-                Tất Cả Sản Phẩm
-            </button>
-            <ng-container *ngFor="let category of listCategory; let i = index">
-                <button type="button" id="btnAllProductID" (click)="productByCondition(1,'',category._id) ; handleClickTabShopPage('btnAllProductID')" class="">{{ category.category_name }}</button>
-            </ng-container>
-        </div>
+        
+    </div>
+    <!-- Shop Menu Bar -->
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 shopMenuNav">
+        <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID')">
+            Trang Chính
+        </button>
+        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID')">
+            Tất Cả Sản Phẩm
+        </button>
+        <select name="" id="">            
+            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="productByCondition(1,'',category._id) ; handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
+        </select>
     </div>
     <!-- Phần main của Shop Page -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 mainOfShopInfoPage">
@@ -184,6 +186,10 @@
                 </div>
             </div>
         </div>
+        <!-- Phần để scroll đến -->
+        <div id="topOfproductListMainID" class="topOfproductListMain">
+
+        </div>
         <!-- Phần list sản phẩm bán chạy -->
         <div id="productListMainID" class="productListMain">
             <div id="leftOfProductListID" class="leftOfProductList">
@@ -197,7 +203,7 @@
                 <div class="filterBasePlace">
                     <div class="filterBasePlaceCheckbox" ><span (click)="productByCondition(1,'','')"> Tất cả sản phẩm</span></div>
                     <div class="filterBasePlaceCheckbox"  *ngFor="let category of listCategory; let i = index">
-                        <span (click)="productByCondition(1,'',category._id)">{{ category.category_name }} </span>
+                        <span [id]="category._id" (click)="productByCondition(1,'',category._id)" class="categoryOfProduct">{{ category.category_name }} </span>
                     </div>  
                 </div>
             </div>

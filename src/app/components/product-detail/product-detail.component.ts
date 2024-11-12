@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { ProductServiceService } from '../../product-service.service';
 import { log } from 'console';
+import { doesNotMatch } from 'assert';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
@@ -48,6 +49,7 @@ ngOnInit(){
       this.product_infor = data.data
       this.product_imgs = this.product_infor.product_imgs
       this.product_details = this.product_infor.product_details
+      this.product_variants = this.product_infor.product_variants
 
     })
   })
@@ -94,15 +96,24 @@ starRatingForProduct(numberOfStars: string): void {
     console.log("Chưa đánh giá")
   }
 }
-// thay đổi hình chiếu sản phẩm khi hover vào hình nhỏ
-changeImageActive(orderOfImage: string): void { 
-  ((document.getElementById('imageOfProductActivedID') as HTMLDivElement).childNodes[0] as HTMLImageElement).src = (document.getElementById('imageOfProductID'+orderOfImage)?.childNodes[0] as HTMLImageElement).src;
-  (document.getElementById('imageOfProductID1') as HTMLElement).className = 'imageOfProductDetail';
-  (document.getElementById('imageOfProductID2') as HTMLElement).className = 'imageOfProductDetail';
-  (document.getElementById('imageOfProductID3') as HTMLElement).className = 'imageOfProductDetail';
-  (document.getElementById('imageOfProductID4') as HTMLElement).className = 'imageOfProductDetail';
-  (document.getElementById('imageOfProductID5') as HTMLElement).className = 'imageOfProductDetail';
-  (document.getElementById('imageOfProductID'+orderOfImage) as HTMLElement).className = 'imageOfProductDetail choosed';
+// thay đổi hình chiếu sản phẩm khi click vào hình nhỏ
+changeImageActive(orderOfImage: any): void { 
+  let listImg = (document.getElementsByClassName('imageOfProductDetail') as any);
+  ((document.getElementById('imageOfProductActivedID') as HTMLDivElement).childNodes[0] as HTMLImageElement).src = (document.getElementById(orderOfImage) as HTMLImageElement).src;
+  for(let i of listImg){
+    i.classList.remove('choosed');
+  }
+  (document.getElementById(orderOfImage) as HTMLElement).className = 'imageOfProductDetail choosed';
 }
+// thay đổi hình chiếu sản phẩm khi click vào variant
+handleChooseVariant(event: any): void{
+  let listBtnAddVariant = (document.getElementsByClassName('btnAddVariant') as any);
+  ((document.getElementById('imageOfProductActivedID') as HTMLDivElement).childNodes[0] as HTMLImageElement).src = event.target.childNodes[0].src;
+  for(let btn of listBtnAddVariant){
+    btn.classList.remove('choosed');
+  }
+  event.target.classList.add('choosed');
 
+  
+}
 }
