@@ -55,12 +55,15 @@
         <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID')">
             Trang Chính
         </button>
-        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID')">
+        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID') ; productByCondition(1,'','')">
             Tất Cả Sản Phẩm
         </button>
-        <!-- <select name="" id="">            
-            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="productByCondition(1,'',category._id) ; handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
-        </select> -->
+        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID')">
+            Danh muc
+        </button>
+        <select name="" id="">            
+            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
+        </select>
     </div>
     <!-- Phần main của Shop Page -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 mainOfShopInfoPage">

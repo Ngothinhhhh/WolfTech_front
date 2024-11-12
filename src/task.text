@@ -13,7 +13,25 @@
 - Shop page thiếu phần query. sắp xếp như ( price_asc, price_desc,...) (ok)
 - shop-page : xử lí sự kiện nếu click vào mục "Laptop xin xo" thì sẽ tự động roll đến phần "Danh mục" , và 3 cái vừa nói. (ok)
 - shope-page : kèm di con chuột vào phần danh mục, hiện con trỏ click được (ok)
-- phần Add Cart: phần hiển thị category đag chưa có name
+- phần Add Product: phần hiển thị category đag chưa có name
 - phần Cart : name product nếu tên dài hơn n kí tự thì để thành dấu ... (ok)
 
 
+
+
+
+MESSAGE TRONG TỐI NAY:
+- shope-page : Sửa lại dùm phần "tất cả sản phẩm", nó chưa roll được.
+- shope-page : Khi roll xuống, cho tới khi nhấn vào "TRang chính" thì mới roll lên trên, còn khi chọn các "Danh mục","Phân trang" 
+thì sẽ giữ nguyên trang tại vị trí phía dưới mà không roll lên trên.
+- Trang checkOut.
+- phần Cart : name product nếu tên dài hơn n kí tự thì để thành dấu ...
+- phần Add Product trang admin: phần hiển thị category đag chưa có name
+
+
+
+
+
+
+
+của tao thịnh ngô : + viết backend order. sau khi có 

@@ -23,6 +23,8 @@ export class CategoryManagementComponent {
   token:string = localStorage.getItem("token") || ''
   listCategory: any[] = []
   page:number = 1
+  currentPage: number = 1; // Khởi tạo trang hiện tại là trang đầu tiên
+
 
   ngOnInit(){
     this.update_category(this.page)   
@@ -45,8 +47,11 @@ export class CategoryManagementComponent {
   }
 
   goToPage(page:number){
+    this.currentPage = page; // Cập nhật trang hiện tại
     this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
     this.update_category(page)
   }
+  isActive(page: number): boolean { return this.currentPage === page; }
+
 
 }

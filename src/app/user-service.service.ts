@@ -22,6 +22,7 @@ export class UserServiceService {
     const api = 'user/create'
     return this.http.post(this.url + api, formData) // post (api_name , data , option_headers)
   }
+
   user_login(user_email:any, user_password:any) : Observable<any>{
     const api = 'user/login'
     const body = {
@@ -30,7 +31,6 @@ export class UserServiceService {
     }
     return this.http.post(this.url + api, body, this.options)
   }
-
 
   user_cart(token:string):Observable<any>{
     let api = 'user/cart'
@@ -63,6 +63,7 @@ export class UserServiceService {
     }
     return this.http.post(this.url + api, body, this.options)
   }
+
   shop_manage(token:string,page:Number,sortBy:string,category_id:string):Observable<any>{
     let api = `product/manage?page=${page}&sortBy=${sortBy}`
     let header = new  HttpHeaders({

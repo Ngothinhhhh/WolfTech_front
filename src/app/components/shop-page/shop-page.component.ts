@@ -45,19 +45,10 @@ export class ShopPageComponent {
     this.route.queryParamMap.subscribe( params =>{
       this.idSeller = params.get("idSeller") || ''
       this.page = Number(params.get("page")) || 1
-      this.sortBy = params.get("sortBy") || 'product_avg_rating'
+      this.sortBy = params.get("sortBy") || ''
       this.category_id = params.get("category_id") || ''
-      this.user_service.shop_detail(this.idSeller,this.page,this.sortBy,this.category_id).subscribe( (data:any)=>{
-        if(data.code == 200){
-          this.dataUser = data.data.dataUser
-          this.listProduct = data.data.listProduct
-          // console.log(this.listProduct); 
-          // console.log(this.dataUser);
-        }
-        else{
-          console.log(data.error);
-        }
-      })
+
+      this.update_product(this.page,this.sortBy,this.category_id)
     })
 
     this.user_service.getlistCategory(this.idSeller).subscribe( (data:any)=>{
@@ -92,28 +83,31 @@ export class ShopPageComponent {
   }
 
   productByCondition(page:number,sortBy:string,categoryId:string){
+    //this.sortBy = sortBy
+    this.router.navigate([], { relativeTo: this.route, queryParams: { category_id : categoryId , page : 1 }, queryParamsHandling: 'merge' });
     let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
-    return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
-      if(data.code == 200 ){
-        this.listProduct = data.data.listProduct;
-        // 
-        for(let i of listCategoryOfProduct){
-          i.classList.remove('active');
-        }
-        (document.getElementById(categoryId) as HTMLElement).classList.add('active');
-        //
-        console.log(data);
-      }
-      else console.log(data.error);
-    })
+    for(let i of listCategoryOfProduct){
+      i.classList.remove('active');
+    }
+    (document.getElementById(categoryId) as HTMLElement).classList.add('active');
+    this.update_product(page,sortBy,categoryId)
   }
+
   updatePage(page:number){
-    this.page = page
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page }, queryParamsHandling: 'merge' });
-    console.log(page);
-    console.log(this.sortBy);
-    console.log(this.category_id);
-    this.productByCondition(this.page, this.sortBy, this.category_id);
-    console.log(page);
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
+    this.update_product(page,this.sortBy,this.category_id)
+  }
+
+  update_product(page:number,sortBy:string,categoryId:string){
+    return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
+      if(data.code == 200){        
+        this.dataUser = data.data.dataUser
+        this.listProduct = data.data.listProduct
+        console.log(this.listProduct);
+      }
+      else{
+        console.log(data.error);
+      }
+    })
   }
 }
