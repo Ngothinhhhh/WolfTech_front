@@ -63,7 +63,7 @@ export class UserServiceService {
     }
     return this.http.post(this.url + api, body, this.options)
   }
-  
+
   shop_manage(token:string,page:Number,sortBy:string,category_id:string):Observable<any>{
     let api = `product/manage?page=${page}&sortBy=${sortBy}`
     let header = new  HttpHeaders({
