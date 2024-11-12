@@ -16,8 +16,8 @@
                     <img [src]="baseUrl +  product_imgs[0].alt" alt="">
                 </div>
                 <div class="listImageOfProduct">
-                    <button id="imageOfProductID5" class="imageOfProductDetail" (click)="changeImageActive('3')" *ngFor="let image of product_imgs ; let i = index">
-                        <img [src]="baseUrl + image.alt" alt="">
+                    <button id="imageOfProductID5" class="imageOfProductDetail" *ngFor="let image of product_imgs ; let i = index">
+                        <img [id]="i" [src]="baseUrl + image.alt" alt="" (click)="changeImageActive(i)">
                     </button>
                 </div>
             </div>
@@ -48,6 +48,7 @@
 
                 </div>
             </div> -->
+            <!-- Chính sách -->
             <div class="policyOfProduct">
                 <span class="titlePolicyOfProduct">
                     Chính Sách Trả Hàng
@@ -56,6 +57,7 @@
                     <i class="fa-solid fa-arrow-right-arrow-left"></i> Trả Hàng 15 Ngày
                 </div>
             </div>
+            <!-- Vận chuyển -->
             <div class="transportOfProduct">
                 <span class="titleTransportOfProduct">
                     Vận Chuyển
@@ -64,6 +66,7 @@
                     <i class="fa-solid fa-truck-fast"></i> Miễn Phí Vận Chuyển
                 </div>
             </div>
+            <!-- Số lượng -->
             <div class="quantityOfProduct">
                 <span class="titleQuantityOfProduct">
                     Số Lượng
@@ -72,6 +75,18 @@
                     <button class="minusQuantityOfProduct" (click)="plusOrMinusQuantityProductOrder(false)">-</button>
                     <input id="quantityOfProductOrderID" class="quantityOfProductOrder" type="text" value="1">
                     <button class="plusQuantityOfProduct" (click)="plusOrMinusQuantityProductOrder(true)">+</button>
+                </div>
+            </div>
+            <!-- Biến thể/ phân loại -->
+            <div class="variantOfProduct">
+                <span class="titleVariantOfProduct">
+                    Phân loại
+                </span>
+                <div class="choiceVariantOfProduct">
+                    <button type="button" class="btnAddVariant" (click)="handleChooseVariant($event)" *ngFor="let variant of product_variants ; let i = index">
+                        <img [src]="baseUrl + variant.variant_imgs[0].link" alt="">
+                        <span>{{ variant.variant_name }}</span>
+                    </button>
                 </div>
             </div>
             <div class="btnBuyProduct">

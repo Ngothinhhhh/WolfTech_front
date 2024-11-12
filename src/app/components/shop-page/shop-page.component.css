@@ -136,13 +136,17 @@
     padding-left: 20px;
 }
 
-.shopInfoPageContainer .topOfShopInfoPage .shopMenuNav{
-    /* position: absolute; */
-    bottom: 0;
-    padding: 0px 10px;
+.shopInfoPageContainer .shopMenuNav{    
+    padding: 0px;
     padding-bottom: 0px;
+    position: sticky;
+    top: 130px;
+    background-color: rgba(255, 255, 255, 0.815);
+    z-index: 2;
+    box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px;
+    backdrop-filter: blur(15px);
 }
-.shopInfoPageContainer .topOfShopInfoPage .shopMenuNav button{
+.shopInfoPageContainer .shopMenuNav button{
     background-color: transparent;
     font-weight: 400;
     color: #111;
@@ -151,12 +155,21 @@
     padding: 15px 35px;
     cursor: pointer;
 }
-.shopInfoPageContainer .topOfShopInfoPage .shopMenuNav .checked{
+.shopInfoPageContainer .shopMenuNav select{
+    background-color: transparent;
+    font-weight: 400;
+    color: #111;
+    font-size: 16px;
+    border: none;
+    padding: 15px 35px;
+    cursor: pointer;
+}
+.shopInfoPageContainer .shopMenuNav .checked{
     border-bottom: 2px solid #a61713;
     color: #a61713;
 }
 
-.shopInfoPageContainer .topOfShopInfoPage .shopMenuNav button:hover{ 
+.shopInfoPageContainer .shopMenuNav button:hover{ 
     color: #a61713;
 }
 .shopInfoPageContainer .mainOfShopInfoPage{
@@ -406,11 +419,22 @@
     font-weight: 400;
     font-size: 14px;
 }   
-.productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox{
+.productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox .categoryOfProduct{
     display: flex;
     align-items: center;
     padding: 5px 0px;
+    cursor: pointer;
+    transition: all .2s;
+    padding: 3px;
+    border-radius: 4px;
 }   
+.productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox .categoryOfProduct.active {
+    background-color: #a61713;
+    color: white;
+}
+.productListMain .leftOfProductList .filterBasePlace .filterBasePlaceCheckbox .categoryOfProduct:hover:not(.active) {
+    background-color: #ddd;
+}
 .productListMain .leftOfProductList .filterBasePlace input{
     color: #333;
     margin-right: 5px;
@@ -616,6 +640,9 @@
     background-color: #ddd;
 }
 /* Hết css phần tất cả sản phẩm trong Shop page */
+.topOfproductListMain{
+    height: 150px;
+}
 
 /*                           MEDIA QUERY                          */
 /***** 1. Thiết bị có kích thước màn hình 740px - 1023px (màn hình tablet và laptop nhỏ) *****/
@@ -654,9 +681,6 @@
         width: 100%;
         padding: 10px;
         margin-bottom: 5px;
-    }
-    .shopInfoPageContainer .topOfShopInfoPage .shopMenuNav{
-        padding: 0px;
     }
     .shopInfoPageContainer .topOfShopInfoPage .shopInfo .shopAvatar{
         width: 100%;    
@@ -716,5 +740,17 @@
         color: #555;
         font-size: 10px;
     }
-    
+    .shopInfoPageContainer .shopMenuNav{    
+        padding: 0px;
+        padding-bottom: 0px;
+        position: sticky;
+        top: 60px;
+        background-color: rgba(255, 255, 255, 0.815);
+        z-index: 2;
+        box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px;
+        backdrop-filter: blur(15px);
+    }
+    .topOfproductListMain{
+        height: 80px;
+    }
 }

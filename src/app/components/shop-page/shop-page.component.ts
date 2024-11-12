@@ -92,10 +92,17 @@ export class ShopPageComponent {
   }
 
   productByCondition(page:number,sortBy:string,categoryId:string){
+    let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
     return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
       if(data.code == 200 ){
-        this.listProduct = data.data.listProduct
-        console.log(this.listProduct);
+        this.listProduct = data.data.listProduct;
+        // 
+        for(let i of listCategoryOfProduct){
+          i.classList.remove('active');
+        }
+        (document.getElementById(categoryId) as HTMLElement).classList.add('active');
+        //
+        console.log(data);
       }
       else console.log(data.error);
     })

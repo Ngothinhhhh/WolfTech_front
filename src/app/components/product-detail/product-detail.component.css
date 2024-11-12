@@ -91,8 +91,7 @@
     border: .5px solid #a61713;
 }
 .productDetailInfo .leftProductDetail .imageOfProduct .listImageOfProduct button:hover{
-    border: .5px solid #a61713;
-    
+    background-color: #efefef;
 }
 .productDetailInfo .leftProductDetail .imageOfProduct .listImageOfProduct button img{   
     width: 100%;
@@ -165,13 +164,13 @@
     font-weight: 400;
     font-size: 15px;
     color: dimgray;
-    margin-right: 40px;
+    width: 30%;
 }
 .productDetailInfo .rightProductDetail .policyOfProduct .contentPolicyOfProduct{
     font-weight: 300;
     font-size: 14px;
     color: black;
-    margin-right: 40px;
+    width: 70%;
 }
 .productDetailInfo .rightProductDetail .policyOfProduct .contentPolicyOfProduct i{
     color: #a61713;
@@ -187,13 +186,13 @@
     font-weight: 400;
     font-size: 15px;
     color: dimgray;
-    margin-right: 100px;
+    width: 30%;
 }
 .productDetailInfo .rightProductDetail .transportOfProduct .contentTransportOfProduct{
     font-weight: 300;
     font-size: 14px;
     color: black;
-    margin-right: 40px;
+    width: 70%;
 }
 .productDetailInfo .rightProductDetail .transportOfProduct .contentTransportOfProduct i{
     color: #a61713;
@@ -209,10 +208,10 @@
     font-weight: 400;
     font-size: 15px;
     color: dimgray;
-    margin-right: 40px;
+    width: 30%;
 }
 .productDetailInfo .rightProductDetail .quantityOfProduct .choiceQuantityOfProduct{
-    margin-left: 80px;
+    width: 70%;
 }
 .productDetailInfo .rightProductDetail .quantityOfProduct .choiceQuantityOfProduct button{
     background-color: transparent;
@@ -229,6 +228,61 @@
     height: 100%;
     border: none;
     text-align: center;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .titleVariantOfProduct{
+    font-weight: 400;
+    font-size: 15px;
+    color: dimgray;
+    width: 30%;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct .btnAddVariant{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 5px;
+    border: .5px solid #efefef;
+    border-radius: 4px;
+    background-color: transparent;
+    width: 35%;
+    margin: 0px 5px 5px 0px;
+    transition: all .2s;
+    cursor: pointer;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct .choosed{
+    background-color: #efefef;
+    border: .5px solid #a61713;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct .btnAddVariant:hover{
+    background-color: #efefef;
+    /* border: .5px solid #111; */
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct .btnAddVariant span{
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #111;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.productDetailInfo .rightProductDetail .variantOfProduct .choiceVariantOfProduct .btnAddVariant img{
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    object-fit: cover;    
+    object-position: center;
+    border: .5px solid #efefef;
 }
 .productDetailInfo .rightProductDetail .btnBuyProduct{
     margin-top: 40px;
