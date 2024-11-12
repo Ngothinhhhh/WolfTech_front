@@ -16,7 +16,7 @@
         <div class="tableContainer">
             <table>
                 <thead>
-                    <tr><td>STT</td><td>Tên</td><td>Hình</td><td>Loại</td><td>Giá</td><td>Số lượng</td><td>Thao tác</td></tr>
+                    <tr><td>STT</td><td>Tên</td><td>Hình</td><td>Loại</td><td>Giá</td><td>Lượt bán</td><td>Thao tác</td></tr>
                 </thead>
                 <tbody>
                     <!-- 1 hàng -->
@@ -28,7 +28,7 @@
                                 <img [src]="baseUrl + product.product_imgs[0].alt" alt="">
                             </td>
                             <td>{{product.category_name}}</td>
-                            <td>{{product.product_supp_price | number : '1.0-0' }}</td>
+                            <td>{{product.product_supp_price | number : '1.0-0' }} đ</td>
                             <td>{{product.product_sold_quantity}}</td>
                             <td class="operationCol">
                                 <a routerLink="/product-detail/{{product.product_slug}}"
@@ -43,7 +43,6 @@
                                 <a routerLink="/product-detail/{{product._id}}"
                                     class="btnDelete">
                                 Xóa</a>
-
                             </td>
                         </tr>
                     </ng-container>
@@ -77,15 +76,16 @@
         </div>
         <!-- Pagination -->
         <div class="pagination">
-            <button type="button" class="" >&laquo;</button>
-            <button type="button" class="active" (click)="goToPage(1)">1</button>
-            <button type="button" class="" (click)="goToPage(2)">2</button>
-            <button type="button" class="" (click)="goToPage(3)">3</button>
-            <button type="button" class="" (click)="goToPage(4)">4</button>
-            <button type="button" class="" (click)="goToPage(5)">5</button>
-            <button type="button" class="" (click)="goToPage(6)">6</button>
+            <button type="button" class="">&laquo;</button>
+            <button type="button" [class.active]="isActive(1)" (click)="goToPage(1)">1</button>
+            <button type="button" [class.active]="isActive(2)" (click)="goToPage(2)">2</button>
+            <button type="button" [class.active]="isActive(3)" (click)="goToPage(3)">3</button>
+            <button type="button" [class.active]="isActive(4)" (click)="goToPage(4)">4</button>
+            <button type="button" [class.active]="isActive(5)" (click)="goToPage(5)">5</button>
+            <button type="button" [class.active]="isActive(6)" (click)="goToPage(6)">6</button>
             <button type="button" class="" >&raquo;</button>
           </div>
+          
           
     </div>
 </div>

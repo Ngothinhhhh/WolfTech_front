@@ -95,7 +95,7 @@ export class ShopPageComponent {
     return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
       if(data.code == 200 ){
         this.listProduct = data.data.listProduct
-        console.log(data);
+        console.log(this.listProduct);
       }
       else console.log(data.error);
     })
