@@ -83,8 +83,8 @@ export class ShopPageComponent {
   }
 
   productByCondition(page:number,sortBy:string,categoryId:string){
-    //this.sortBy = sortBy
-    this.router.navigate([], { relativeTo: this.route, queryParams: { category_id : categoryId , page : 1 }, queryParamsHandling: 'merge' });
+    this.sortBy = sortBy
+    this.router.navigate([], { relativeTo: this.route, queryParams: { category_id : categoryId , page : 1, sortBy : sortBy  }, queryParamsHandling: 'merge' });
     let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
     for(let i of listCategoryOfProduct){
       i.classList.remove('active');
@@ -110,4 +110,7 @@ export class ShopPageComponent {
       }
     })
   }
+
+  // Thêm phương thức để cuộn đến một phần tử cụ thể
+  scrollToElement(elementId: string) { const element = document.getElementById(elementId); if (element) { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
 }

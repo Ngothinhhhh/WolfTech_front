@@ -18,8 +18,6 @@
 
 
 
-
-
 MESSAGE TRONG TỐI NAY:
 - shope-page : Sửa lại dùm phần "tất cả sản phẩm", nó chưa roll được.
 - shope-page : Khi roll xuống, cho tới khi nhấn vào "TRang chính" thì mới roll lên trên, còn khi chọn các "Danh mục","Phân trang" 
@@ -29,6 +27,8 @@ thì sẽ giữ nguyên trang tại vị trí phía dưới mà không roll lên
 - phần Add Product trang admin: phần hiển thị category đag chưa có name
 
 
+- Trang shop-page : đừng cho phần header cuộn xuống theo ==> chật trang quá
+- Trang product-detail : Khi chưa click chọn variant_product, hãy làm cho nó không thể "Add Cart" hoặc "mua hàng" được.
 
 
 

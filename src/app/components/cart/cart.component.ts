@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-
 import { UserServiceService } from '../../user-service.service';
 import { ProductServiceService } from '../../product-service.service';
+import { AppServiceService } from '../../app-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,6 +21,8 @@ export class CartComponent {
     private user_service:UserServiceService,
     private product_service:ProductServiceService
   ){}
+
+  private app_service = inject(AppServiceService)
 
   token:any
   product_cart : any[] = [] 
@@ -57,6 +58,7 @@ export class CartComponent {
     this.user_service.user_cart(this.token).subscribe( data=>{
       if(data.code == 200){
         this.product_cart =  data.data[0].cart
+        this.app_service.sendData({key : "cart_length",value : data.data[0].cart.length})
         this.total_in_cart = 0 // update = 0 , để reset tổng về 0, sau mỗi lần update để tính tổng lại và cập nhật giá trị cho biến này!
         this.product_cart.forEach( (element:any) => {
           this.total_in_cart += element.product.product_variants[0].price * element.quantity

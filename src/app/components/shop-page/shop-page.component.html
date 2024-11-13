@@ -55,10 +55,10 @@
         <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID')">
             Trang Chính
         </button>
-        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID') ; productByCondition(1,'','')">
+        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID') ; productByCondition(1,'',''); scrollToElement('topOfproductListMainID')">
             Tất Cả Sản Phẩm
         </button>
-        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID')">
+        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID'); scrollToElement('topOfproductListMainID')">
             Danh muc
         </button>
         <select name="" id="">            
@@ -201,12 +201,12 @@
                     <button><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div class="titleFilterProductList">
-                    <span><i class="fa-solid fa-filter"></i> DANH MỤC</span>
+                    <span ><i class="fa-solid fa-filter"></i> DANH MỤC</span>
                 </div>
                 <div class="filterBasePlace">
                     <div class="filterBasePlaceCheckbox" ><span (click)="productByCondition(1,'','')"> Tất cả sản phẩm</span></div>
                     <div class="filterBasePlaceCheckbox"  *ngFor="let category of listCategory; let i = index">
-                        <span [id]="category._id" (click)="productByCondition(1,'',category._id)" class="categoryOfProduct">{{ category.category_name }} </span>
+                        <span [id]="category._id" (click)="productByCondition(1,'',category._id); scrollToElement('topOfproductListMainID')" class="categoryOfProduct">{{ category.category_name }} </span>
                     </div>  
                 </div>
             </div>
@@ -219,9 +219,12 @@
                 <div class="filterByPrice">
                     <span>Sắp xếp theo</span>
                     <form action="#" method="get">
-                        <select name="" id="">
-                            <option value="asc">Giá: Thấp đến Cao</option>
-                            <option value="desc">Giá: Cao đến Thấp</option>
+                        <select (change)="productByCondition(page,sortBy.value,category_id)" name="sortBy" id="" #sortBy>
+                            <option value="">Mặc định</option>
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="time_desc">Mới nhất</option>
+                            <option value="sales">Lượt mua</option>
                         </select>
                         <button type="submit">Áp dụng</button>
                     </form>
@@ -263,23 +266,38 @@
                         
                     </ng-container>
                     <ng-template #null_product>
-                        <p>Không có sản phẩm nào.</p>
+                        <div class="btnSuggestItemContainer">
+                            <button routerLink="/product-detail" class="btnSuggestItem">
+                                <div class="suggestItemSaleTag">
+                                    -50%
+                                </div>
+                                <img [src]="" alt="Nothing">
+                                <span class="productName">Nothing</span>
+                                <div class="suggestItemPriceSale">
+                                    <span class="suggestItemPrice">Nothing</span>
+                                </div>
+                                <div class="ratingOfProduct">
+                                    <div class="starRatingOfProductBox">
+                                        <div class="starRatingOfProduct">
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <span style="
+                                            font-weight: 300;
+                                            color: black;
+                                            font-size: 12px;
+                                            padding: 0px;
+                                            margin-left: 5px;
+                                            margin-top: 2px;"
+                                        >
+                                        Nothing
+                                        </span>
+                                    </div>
+                                    <span class="suggestItemSold">Nothing</span>
+                                </div>
+                            </button>
+                        </div>
                     </ng-template>
-                    <!-- <div class="col l-2 m-3 c-6 btnSuggestItemContainer">
-                        <button routerLink="/product-detail" class="btnSuggestItem">
-                            <div class="suggestItemSaleTag">
-                                -50%
-                            </div>
-                            <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m0cs9d5vmtild0.webp" alt="">
-                            <span>Laptop Asus</span>
-                            <div class="suggestItemPriceSale">
-                                <span class="suggestItemPrice">27.000đ</span>
-                                <span class="suggestItemSold">2.7k</span>
-                            </div>
-                            <span class="suggestItemSold">2.7k rating</span>
-                        </button>
-                    </div> -->
-                                 
+                     
                 </div>
                 <!-- Pagination -->
                 <div class="pagination">

@@ -83,14 +83,14 @@
                     Phân loại
                 </span>
                 <div class="choiceVariantOfProduct">
-                    <button type="button" class="btnAddVariant" (click)="handleChooseVariant($event)" *ngFor="let variant of product_variants ; let i = index">
+                    <button type="button" class="btnAddVariant" (click)="handleChooseVariant($event,variant._id)" *ngFor="let variant of product_variants ; let i = index">
                         <img [src]="baseUrl + variant.variant_imgs[0].link" alt="">
                         <span>{{ variant.variant_name }}</span>
-                    </button>
+                    </button>   
                 </div>
             </div>
             <div class="btnBuyProduct">
-                <button class="btnAddToCart">
+                <button class="btnAddToCart" (click)="add_cart()" >
                     <i class="fa-solid fa-cart-plus"></i> Thêm Vào Giỏ Hàng
                 </button>
                 <button class="btnOrderNow">
@@ -106,7 +106,13 @@
             <div class="rightShopInfo">
                 <span class="shopName">{{product_infor.userID.user_name}}</span>
                 <div class="btnWatchShopContainer">
-                    <button routerLink="/shop-page" class="btnWatchShop"><i class="fa-solid fa-store"></i> Xem Shop</button>
+                    <button routerLink="/shop-page/{{product_infor.userID.user_name}}"
+                     [queryParams]="{
+                        idSeller : product_infor.userID._id,
+                        category_id : '' ,
+                        page : 1,
+                        sortBy : ''
+                      }" class="btnWatchShop"><i class="fa-solid fa-store"></i> Xem Shop</button>
                 </div>
             </div>
         </div>

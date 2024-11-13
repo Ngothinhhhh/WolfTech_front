@@ -6,8 +6,8 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { ProductServiceService } from '../../product-service.service';
-import { log } from 'console';
-import { doesNotMatch } from 'assert';
+import { UserServiceService } from '../../user-service.service';
+
 @Component({
   selector: 'app-product-detail',
   standalone: true,
@@ -20,11 +20,14 @@ export class ProductDetailComponent {
 
 constructor(
   private route:ActivatedRoute,
-  private product_service : ProductServiceService
+  private product_service : ProductServiceService,
+  private user_service : UserServiceService
 ){}
 
 productId:string = ''
 product_slug :string = ''
+variant_id:string = ''
+
 
 product_infor:any
 product_details:any[] =[]
@@ -32,6 +35,9 @@ product_imgs:any[] =[]
 product_variants:any[] =[]
 recent_reviews:any[] =[]
 recent_images:any[] =[]
+
+quantity:number = 1
+token:string = localStorage.getItem("token") || ''
 
 
 baseUrl: string = 'http://localhost:3000/public/images/'
@@ -63,17 +69,37 @@ formatDate(dateString: string): string {
   return `${day}-${month}-${year}`;
 }
 
+add_cart(){
+  return this.user_service.add_cart(this.quantity,this.productId,this.variant_id,this.token).subscribe((data:any)=>{
+    if(data.code == 200){        
+      alert("Thêm thành công")
+    }
+    else if(data.code == 204){
+      alert(data.error)
+    }
+    else{
+      console.log(data.error);
+    }
+  })
+
+}
+
 // tăng giảm số lượng sản phẩm muốn mua
 plusOrMinusQuantityProductOrder(isPlus: boolean): void {
   let currentQuantityProductOrder = document.getElementById('quantityOfProductOrderID') as HTMLInputElement;
   if(isPlus){
     (document.getElementById("quantityOfProductOrderID") as any).value = (currentQuantityProductOrder.value as any) - 0 + 1
     console.log(typeof(currentQuantityProductOrder.value))
+    this.quantity = parseInt(currentQuantityProductOrder.value)
+    //console.log(this.quantity);
   }else if((document.getElementById("quantityOfProductOrderID") as any).value != 1){
     (document.getElementById("quantityOfProductOrderID") as any).value = (currentQuantityProductOrder.value as any) - 0 - 1
     console.log(typeof(currentQuantityProductOrder.value))
+    this.quantity = parseInt(currentQuantityProductOrder.value)
+    //console.log(this.quantity);
   }
 }
+
 // đánh giá sao (1-5 sao) cho sản phẩm
 starRatingForProduct(numberOfStars: string): void {
   let currentStarOfProduct = document.getElementById('starRatingOfProductID') as HTMLInputElement;
@@ -96,6 +122,7 @@ starRatingForProduct(numberOfStars: string): void {
     console.log("Chưa đánh giá")
   }
 }
+
 // thay đổi hình chiếu sản phẩm khi click vào hình nhỏ
 changeImageActive(orderOfImage: any): void { 
   let listImg = (document.getElementsByClassName('imageOfProductDetail') as any);
@@ -106,14 +133,13 @@ changeImageActive(orderOfImage: any): void {
   (document.getElementById(orderOfImage) as HTMLElement).className = 'imageOfProductDetail choosed';
 }
 // thay đổi hình chiếu sản phẩm khi click vào variant
-handleChooseVariant(event: any): void{
+handleChooseVariant(event: any, variantId:string): void{
   let listBtnAddVariant = (document.getElementsByClassName('btnAddVariant') as any);
   ((document.getElementById('imageOfProductActivedID') as HTMLDivElement).childNodes[0] as HTMLImageElement).src = event.target.childNodes[0].src;
   for(let btn of listBtnAddVariant){
     btn.classList.remove('choosed');
   }
   event.target.classList.add('choosed');
-
-  
+  this.variant_id = variantId
 }
 }

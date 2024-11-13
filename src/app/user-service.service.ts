@@ -55,6 +55,21 @@ export class UserServiceService {
     return this.http.post(this.url + api, objectData, requestOptions)
   }
 
+  // token ; product; variant_id
+  add_cart(quantity:Number,product_id:string,variant_id:string,token:string):Observable<any>{
+    let api = 'user/cart/create'
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    let objectData ={
+      quantity   : quantity,
+      product    : product_id,
+      variant_id : variant_id
+    }
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api, objectData, requestOptions)
+  }
+
   shop_detail(Id_seller:string,page:Number,sortBy:string,category_id:string):Observable<any>{
     let api = `product/shop?page=${page}&sortBy=${sortBy}`
     const body = {
