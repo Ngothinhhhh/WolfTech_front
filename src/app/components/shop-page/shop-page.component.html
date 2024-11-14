@@ -218,7 +218,6 @@
                 <!-- Lọc theo giá -->
                 <div class="filterByPrice">
                     <span>Sắp xếp theo</span>
-                    <form action="#" method="get">
                         <select (change)="productByCondition(page,sortBy.value,category_id)" name="sortBy" id="" #sortBy>
                             <option value="">Mặc định</option>
                             <option value="price_asc">Giá tăng dần</option>
@@ -226,8 +225,6 @@
                             <option value="time_desc">Mới nhất</option>
                             <option value="sales">Lượt mua</option>
                         </select>
-                        <button type="submit">Áp dụng</button>
-                    </form>
                 </div>
                 <!-- List sản phẩm -->
                 <div class="row listSuggest">

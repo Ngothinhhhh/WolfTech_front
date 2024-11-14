@@ -10,6 +10,10 @@ import { Observable,map,Subject } from 'rxjs';
 export class AppServiceService {
 
   private url = 'http://localhost:3000/api/';
+  private vnpay = 'http://localhost:8888/order/';
+  options = { headers : new HttpHeaders().set("Content-Type" , "application/json") }
+
+
   private datasubject = new Subject<any>()
 
   constructor(
@@ -34,5 +38,10 @@ export class AppServiceService {
     return this.datasubject.asObservable()  // Trả về một Observable để các observer có thể đăng ký và nhận dữ liệu
   }
   // nhận dữ liệu 
+  send_data(object:any): Observable<any>{
+    let api = 'create_payment_url'
+    
+  return this.http.post(this.vnpay + api,object,this.options)
+  }
 
 }

@@ -1,9 +1,3 @@
-- Trang profile người dùng. (ok)
-- Trang Cart. (ok)
-- Trang Đăng ký, Đăng nhập. (ok)
-- Phần hiển thị đánh giá trong chi tiết sản phẩm sửa thành dạng Pagition (phân trang). (ok)
-- Thêm phần top tìm kiếm dưới thanh tìm kiếm. (ok)
-- Cấu trúc lại folder components; (ok)
 - Trang mua hàng.
 - Phần Shop Admin:
     + Trang đăng ký thành seller
@@ -29,6 +23,9 @@ thì sẽ giữ nguyên trang tại vị trí phía dưới mà không roll lên
 
 - Trang shop-page : đừng cho phần header cuộn xuống theo ==> chật trang quá
 - Trang product-detail : Khi chưa click chọn variant_product, hãy làm cho nó không thể "Add Cart" hoặc "mua hàng" được.
+- Trang checkOut : "http://localhost:4200/cart/checkout", đường dẫn sẽ như vậy, làm giao diện dùm tôi.Còn tôi thì làm phần xử lí backend là call api của 
+vnpay vào, và thanh toán thành công thì add 1 document vào Reviews.
+- Trang Reviews sản phẩm .
 
 
 

@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/admin-shop/components/dashboard
 import { ProductManagementComponent } from './components/admin-shop/components/product-management/product-management.component';
 import { CategoryManagementComponent } from './components/admin-shop/components/category-management/category-management.component';
 import { AddProductComponent } from './components/admin-shop/components/add-product/add-product.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 // Guard
 import { authGuard } from './auth.guard';
@@ -38,7 +39,11 @@ export const routes: Routes = [
                     {path: 'order-history', component: OrderHistoryComponent},
                 ],
             },
-            {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
+            {path: "cart", component: CartComponent, canActivate : [authGuard],
+                children : [
+                    {path : "checkout", component : CheckoutComponent},
+                ]
+            }, // trang giỏ hàng
         ],
     },
     {path: "admin-shop", component: AdminShopComponent, canActivate: [authGuard],
@@ -56,6 +61,8 @@ export const routes: Routes = [
     }, // trang admin của shop
     {path: "sign-in", component: SignInComponent}, // trang đăng nhập
     {path: "sign-up", component: SignUpComponent}, // trang đăng ký
+    //{path : "checkout", component : CheckoutComponent},
+
     //    
     {path: "**", component: NotFoundComponent} // route Not Found nên ở cuối cùng
 ];
