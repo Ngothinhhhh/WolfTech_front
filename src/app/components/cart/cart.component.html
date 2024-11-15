@@ -55,11 +55,8 @@
         <!-- Thanh đặt hàng -->
         <div class="bottomCart">
             <span>Tổng thanh toán: <span style="color: #a61713; font-size: 22px; font-weight: 400;">{{total_in_cart | number : '1.0-0'}} vnđ</span></span>
-            <button class="btnOrder">Đặt Hàng</button>
-            <a routerLink="/cart/checkout">Proceed to Checkout</a>
-
+            <button type="button" routerLink="/checkout" class="btnOrder">Mua Hàng</button>
+            <!-- <a routerLink="/checkout">Proceed to Checkout</a> -->
         </div>
     </div>
 </div>
-
-<router-outlet></router-outlet>

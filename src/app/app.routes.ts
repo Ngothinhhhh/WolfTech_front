@@ -17,9 +17,11 @@ import { ProductManagementComponent } from './components/admin-shop/components/p
 import { CategoryManagementComponent } from './components/admin-shop/components/category-management/category-management.component';
 import { AddProductComponent } from './components/admin-shop/components/add-product/add-product.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReviewComponent } from './components/review/review.component';
 
 // Guard
 import { authGuard } from './auth.guard';
+import { CheckoutPageComponent } from './components/checkout/components/checkout-page/checkout-page.component';
 
 
 export const routes: Routes = [
@@ -39,11 +41,13 @@ export const routes: Routes = [
                     {path: 'order-history', component: OrderHistoryComponent},
                 ],
             },
-            {path: "cart", component: CartComponent, canActivate : [authGuard],
-                children : [
-                    {path : "checkout", component : CheckoutComponent},
-                ]
-            }, // trang giỏ hàng
+            {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
+            {path: "checkout", component: CheckoutComponent, canActivate: [authGuard],
+                children: [
+                    {path: "", component: CheckoutPageComponent},
+                    {path: "review", component: ReviewComponent},
+                ],
+            },
         ],
     },
     {path: "admin-shop", component: AdminShopComponent, canActivate: [authGuard],

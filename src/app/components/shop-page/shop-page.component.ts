@@ -69,7 +69,8 @@ export class ShopPageComponent {
     return `${day}-${month}-${year}`;
   }
   // Xử lý chuyển tab trong trang Shop
-  handleClickTabShopPage(id: string) {
+  handleClickTabShopPage(id: string, event: any) {
+    // event.this.preventDefault();
     if(id === "btnHomeID"){
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera

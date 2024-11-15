@@ -52,17 +52,17 @@
     </div>
     <!-- Shop Menu Bar -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 shopMenuNav">
-        <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID')">
+        <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID', $event)">
             Trang Chính
         </button>
-        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID') ; productByCondition(1,'',''); scrollToElement('topOfproductListMainID')">
+        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID', $event) ; productByCondition(1,'',''); scrollToElement('topOfproductListMainID')">
             Tất Cả Sản Phẩm
         </button>
-        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID'); scrollToElement('topOfproductListMainID')">
+        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID', $event); scrollToElement('topOfproductListMainID')">
             Danh muc
         </button>
         <select name="" id="">            
-            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
+            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="handleClickTabShopPage('btnAllProductID', $event)">{{ category.category_name }}</option>
         </select>
     </div>
     <!-- Phần main của Shop Page -->
