@@ -44,10 +44,10 @@ export const routes: Routes = [
             {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
             {path: "checkout", component: CheckoutComponent, canActivate: [authGuard],
                 children: [
-                    {path: "", component: CheckoutPageComponent},
-                    {path: "review", component: ReviewComponent},
+                    
                 ],
             },
+            {path: "review", component: ReviewComponent},
         ],
     },
     {path: "admin-shop", component: AdminShopComponent, canActivate: [authGuard],

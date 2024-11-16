@@ -119,9 +119,25 @@
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 5px;
 }
 .orderHistory .listOrder .orderHistoryInfo .bottom .btnRePurchase:hover{
     background-color: #84130f;
+    transition: all .1s;
+}
+.orderHistory .listOrder .orderHistoryInfo .bottom .btnRating{
+    border: .5px solid #a61713;
+    background-color: white;
+    padding: 10px 25px;
+    color: #a61713;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.orderHistory .listOrder .orderHistoryInfo .bottom .btnRating:hover{
+    background-color: #a61713;
+    color: white;
+    transition: all .1s;
 }
 
 
