@@ -16,13 +16,11 @@ import { DashboardComponent } from './components/admin-shop/components/dashboard
 import { ProductManagementComponent } from './components/admin-shop/components/product-management/product-management.component';
 import { CategoryManagementComponent } from './components/admin-shop/components/category-management/category-management.component';
 import { AddProductComponent } from './components/admin-shop/components/add-product/add-product.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReviewComponent } from './components/review/review.component';
+import { Checkout1Component } from './components/checkout1/checkout1.component';
 
 // Guard
 import { authGuard } from './auth.guard';
-import { CheckoutPageComponent } from './components/checkout/components/checkout-page/checkout-page.component';
-
 
 export const routes: Routes = [
     {path: "", component: PublicComponent, 
@@ -42,9 +40,9 @@ export const routes: Routes = [
                 ],
             },
             {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
-            {path: "checkout", component: CheckoutComponent, canActivate: [authGuard],
+            {path: "checkout", component: Checkout1Component, canActivate: [authGuard],
                 children: [
-                    
+                    {path: "review", component: ReviewComponent},
                 ],
             },
             {path: "review", component: ReviewComponent},
@@ -67,6 +65,5 @@ export const routes: Routes = [
     {path: "sign-up", component: SignUpComponent}, // trang đăng ký
     //{path : "checkout", component : CheckoutComponent},
 
-    //    
     {path: "**", component: NotFoundComponent} // route Not Found nên ở cuối cùng
 ];

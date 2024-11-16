@@ -28,8 +28,8 @@
                     </div>
                     <div class="mid">
                         <div class="productInfo">
-                            <img routerLink="/product-detail/{{product.product.product_slug}}" [queryParams]="{ idProduct : product.product._id }" [src]="baseUrl + product.product.product_imgs[0].alt" alt="">
-                            <span routerLink="/product-detail/{{product.product.product_slug}}" [queryParams]="{ idProduct : product.product._id }">{{ product.product.product_name }}</span>
+                            <img routerLink="/product-detail/{{product.product.product_slug}}" [queryParams]="{ idProduct : product.product._id }" [src]="baseUrl + product.product.product_variants[0].variant_imgs[0].link" alt="">
+                            <span routerLink="/product-detail/{{product.product.product_slug}}" [queryParams]="{ idProduct : product.product._id }">{{ product.product.product_name }} Phân loại : {{product.product.product_variants[0].variant_name}}</span>
                             <div class="productPrice">
                                 <span>Sản phẩm {{ i }}</span>
                             </div>
@@ -38,7 +38,7 @@
                             <span>{{ product.product.product_variants[0].price | number : '1.0-0'}} </span>
                         </div>
                         <div class="productQuantity">
-                            <input type="number"  [value]="product.quantity" (change)="change_quality(input,product.product._id,product.product.product_variants[0]._id)" #input> <!-- Sử dụng property binding để thiết lập value -->                    </div>
+                            <input type="number"  [value]="product.quantity" (change)="change_quality(input,product.product._id,product.product.product_variants[0]._id)" #input> <!-- Sử dụng property binding để thiết lập value --> </div>
                         <div class="productAmount">
                             <span>{{ product.product.product_variants[0].price * product.quantity | number : '1.0-0' }} vnđ</span>
                         </div>

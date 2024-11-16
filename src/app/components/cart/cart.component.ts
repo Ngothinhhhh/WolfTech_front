@@ -58,6 +58,7 @@ export class CartComponent {
     this.user_service.user_cart(this.token).subscribe( data=>{
       if(data.code == 200){
         this.product_cart =  data.data[0].cart
+        console.log(this.product_cart);
         this.app_service.sendData({key : "cart_length",value : data.data[0].cart.length})
         this.total_in_cart = 0 // update = 0 , để reset tổng về 0, sau mỗi lần update để tính tổng lại và cập nhật giá trị cho biến này!
         this.product_cart.forEach( (element:any) => {
