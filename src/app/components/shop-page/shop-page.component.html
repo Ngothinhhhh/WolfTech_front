@@ -52,18 +52,19 @@
     </div>
     <!-- Shop Menu Bar -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 shopMenuNav">
-        <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID', $event)">
+        <button id="btnHomeID" type="button" class="checked" (click)="handleClickTabShopPage('btnHomeID')">
             Trang Chính
         </button>
-        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID', $event) ; productByCondition(1,'',''); scrollToElement('topOfproductListMainID')">
-            Tất Cả Sản Phẩm
+        <button id="btnAllProductID" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID');">
+            Sản Phẩm
         </button>
-        <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID', $event); scrollToElement('topOfproductListMainID')">
+        <!-- Bỏ nút danh mục ở trên -->
+        <!-- <button id="btnAllProductID1" type="button" class="" (click)="handleClickTabShopPage('btnAllProductID');">
             Danh muc
-        </button>
-        <select name="" id="">            
-            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="handleClickTabShopPage('btnAllProductID', $event)">{{ category.category_name }}</option>
-        </select>
+        </button> -->
+        <!-- <select name="" id="">            
+            <option id="btnAllProductID" value="" *ngFor="let category of listCategory; let i = index" (click)="handleClickTabShopPage('btnAllProductID')">{{ category.category_name }}</option>
+        </select> -->
     </div>
     <!-- Phần main của Shop Page -->
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 mainOfShopInfoPage">
@@ -204,9 +205,9 @@
                     <span ><i class="fa-solid fa-filter"></i> DANH MỤC</span>
                 </div>
                 <div class="filterBasePlace">
-                    <div class="filterBasePlaceCheckbox" ><span (click)="productByCondition(1,'','')"> Tất cả sản phẩm</span></div>
+                    <div class="filterBasePlaceCheckbox" ><span (click)="productByCondition(1,'','',$event);"> Tất cả sản phẩm</span></div>
                     <div class="filterBasePlaceCheckbox"  *ngFor="let category of listCategory; let i = index">
-                        <span [id]="category._id" (click)="productByCondition(1,'',category._id); scrollToElement('topOfproductListMainID')" class="categoryOfProduct">{{ category.category_name }} </span>
+                        <span [id]="category._id" (click)="productByCondition(1,'',category._id,$event);" class="categoryOfProduct">{{ category.category_name }} </span>
                     </div>  
                 </div>
             </div>
@@ -218,7 +219,7 @@
                 <!-- Lọc theo giá -->
                 <div class="filterByPrice">
                     <span>Sắp xếp theo</span>
-                        <select (change)="productByCondition(page,sortBy.value,category_id)" name="sortBy" id="" #sortBy>
+                        <select (change)="productByCondition(page,sortBy.value,category_id,$event)" name="sortBy" id="" #sortBy>
                             <option value="">Mặc định</option>
                             <option value="price_asc">Giá tăng dần</option>
                             <option value="price_desc">Giá giảm dần</option>
@@ -297,15 +298,15 @@
                      
                 </div>
                 <!-- Pagination -->
-                <div class="pagination">
-                    <button class="" (click)="updatePage(1)">&laquo;</button>
-                    <button class="active" (click)="updatePage(1)">1</button>
-                    <button class="" (click)="updatePage(2)">2</button>
-                    <button class="" (click)="updatePage(3)">3</button>
-                    <button class="" (click)="updatePage(4)">4</button>
-                    <button class="" (click)="updatePage(5)">5</button>
-                    <button class="" (click)="updatePage(6)">6</button>
-                    <button class="" (click)="updatePage(7)">&raquo;</button>
+                <div id="paginationInShopPageID" class="pagination">
+                    <button class="">&laquo;</button>
+                    <button class="active" (click)="updatePage(1, $event)">1</button>
+                    <button class="" (click)="updatePage(2, $event)">2</button>
+                    <button class="" (click)="updatePage(3, $event)">3</button>
+                    <button class="" (click)="updatePage(4, $event)">4</button>
+                    <button class="" (click)="updatePage(5, $event)">5</button>
+                    <button class="" (click)="updatePage(6, $event)">6</button>
+                    <button class="">&raquo;</button>
                   </div>
                   
             </div>

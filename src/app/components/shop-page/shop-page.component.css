@@ -623,6 +623,7 @@
     display: flex;
     align-items: center;
     justify-content: right;
+    height: fit-content;
 }
 .productListMain .rightOfProductList .filterByPrice span{
     font-size: 15px;
@@ -707,7 +708,7 @@
 }
 /* Hết css phần tất cả sản phẩm trong Shop page */
 .topOfproductListMain{
-    height: 160px;
+    height: 30px;
 }
 
 /*                           MEDIA QUERY                          */

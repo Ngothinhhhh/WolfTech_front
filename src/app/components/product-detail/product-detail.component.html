@@ -377,15 +377,15 @@
             </div>
         </div>
         <!-- Pagination -->
-        <div class="pagination">
-            <a class="" href="#">&laquo;</a>
-            <a class="active" href="#">1</a>
-            <a class="" href="#">2</a>
-            <a class="" href="#">3</a>
-            <a class="" href="#">4</a>
-            <a class="" href="#">5</a>
-            <a class="" href="#">6</a>
-            <a class="" href="#">&raquo;</a>
+        <div id="paginationInProductDetailID" class="pagination">
+            <a class="" >&laquo;</a>
+            <a class="active" (click)="updatePage(1, $event)">1</a>
+            <a class="" (click)="updatePage(2, $event)">2</a>
+            <a class="" (click)="updatePage(3, $event)">3</a>
+            <a class="" (click)="updatePage(4, $event)">4</a>
+            <a class="" (click)="updatePage(5, $event)">5</a>
+            <a class="" (click)="updatePage(6, $event)">6</a>
+            <a class="" >&raquo;</a>
         </div>
     </div>
     <!-- Phần các sản phẩm khác của shop -->

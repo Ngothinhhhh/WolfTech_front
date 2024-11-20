@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { ProductServiceService } from '../../product-service.service';
 import { UserServiceService } from '../../user-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +22,8 @@ export class ProductDetailComponent {
 constructor(
   private route:ActivatedRoute,
   private product_service : ProductServiceService,
-  private user_service : UserServiceService
+  private user_service : UserServiceService,
+  private _location: Location
 ){}
 
 productId:string = ''
@@ -154,5 +156,18 @@ getList_review() {
       
     }
   })
+}
+
+// xử lý pagination
+updatePage(page:number, event: any){
+  let pagination = document.getElementById('paginationInProductDetailID');
+  pagination?.childNodes.forEach(child => {
+    (child as any).classList.remove('active');
+  })
+  // console.log(event.target)
+  event.target.classList.add('active');
+  // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
+  // this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
+  // this.update_product(page,this.sortBy,this.category_id)
 }
 }

@@ -237,6 +237,19 @@
 /***** 5. Thiết bị có kích thước màn hình <= 600px (Điện thoại) *****/
 @media (max-width: 600px){
     /* Header ở điện thoại */
+    .header{
+        /* background: rgb(254,98,50);
+        background: linear-gradient(0deg, rgba(254,98,50,1) 0%, rgba(247,70,46,1) 100%); */
+        background-color: #000000e8;
+        backdrop-filter: blur(10px);
+        /* height: 115px; */
+        margin: 0;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
     .header .search{
         width: 100%;
         height: fit-content;

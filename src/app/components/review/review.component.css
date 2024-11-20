@@ -51,10 +51,10 @@
     margin-top: 5px;
 } 
 .reviewContainer .review .middle .chooseImages .listImagesChoosed img{
-    /* width: 15%;
+    width: 15%;
     margin: 5px;
     border-radius: 4px;
-    border: .5px solid #efefef; */
+    border: .5px solid #efefef;
 }
 .reviewContainer .review .middle .content{
     padding: 10px;
@@ -67,6 +67,9 @@
     border-radius: 4px;
     color: #111;
     padding: 5px;
+    max-width: 100%;
+    min-width: max-content;
+    min-height: max-content;
 }
 .reviewContainer .review .bottom{
     padding: 10px;
