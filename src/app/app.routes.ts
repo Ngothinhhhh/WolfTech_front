@@ -22,6 +22,7 @@ import { ReviewListComponent } from './components/profile-user/components/review
 
 // Guard
 import { authGuard } from './auth.guard';
+import { checkAdminGuard } from './check-admin.guard';
 
 export const routes: Routes = [
     {path: "", component: PublicComponent, 
@@ -51,7 +52,7 @@ export const routes: Routes = [
             // {path: "review", component: ReviewComponent},
         ],
     },
-    {path: "admin-shop", component: AdminShopComponent, canActivate: [authGuard],
+    {path: "admin-shop", component: AdminShopComponent, canActivate: [checkAdminGuard],
         children: [
             {path: "", component: DashboardComponent},
             {path: "dashboard", component: DashboardComponent},

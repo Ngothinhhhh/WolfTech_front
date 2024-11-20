@@ -44,7 +44,6 @@ export class ProductListComponent {
 
   productByCondition(page:number,sortBy:string,event:any){
     
-
   }
 
   // Mở Bộ lọc sản phẩm 

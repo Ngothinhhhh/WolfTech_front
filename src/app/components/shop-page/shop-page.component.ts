@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet ,Router} from '@angular/router';
@@ -58,6 +58,8 @@ export class ShopPageComponent {
       else console.log(data.error);
       
     }) 
+
+    
     // get data is hidden in url by "idSeller"
   }
 
@@ -85,24 +87,25 @@ export class ShopPageComponent {
 
   productByCondition(page:number,sortBy:string,categoryId:string,event: any){
     this.sortBy = sortBy;
-    this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
-    let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
-    for(let i of listCategoryOfProduct){
-      i.classList.remove('active');
-    }
-    (document.getElementById(categoryId) as HTMLElement).classList.add('active');
+    // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page, sortBy: this.sortBy, category_id: this.category_id, idSeller: this.idSeller }, queryParamsHandling: 'merge',})
+    // let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
+    // for(let i of listCategoryOfProduct){
+    //   i.classList.remove('active');
+    // }
+    // (document.getElementById(categoryId) as HTMLElement).classList.add('active');
     this.update_product(page,sortBy,categoryId);
   }
 
   updatePage(page:number, event: any){
-    let pagination = document.getElementById('paginationInShopPageID');
-    pagination?.childNodes.forEach(child => {
-      (child as any).classList.remove('active');
-    })
-    // console.log(event.target)
-    event.target.classList.add('active');
-    this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
-    // this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
+    // let pagination = document.getElementById('paginationInShopPageID');
+    // pagination?.childNodes.forEach(child => {
+    //   (child as any).classList.remove('active');
+    // })
+    // // console.log(event.target)
+    // event.target.classList.add('active');
+    // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
     this.update_product(page,this.sortBy,this.category_id)
   }
 
@@ -111,6 +114,7 @@ export class ShopPageComponent {
       if(data.code == 200){        
         this.dataUser = data.data.dataUser
         this.listProduct = data.data.listProduct
+        //this.cdr.detectChanges(); // Thêm dòng này
         console.log(this.listProduct);
       }
       else{
