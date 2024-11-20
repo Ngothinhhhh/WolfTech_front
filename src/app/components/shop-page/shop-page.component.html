@@ -219,13 +219,13 @@
                 <!-- Lọc theo giá -->
                 <div class="filterByPrice">
                     <span>Sắp xếp theo</span>
-                        <select (change)="productByCondition(page,sortBy.value,category_id,$event)" name="sortBy" id="" #sortBy>
-                            <option value="">Mặc định</option>
-                            <option value="price_asc">Giá tăng dần</option>
-                            <option value="price_desc">Giá giảm dần</option>
-                            <option value="time_desc">Mới nhất</option>
-                            <option value="sales">Lượt mua</option>
-                        </select>
+                    <select (change)="productByCondition(page,sortBy.value,category_id,$event)" name="sortBy" id="" #sortBy>
+                        <option value="">Mặc định</option>
+                        <option value="price_asc">Giá tăng dần</option>
+                        <option value="price_desc">Giá giảm dần</option>
+                        <option value="time_desc">Mới nhất</option>
+                        <option value="sales">Lượt mua</option>
+                    </select>
                 </div>
                 <!-- List sản phẩm -->
                 <div class="row listSuggest">

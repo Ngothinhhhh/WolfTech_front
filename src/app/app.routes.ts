@@ -18,6 +18,7 @@ import { CategoryManagementComponent } from './components/admin-shop/components/
 import { AddProductComponent } from './components/admin-shop/components/add-product/add-product.component';
 import { ReviewComponent } from './components/review/review.component';
 import { Checkout1Component } from './components/checkout1/checkout1.component';
+import { ReviewListComponent } from './components/profile-user/components/review-list/review-list.component';
 
 // Guard
 import { authGuard } from './auth.guard';
@@ -37,6 +38,7 @@ export const routes: Routes = [
                 children: [
                     {path: 'info', component: UserInfoComponent},
                     {path: 'order-history', component: OrderHistoryComponent},
+                    {path: 'review-list', component: ReviewListComponent},
                 ],
             },
             {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng

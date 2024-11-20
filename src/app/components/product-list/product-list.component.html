@@ -75,10 +75,21 @@
             <div class="btnOpenFilterProductList">
                 <button (click)="openFilterProductList()"><span><i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM</span></button>
             </div>
+            <!-- Lọc theo giá -->
+            <div class="filterByPrice">
+                <span>Sắp xếp theo</span>
+                <select name="sortBy" id="" (change)="productByCondition(page,sortBy.value,$event)" #sortBy>
+                    <option value="">Mặc định</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                    <option value="price_desc">Giá giảm dần</option>
+                    <option value="time_desc">Mới nhất</option>
+                    <option value="sales">Lượt mua</option>
+                </select>
+            </div>
             <!-- List sản phẩm -->
             <div class="row listSuggest">
                 <ng-container *ngIf="list_product.length > 0">
-                    <div class="col l-2 m-3 c-6 btnSuggestItemContainer" *ngFor="let product of list_product">
+                    <div class="col l-3 m-3 c-6 btnSuggestItemContainer" *ngFor="let product of list_product">
                         <button routerLink="/product-detail/{{product.product_name}}"
                         [queryParams]="{
                             idProduct : product._id
@@ -116,14 +127,14 @@
             </div>
             <!-- Pagination -->
             <div class="pagination">
-                <a class="" href="#">&laquo;</a>
-                <a class="active" href="#">1</a>
-                <a class="" href="#">2</a>
-                <a class="" href="#">3</a>
-                <a class="" href="#">4</a>
-                <a class="" href="#">5</a>
-                <a class="" href="#">6</a>
-                <a class="" href="#">&raquo;</a>
+                <button class="">&laquo;</button>
+                <button class="active">1</button>
+                <button class="">2</button>
+                <button class="">3</button>
+                <button class="">4</button>
+                <button class="">5</button>
+                <button class="">6</button>
+                <button class="">&raquo;</button>
             </div>
         </div>
     </div>

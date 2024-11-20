@@ -153,7 +153,6 @@ getList_review() {
       console.log(data.data)
     }else{
       console.log(data.error);
-      
     }
   })
 }

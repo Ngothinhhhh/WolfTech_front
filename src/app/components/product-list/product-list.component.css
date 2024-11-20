@@ -124,19 +124,19 @@
 /* hết phần bên trái */
 /* phần bên phải */
 .productListContainer .productListMain .rightOfProductList{
-    display: grid;
+    /* display: grid; */
     width: 85%;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest{
+.listSuggest{
     margin: 0;
     padding: 15px;
     background-color: #f5f5f5;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItemContainer{
+.listSuggest .btnSuggestItemContainer{
     padding: 5px;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem{
+.listSuggest .btnSuggestItem{
     border: .5px solid #0000001c;
     /* padding: 10px; */
     display: grid;
@@ -149,7 +149,7 @@
     background-color: white;
     padding: 0;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemSaleTag{
+.listSuggest .btnSuggestItem .suggestItemSaleTag{
     background-color: #feeeeac8;
     /* color: orangered; */
     color: #a61713;
@@ -159,37 +159,51 @@
     padding: 3px;
     border-radius: 0px 5px 0px 0px;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem:hover{
+.listSuggest .btnSuggestItem:hover{
     /* border: .5px solid orangered; */
     border: .5px solid #a61713;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale{
+.listSuggest .btnSuggestItem .suggestItemPriceSale{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemPrice{
+.listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemPrice{
     /* color: orangered; */
     color: #a61713;
     font-weight: 300;
     font-size: 15px;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemSold{
+.listSuggest .btnSuggestItem .suggestItemPriceSale .suggestItemSold{
     font-weight: 300;
     color: black;
     font-size: 12px;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem img{
+.listSuggest .btnSuggestItem img{
     width: 100%;
     border-radius: 5px 5px 0px 0px;
 }
-.productListContainer .productListMain .rightOfProductList .listSuggest .btnSuggestItem span{
+.listSuggest .btnSuggestItem span{
     font-size: 16px;
     font-weight: 400;
     color: black;
     text-align: left;
     padding: 5px;
     margin: 3px 0px;
+}
+.listSuggest .btnSuggestItem .ratingOfProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+.listSuggest .btnSuggestItem .ratingOfProduct .starRatingOfProduct .checked{ 
+    color: #a61713;
+    font-weight: 600;
+}
+.listSuggest .btnSuggestItem .ratingOfProduct .starRatingOfProductBox{
+   display: flex;
+   align-items: center;
 }
 .productListContainer .productListMain .rightOfProductList .btnOpenFilterProductList {
     display: none;
@@ -214,6 +228,44 @@
 }
 .productListContainer .productListMain .rightOfProductList .pagination a:hover:not(.active) {
     background-color: #ddd;
+}
+.filterByPrice{
+    margin: 0;
+    padding: 15px;
+    background-color: #efefef;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: fit-content;
+}
+.filterByPrice span{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 5px;
+}
+.filterByPrice form button{
+    border: .5px solid #a61713;
+    background: #a61713;
+    padding: 5px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 400;
+}
+.filterByPrice form button:hover{
+    background-color: #971612;
+}
+.filterByPrice select{
+    margin: 0 5px;
+    padding: 5px;
+    border: .5px solid #efefef;
+    background-color: #fff;
+    color: #111;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
 }
 /* hết phần bên phải */
 
