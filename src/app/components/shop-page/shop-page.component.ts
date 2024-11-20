@@ -4,8 +4,9 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet ,Router} from '@angular/router';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { UserServiceService } from '../../user-service.service';
-
-import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { __param } from 'tslib';
 
 
 
@@ -17,13 +18,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './shop-page.component.css'
 })
 export class ShopPageComponent {
-
-  constructor(
-    private route:ActivatedRoute,
-    private user_service:UserServiceService,
-    private router: Router
-  ){}
-
   shop_name:string = ''
   idSeller:string = ''
   page:number = 1
@@ -36,12 +30,18 @@ export class ShopPageComponent {
 
   baseUrl: string = 'http://localhost:3000/public/images/'
 
+  constructor(
+    private route:ActivatedRoute,
+    private user_service:UserServiceService,
+    private router: Router,
+    private _location: Location,
+  ){}
 
   ngOnInit(){
     // get param in url by "shop_name"
-    // this.route.paramMap.subscribe( (params:ParamMap)=>{
-    //   this.shop_name = params.get("shop_name") || ''
-    // })
+    this.route.paramMap.subscribe( (params:ParamMap)=>{
+      this.shop_name = params.get("shop_name") || ''
+    })
     this.route.queryParamMap.subscribe( params =>{
       this.idSeller = params.get("idSeller") || ''
       this.page = Number(params.get("page")) || 1
@@ -69,7 +69,7 @@ export class ShopPageComponent {
     return `${day}-${month}-${year}`;
   }
   // Xử lý chuyển tab trong trang Shop
-  handleClickTabShopPage(id: string, event: any) {
+  handleClickTabShopPage(id: string) {
     // event.this.preventDefault();
     if(id === "btnHomeID"){
       document.body.scrollTop = 0; // For Safari
@@ -83,19 +83,26 @@ export class ShopPageComponent {
     }
   }
 
-  productByCondition(page:number,sortBy:string,categoryId:string){
-    this.sortBy = sortBy
-    this.router.navigate([], { relativeTo: this.route, queryParams: { category_id : categoryId , page : 1, sortBy : sortBy  }, queryParamsHandling: 'merge' });
+  productByCondition(page:number,sortBy:string,categoryId:string,event: any){
+    this.sortBy = sortBy;
+    this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
     let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
     for(let i of listCategoryOfProduct){
       i.classList.remove('active');
     }
     (document.getElementById(categoryId) as HTMLElement).classList.add('active');
-    this.update_product(page,sortBy,categoryId)
+    this.update_product(page,sortBy,categoryId);
   }
 
-  updatePage(page:number){
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
+  updatePage(page:number, event: any){
+    let pagination = document.getElementById('paginationInShopPageID');
+    pagination?.childNodes.forEach(child => {
+      (child as any).classList.remove('active');
+    })
+    // console.log(event.target)
+    event.target.classList.add('active');
+    this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
+    // this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
     this.update_product(page,this.sortBy,this.category_id)
   }
 
@@ -113,5 +120,5 @@ export class ShopPageComponent {
   }
 
   // Thêm phương thức để cuộn đến một phần tử cụ thể
-  scrollToElement(elementId: string) { const element = document.getElementById(elementId); if (element) { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+  // scrollToElement(elementId: string) { const element = document.getElementById(elementId); if (element) { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
 }

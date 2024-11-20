@@ -28,7 +28,9 @@ handlePreViewRatingImages(): void{
     }); 
     //
     imgElement.src = URL.createObjectURL(filesImg[i]);
-    imgElement.style.width = '15%';
+    imgElement.style.height = '150px';
+    imgElement.style.width = '150px';
+    // imgElement.style.objectFit = 'cover';
     imgElement.style.border =  '.5px solid #efefef';
     imgElement.style.borderRadius = '4px';
     imgElement.style.margin = '5px';
