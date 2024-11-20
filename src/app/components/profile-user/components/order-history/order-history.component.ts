@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { UserServiceService } from '../../../../user-service.service';
 import { ProductServiceService } from '../../../../product-service.service';
 import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterOutlet,RouterLink,CommonModule],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css'
 })

@@ -37,13 +37,18 @@ export const routes: Routes = [
             {path: "profile-user", component: ProfileUserComponent, canActivate:[authGuard], // trang hồ sơ người dùng
                 children: [
                     {path: 'info', component: UserInfoComponent},
+                    {path: 'order-history', component: OrderHistoryComponent,
+                        children: [
+                            {path: 'review', component: ReviewComponent},
+                        ],
+                    },
                     {path: 'order-history', component: OrderHistoryComponent},
                     {path: 'review-list', component: ReviewListComponent},
                 ],
             },
             {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
             {path: "checkout", component: Checkout1Component, canActivate: [authGuard],},
-            {path: "review", component: ReviewComponent},
+            // {path: "review", component: ReviewComponent},
         ],
     },
     {path: "admin-shop", component: AdminShopComponent, canActivate: [authGuard],
