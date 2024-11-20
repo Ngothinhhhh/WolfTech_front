@@ -105,7 +105,29 @@ export class UserServiceService {
   }
 
 
-
+  //getList Order
+  getList_order(token:string,page:number,order_status:string):Observable<any>{
+    let api = 'orders/getList'
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token,
+      "Content-Type" : "application/json"
+    })
+    const data = {
+      page :page,
+      order_status : order_status
+    }
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api,data , requestOptions)
+  }
+  getList_order_filter(product_id:string,variant_id:string):Observable<any>{
+    let api = 'ttt'
+    let objectData = {
+      product_id : product_id,
+      variant_id : variant_id
+    }
+    return this.http.post( this.url + api, objectData , this.options)
+  }
+  
 
   // for user
   getlistCategory(Id_seller:string):Observable<any>{
@@ -132,5 +154,21 @@ export class UserServiceService {
     })
     const requestOptions = {headers :header}
     return this.http.post(this.url + api, {categoriesID}, requestOptions)
+  }
+
+
+  create_review(formData:FormData,token :string):Observable<any>{
+    let api = 'reviews/create'
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api, formData , requestOptions)
+  }
+  
+
+  searching(search_query:string,sortBy:string,page:number):Observable<any>{
+    const api =`products/search?search_query=${search_query}&sortBy=${sortBy}&page=${page}`
+    return this.http.get(this.url + api, this.options)
   }
 }

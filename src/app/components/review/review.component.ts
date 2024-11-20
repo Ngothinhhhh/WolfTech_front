@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute,Params } from '@angular/router';
+import { UserServiceService } from '../../user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -8,15 +11,36 @@ import { Component } from '@angular/core';
   styleUrl: './review.component.css'
 })
 export class ReviewComponent {
+  constructor(
+    private route : ActivatedRoute,
+    private user_service : UserServiceService,
+    private router: Router
+  ){}
 
+  product_id     : string  = '' 
+  variant_id     : string  = ''  
+  order_id       : string  = '' 
+  numberOfStars  : number = 0
+  review_context : string = ''
+  file_array :any
+  token :string = localStorage.getItem("token") || ''
+  
+
+  ngOnInit(){
+    this.route.queryParamMap.subscribe( params=>{
+      this.product_id   = params.get("product_id") || ''
+      this.variant_id   = params.get("variant_id") || '' 
+      this.order_id     = params.get("order_id") || ''
+    })
+  }
 
 
 // xem trước hình đánh giá
-handlePreViewRatingImages(): void{
+handlePreViewRatingImages(event:any): void{
   (document.getElementById('listImagesChoosedID') as HTMLDivElement).innerHTML = "";
   // let imgsPreLink = [];
   let filesImg = (document.getElementById('imagesRatingID') as any).files;
-  for(let i=0; i<5; i++){
+  for(let i=0; i< filesImg.length; i++){
     const imgElement = document.createElement("img");
     const div = document.createElement("div");
     const button = document.createElement("button");
@@ -35,9 +59,11 @@ handlePreViewRatingImages(): void{
     imgElement.id = `${i}`;
     ((document.getElementById('listImagesChoosedID') as HTMLDivElement).appendChild(imgElement));
   }
-  // (document.getElementById('listImagesChoosedID'))
+  // if(event.target.files.length > 0){
+    this.file_array =  Array.from(event.target.files)
+    console.log(this.file_array);
+  // }  
 }
-
 
 // đánh giá sao (1-5 sao) cho sản phẩm
 starRatingForProduct(numberOfStars: string): void {
@@ -60,6 +86,38 @@ starRatingForProduct(numberOfStars: string): void {
     (document.getElementById('starRatingOfProductID') as HTMLInputElement).value = '0';
     console.log("Chưa đánh giá")
   }
- console.log(numberOfStars);  
+  this.numberOfStars = parseInt(numberOfStars)
+  // console.log(this.numberOfStars);  
 }
+
+getReviewContext(){
+  return (document.getElementById('reviewContextID') as HTMLTextAreaElement).value;
+}
+
+create_review(){
+  const formData = new FormData()
+  formData.append("product_id",this.product_id)
+  formData.append("product_variants_id",this.variant_id)
+  formData.append("order_id",this.order_id)
+  formData.append("review_rating",this.numberOfStars.toString())
+  formData.append("review_context", this.getReviewContext()) 
+  if(this.file_array.length > 0){
+    this.file_array.forEach( (file:any)=>{
+      formData.append("review_image", file)
+    })
+  }
+  
+  this.user_service.create_review(formData,this.token).subscribe((data:any)=>{
+    if(data.code == 200){
+      alert("Đánh giá hoàn tất")
+      this.router.navigate(["/profile-user/order-history"])
+    } else{
+      console.log(data.error);
+      
+    }
+  })
+
+}
+
+
 }

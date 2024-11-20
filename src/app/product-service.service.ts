@@ -54,4 +54,14 @@ export class ProductServiceService {
       return this.http.post(this.url + api, body,requestOptions)
       
     }  
+
+    getList_review(page:number, product_id:string):Observable<any>{
+      const api = "reviews/getList"
+      const data = {
+        page : page ,
+        product_id : product_id
+      }
+      return this.http.post( this.url + api , data,this.options)
+    }
+    
 }

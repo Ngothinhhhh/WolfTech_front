@@ -96,19 +96,22 @@ export class Checkout1Component {
   create_order(){
     if(this.product_cart.length > 0){
       var data = {
-        "staff_id": this.product_cart[0].product.userID._id,
+        "staff_id": this.product_cart[0].product.userID,
         "order_total_cost": this.product_amount,
-        "order_buyer": this.product_cart[0].product.userID.user_name,
+        "order_buyer": this.infor_shipping.name,
         "order_address": this.infor_shipping.name + "  " +  this.infor_shipping.phone + "  " + this.infor_shipping.address, // must a Object has 3 property
         "order_details": this.order_details,
         "order_shipping_cost": this.order_shipping_cost,
         "order_payment_cost": this.product_amount + this.order_shipping_cost,
         "order_status": "Processing"
       }
+      // console.log(this.product_cart[0].product.userID);
+      // return
       return this.user_service.create_order(data,this.token).subscribe((data:any)=>{
         if(data.code == 200){
           this.user_service.delete_order_cart(this.token).subscribe((data:any)=>{
             this.isAvailable = true;
+            alert("Đặt hàng thành công");
             (document.getElementById('xxx') as HTMLButtonElement).disabled = true;
             (document.getElementById('xxx') as HTMLButtonElement).style.background = 'pink';
             (document.getElementById('xxxx') as HTMLButtonElement).disabled = true;
@@ -125,8 +128,6 @@ export class Checkout1Component {
   return(){
     this.router.navigate([""])
   }
-  disabled(){
-
-  }
+ 
 
 }

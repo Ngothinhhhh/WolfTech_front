@@ -27,7 +27,7 @@ constructor(
 productId:string = ''
 product_slug :string = ''
 variant_id:string = ''
-
+page_review :number = 1
 
 product_infor:any
 product_details:any[] =[]
@@ -53,12 +53,13 @@ ngOnInit(){
     this.productId = param.get("idProduct") || ''    
     this.product_service.detail_product(this.productId).subscribe( (data:any)=>{
       this.product_infor = data.data
-      this.product_imgs = this.product_infor.product_imgs
+      this.product_imgs = this.product_infor.product_imgs      
       this.product_details = this.product_infor.product_details
       this.product_variants = this.product_infor.product_variants
-
     })
   })
+
+  this.getList_review()
 }
 
 formatDate(dateString: string): string {
@@ -141,5 +142,17 @@ handleChooseVariant(event: any, variantId:string): void{
   }
   event.target.classList.add('choosed');
   this.variant_id = variantId
+}
+
+
+getList_review() {
+  this.product_service.getList_review(this.page_review , this.productId).subscribe( (data:any)=>{
+    if(data.code == 200){
+      console.log(data.data)
+    }else{
+      console.log(data.error);
+      
+    }
+  })
 }
 }

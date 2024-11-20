@@ -16,7 +16,7 @@
             </div>
             <!-- Hình ảnh -->
             <div class="chooseImages">
-                <input id="imagesRatingID" name="" type="file" (change)="handlePreViewRatingImages()" multiple>
+                <input id="imagesRatingID" name="" type="file" (change)="handlePreViewRatingImages($event)" multiple>
                 <div id="listImagesChoosedID" class="listImagesChoosed">
                     <!-- <div id="imgWrapper0" class="imgWrapper" style="position: relative; width: 15%; margin: 5px; border-radius: 4px;">  
                         <button style="position: absolute; right: 0; top: 0; z-index: 99;">X</button>
@@ -26,11 +26,11 @@
             </div>
             <!-- Nội dung đánh giá -->
             <div class="content">
-                <textarea name="" id="" placeholder="Nội dung đánh giá..."></textarea>
+                <textarea name="" id="reviewContextID" placeholder="Nội dung đánh giá..."></textarea>
             </div>
         </div>
         <div class="bottom">
-            <button type="button" name="" id="">Xác Nhận</button>
+            <button type="button" (click)="create_review()" name="" id="">Xác Nhận</button>
         </div>
     </div>
 </div>

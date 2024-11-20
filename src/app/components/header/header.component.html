@@ -32,9 +32,9 @@
                 <img routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" src="resource/img/logo-no-background.png" alt="">
             </div>
             <div class="search">
-                <form action="#">
-                    <input type="text" placeholder="Tìm kiếm ...">
-                    <button class="btnFindInSearch" type="submit">
+                <form action="">
+                    <input type="text" name="search_query" placeholder="Tìm kiếm ..." #search_query>
+                    <button class="btnFindInSearch" type="button" (click)="searching(search_query.value)">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>

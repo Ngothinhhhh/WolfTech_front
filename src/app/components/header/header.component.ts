@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppServiceService } from '../../app-service.service';
 import { UserServiceService } from '../../user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ import { UserServiceService } from '../../user-service.service';
 })
 export class HeaderComponent {
   constructor(
-    private app_service : AppServiceService
+    private app_service : AppServiceService,
+    private router : Router
   ){}
 
   length_cart:any
@@ -30,6 +32,9 @@ export class HeaderComponent {
   }
 
 
+  searching(search_query:string){
+    this.router.navigate(["/product-list"],{queryParams : { search_query : search_query}})
+  }
 
   // open form search
   openFormSearchOnMobile(): void{

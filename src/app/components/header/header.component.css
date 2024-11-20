@@ -6,7 +6,7 @@
     backdrop-filter: blur(10px);
     /* height: 115px; */
     margin: 0;
-    position: fixed;
+    /* position: fixed; */
     z-index: 999;
     top: 0;
     left: 0;

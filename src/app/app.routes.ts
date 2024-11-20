@@ -33,18 +33,14 @@ export const routes: Routes = [
             },
             {path: "product-detail/:product_slug", component: ProductDetailComponent}, // chi tiết sp
             {path: "shop-page/:shop_name", component: ShopPageComponent}, // trang của shop
-            {path: "profile-user", component: ProfileUserComponent, // trang hồ sơ người dùng
+            {path: "profile-user", component: ProfileUserComponent, canActivate:[authGuard], // trang hồ sơ người dùng
                 children: [
                     {path: 'info', component: UserInfoComponent},
                     {path: 'order-history', component: OrderHistoryComponent},
                 ],
             },
             {path: "cart", component: CartComponent, canActivate : [authGuard]}, // trang giỏ hàng
-            {path: "checkout", component: Checkout1Component, canActivate: [authGuard],
-                children: [
-                    {path: "review", component: ReviewComponent},
-                ],
-            },
+            {path: "checkout", component: Checkout1Component, canActivate: [authGuard],},
             {path: "review", component: ReviewComponent},
         ],
     },
@@ -52,7 +48,7 @@ export const routes: Routes = [
         children: [
             {path: "", component: DashboardComponent},
             {path: "dashboard", component: DashboardComponent},
-            {path: "product-management", component: ProductManagementComponent, canActivate:[authGuard],
+            {path: "product-management", component: ProductManagementComponent,
                 children: [
                     {path: "add-product", component: AddProductComponent},
                 ],

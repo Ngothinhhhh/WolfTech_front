@@ -140,7 +140,7 @@
     padding: 0px;
     padding-bottom: 0px;
     position: sticky;
-    top: 130px;
+    top: 0px;
     background-color: rgba(255, 255, 255, 0.815);
     z-index: 2;
     /* box-shadow: rgb(0 0 0 / 10%) 0px 7px 5px; */
@@ -810,7 +810,7 @@
         padding: 0px;
         padding-bottom: 0px;
         position: sticky;
-        top: 60px;
+        top: 0px;
         background-color: rgba(255, 255, 255, 0.815);
         z-index: 2;
         box-shadow: rgba(50, 50, 93, 0.25) -1px 2px 2px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
