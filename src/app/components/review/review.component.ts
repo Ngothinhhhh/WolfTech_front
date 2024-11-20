@@ -52,8 +52,8 @@ handlePreViewRatingImages(event:any): void{
     }); 
     //
     imgElement.src = URL.createObjectURL(filesImg[i]);
-    imgElement.style.height = '150px';
-    imgElement.style.width = '150px';
+    imgElement.style.height = '80px';
+    imgElement.style.width = '80px';
     // imgElement.style.objectFit = 'cover';
     imgElement.style.border =  '.5px solid #efefef';
     imgElement.style.borderRadius = '4px';

@@ -1,18 +1,14 @@
 <!-- Review Container -->
 <div class="row reviewContainer">
-    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 review">
+    <div class="col l-12 m-12 c-12 review">
         <div class="top">
             <span>Đánh Giá Sản Phẩm</span>
+            <button class="btnCloseReview"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="middle">
-            <!-- Đánh giá sao -->
-            <div class="starRatingOfProduct">
-                <input id="starRatingOfProductID" type="text" hidden>
-                <span class="fa fa-star" (click)="starRatingForProduct('1')"></span>
-                <span class="fa fa-star" (click)="starRatingForProduct('2')"></span>
-                <span class="fa fa-star" (click)="starRatingForProduct('3')"></span>
-                <span class="fa fa-star" (click)="starRatingForProduct('4')"></span>
-                <span class="fa fa-star" (click)="starRatingForProduct('5')"></span>
+            <!-- Nội dung đánh giá -->
+            <div class="content">
+                <textarea name="" id="reviewContextID" placeholder="Nội dung đánh giá..."></textarea>
             </div>
             <!-- Hình ảnh -->
             <div class="chooseImages">
@@ -24,9 +20,14 @@
                     </div> -->
                 </div>
             </div>
-            <!-- Nội dung đánh giá -->
-            <div class="content">
-                <textarea name="" id="reviewContextID" placeholder="Nội dung đánh giá..."></textarea>
+            <!-- Đánh giá sao -->
+            <div class="starRatingOfProduct">
+                <input id="starRatingOfProductID" type="text" hidden>
+                <span class="fa fa-star" (click)="starRatingForProduct('1')"></span>
+                <span class="fa fa-star" (click)="starRatingForProduct('2')"></span>
+                <span class="fa fa-star" (click)="starRatingForProduct('3')"></span>
+                <span class="fa fa-star" (click)="starRatingForProduct('4')"></span>
+                <span class="fa fa-star" (click)="starRatingForProduct('5')"></span>
             </div>
         </div>
         <div class="bottom">

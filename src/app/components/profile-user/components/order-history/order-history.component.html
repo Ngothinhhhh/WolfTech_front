@@ -25,11 +25,10 @@
                     </div>
                 </div>
                 <!-- Từng order trong đơn mua -->
-
                 <div class="productInfo" *ngFor="let detail of detail_order">
                     <!-- từng order trong list order -->
                         <div class="price">
-                            <a routerLink="//product-detail/{{detail.product_id}}"
+                            <a routerLink="/product-detail/{{detail.product_id}}"
                               [queryParams]="{ idProduct : detail.product_id }">Mã:{{detail.product_id}}
                             </a>
                         </div>
@@ -44,9 +43,15 @@
                         </div>
                         <div class="price">
                             <!-- <button type="button" class="btnRating" (click)="review_page(detail.product_id,detail.variant_id,order._id,product_details.sort)">Đánh Giá</button> -->
-                            <button type="button" class="btnRating" (click)="review_page(detail.product_id,detail.variant_id,order._id)">Đánh Giá</button>
+                            <button type="button" class="btnRating"
+                                routerLink="/profile-user/order-history/review"
+                                [queryParams]="{ product_id : detail.product_id, variant_id: detail.variant_id, order_id: order._id }"
+                            >
+                                Đánh Giá
+                            </button>
                         </div>
                 </div>
+                <router-outlet></router-outlet>
                 <div class="totalPriceInfo">
                     <span>Thành tiền: <span style="color: #a61713; font-size: 22px; font-weight: 400;">{{ order.order_payment_cost | number : '1.0-0'}} đ</span></span>
                 </div>
@@ -55,7 +60,13 @@
                 </div>
             </div>
         </ng-container>
-        <ng-template #elseBlock>content here...</ng-template>
+        <ng-template #elseBlock>
+            <div
+                style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"
+            >
+                <i className="fa-solid fa-spinner newFeedsLoad"></i>
+            </div>
+        </ng-template>
 
     </div>
 </div>
