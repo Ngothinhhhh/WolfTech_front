@@ -19,6 +19,7 @@ import { AddProductComponent } from './components/admin-shop/components/add-prod
 import { ReviewComponent } from './components/review/review.component';
 import { Checkout1Component } from './components/checkout1/checkout1.component';
 import { ReviewListComponent } from './components/profile-user/components/review-list/review-list.component';
+import { AddCategoryComponent } from './components/admin-shop/components/add-category/add-category.component';
 
 // Guard
 import { authGuard } from './auth.guard';
@@ -61,8 +62,13 @@ export const routes: Routes = [
                     {path: "add-product", component: AddProductComponent},
                 ],
             },
-            {path: "category-management", component: CategoryManagementComponent},
+            {path: "category-management", component: CategoryManagementComponent,
+                children: [
+                    {path: "add-category", component: AddCategoryComponent},
+                ],
+            },
             {path: "add-product", component: AddProductComponent},
+            {path: "add-category", component: AddCategoryComponent},
         ],
     }, // trang admin của shop
     {path: "sign-in", component: SignInComponent}, // trang đăng nhập

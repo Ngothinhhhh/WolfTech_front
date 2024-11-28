@@ -53,5 +53,10 @@ export class CategoryManagementComponent {
   }
   isActive(page: number): boolean { return this.currentPage === page; }
 
+  
+  navigate(){
+    this.router.navigate(["/admin-shop/add-category"])
+  }
+
 
 }

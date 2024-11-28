@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { UserServiceService } from '../../user-service.service';
 import { ProductServiceService } from '../../product-service.service';
 import { AppServiceService } from '../../app-service.service';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-cart',
@@ -27,7 +28,7 @@ export class CartComponent {
   token:any
   product_cart : any[] = [] 
   total_in_cart:number = 0
-  baseUrl: string = 'http://localhost:3000/public/images/'
+  baseUrl: string = environment.baseUrl
 
   ngOnInit(){
     this.token = localStorage.getItem("token")

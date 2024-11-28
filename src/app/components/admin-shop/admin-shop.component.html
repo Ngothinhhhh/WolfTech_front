@@ -4,7 +4,7 @@
         <!-- Menu -->
         <div class="col l-2 m-2 c-6 leftNavBarContainer">
             <div class="leftNavBar">
-                <div class="logo">
+                <div class="logo" routerLink="">
                     <img src="resource/img/logo-no-background.png" alt="">
                 </div>
                 <div class="navBtnContainer">
@@ -16,7 +16,7 @@
                     <button class="btnCategoryManage" routerLink="category-management"><img src="resource/img/category_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""> Loại Sản Phẩm</button>
                     <!-- Tài khoản -->
                     <span>TÀI KHOẢN</span>
-                    <button class="btnLogoutAdmin"><img src="resource/img/logout_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""> Logout</button>
+                    <button type="button" (click)="logout()" class="btnLogoutAdmin"><img src="resource/img/logout_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""> Logout</button>
                 </div>
             </div>
         </div>

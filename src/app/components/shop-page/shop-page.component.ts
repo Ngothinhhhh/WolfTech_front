@@ -7,6 +7,7 @@ import { UserServiceService } from '../../user-service.service';
 import { Location } from '@angular/common';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { __param } from 'tslib';
+import { environment } from '../../../environments/environments';
 
 
 
@@ -28,7 +29,7 @@ export class ShopPageComponent {
   dataUser :any
   url:string = ''
 
-  baseUrl: string = 'http://localhost:3000/public/images/'
+  baseUrl: string = environment.baseUrl
 
   constructor(
     private route:ActivatedRoute,
@@ -88,13 +89,14 @@ export class ShopPageComponent {
   productByCondition(page:number,sortBy:string,categoryId:string,event: any){
     this.sortBy = sortBy;
     // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page, sortBy: this.sortBy, category_id: this.category_id, idSeller: this.idSeller }, queryParamsHandling: 'merge',})
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page, sortBy: this.sortBy, category_id: categoryId, idSeller: this.idSeller }, queryParamsHandling: 'merge',})
     // let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
     // for(let i of listCategoryOfProduct){
     //   i.classList.remove('active');
     // }
     // (document.getElementById(categoryId) as HTMLElement).classList.add('active');
     this.update_product(page,sortBy,categoryId);
+    this.handleClickTabShopPage('btnAllProductID');
   }
 
   updatePage(page:number, event: any){
@@ -114,13 +116,17 @@ export class ShopPageComponent {
       if(data.code == 200){        
         this.dataUser = data.data.dataUser
         this.listProduct = data.data.listProduct
-        //this.cdr.detectChanges(); // Thêm dòng này
-        console.log(this.listProduct);
+        // console.log(this.dataUser);
       }
       else{
         console.log(data.error);
       }
     })
+  }
+
+  
+  moveToProduct(product_id:string,product_slug:string){
+    this.router.navigate([`/product-detail/${product_slug}`] , { queryParams : { idProduct : product_id}})
   }
 
   // Thêm phương thức để cuộn đến một phần tử cụ thể

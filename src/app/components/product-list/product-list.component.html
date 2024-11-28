@@ -105,19 +105,11 @@
                             </div>
                             <div class="ratingOfProduct">
                                 <div class="starRatingOfProductBox">
-                                    <div class="starRatingOfProduct">
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span style="
-                                        font-weight: 300;
-                                        color: black;
-                                        font-size: 12px;
-                                        padding: 0px;
-                                        margin-left: 5px;
-                                        margin-top: 2px;"
-                                    >
-                                        {{product.product_avg_rating}}
-                                    </span>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 3" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 4" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></i>
                                 </div>
                                 <span class="suggestItemSold">Đã bán {{product.product_sold_quantity}}</span>
                             </div>

@@ -22,33 +22,24 @@
                 </div>
             </div>
             <div class="btnLikeProduct">
-                <button><i class="fa-regular fa-heart"></i></button> Đã thích 1,3k
+                <button (click)="share()"><i class="fa-solid fa-share"></i></button>Share 1,3k
             </div>
         </div>
         <div class="rightProductDetail">
             <h3 class="nameOfProduct">{{product_infor.product_name}}</h3>
             <div class="ratingOfProduct">
                 <div><i class="fa-solid fa-comment"></i>{{product_infor.review_count}} Đánh Giá</div>
-                <div class="starRatingOfProduct">
-                    <input id="starRatingOfProductID" type="text" hidden>
-                    <span class="fa fa-star" (click)="starRatingForProduct('1')"></span>
-                    <span class="fa fa-star" (click)="starRatingForProduct('2')"></span>
-                    <span class="fa fa-star" (click)="starRatingForProduct('3')"></span>
-                    <span class="fa fa-star" (click)="starRatingForProduct('4')"></span>
-                    <span class="fa fa-star" (click)="starRatingForProduct('5')"></span>
+                <div class="starRatingOfProduct"><b>Điểm đánh giá :</b>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 1" style="color: red;"></span>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 2" style="color: red;"></span>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 3" style="color: red;"></span>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 4" style="color: red;"></span>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 5" style="color: red;"></span>
                 </div>
             </div>
             <h2 class="priceOfProduct">
                 {{product_infor.product_supp_price | number : '1.0-0' }} đ
             </h2>
-            <!-- <div class="transportChoices">
-                <span class="titleTransport">Vận Chuyển</span>
-                <div class="choiceOfTransport">
-                    <span class="typeOfTransport">Miễn phí vận chuyển</span>
-
-                </div>
-            </div> -->
-            <!-- Chính sách -->
             <div class="policyOfProduct">
                 <span class="titlePolicyOfProduct">
                     Chính Sách Trả Hàng
@@ -215,166 +206,42 @@
                     </div>
                 </div>
             </div>
-            <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
+            <ng-container *ngIf="recent_reviews.length > 0 else elseBlock">
+                <div class="productComment" *ngFor="let review of recent_reviews">
+                    <div class="topOfProductComment">
+                        <div class="avatarOfProductComment">
+                            <img [src]="baseUrl + review.user_infor.user_avatar" alt="">
+                        </div>
+                        <div class="userOfProductComment">
+                            <span>{{review.user_infor.user_name}}</span>
+                            <span style="color: #555;">{{review.review_date}}</span>
+                            <span style="color: #555;">
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 1"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 2"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 3"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 4"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 5"></i>
+                            </span>
+                        </div>
                     </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
+                    <div class="contentOfProductComment">
+                        <div class="leftOfContentProductComment">
+                        </div>
+                        <div class="textContentOfProductComment">
+                            {{review.review_context}}
+                        </div>
                     </div>
-                </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
-                    </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
+                    <div class="bottomOfProductComment">
+                        <div class="leftOfBottomProductComment">
+                        </div>
+                        <div class="mediaContentOfProductComment" *ngFor="let image of review.review_imgs">
+                            <img [src]="baseUrl + image.alt" alt="">
+                        </div>
                     </div>
                 </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
-                    </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
-                    </div>
-                </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
-                    </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
-                    </div>
-                </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
-                    </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
-                    </div>
-                </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
+            </ng-container>
+            <ng-template #elseBlock>Mua hàng để trải nghiệm ngay.</ng-template>
+            
         </div>
         <!-- Pagination -->
         <div id="paginationInProductDetailID" class="pagination">

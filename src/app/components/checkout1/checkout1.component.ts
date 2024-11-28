@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { UserServiceService } from '../../user-service.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environments';
 
 
 
@@ -25,7 +26,7 @@ export class Checkout1Component {
   token :string = localStorage.getItem("token") || ''
   product_cart:any[] = []
   order_shipping_cost : number  = 20000
-  baseUrl: string = 'http://localhost:3000/public/images/'
+  baseUrl: string = environment.baseUrl
   product_amount:number = 0 
   isAvailable = false
   check:boolean = true
@@ -96,7 +97,7 @@ export class Checkout1Component {
   create_order(){
     if(this.product_cart.length > 0){
       var data = {
-        "staff_id": this.product_cart[0].product.userID,
+        "staff_id": this.product_cart[0].product.userID._id,
         "order_total_cost": this.product_amount,
         "order_buyer": this.infor_shipping.name,
         "order_address": this.infor_shipping.name + "  " +  this.infor_shipping.phone + "  " + this.infor_shipping.address, // must a Object has 3 property
@@ -105,8 +106,6 @@ export class Checkout1Component {
         "order_payment_cost": this.product_amount + this.order_shipping_cost,
         "order_status": "Processing"
       }
-      // console.log(this.product_cart[0].product.userID);
-      // return
       return this.user_service.create_order(data,this.token).subscribe((data:any)=>{
         if(data.code == 200){
           this.user_service.delete_order_cart(this.token).subscribe((data:any)=>{
@@ -125,6 +124,7 @@ export class Checkout1Component {
       return 
     }
   }
+  
   return(){
     this.router.navigate([""])
   }

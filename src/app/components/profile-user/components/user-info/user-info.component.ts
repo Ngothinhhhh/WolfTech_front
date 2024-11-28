@@ -1,13 +1,31 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component,inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserServiceService } from '../../../../user-service.service';
+import { environment } from '../../../../../environments/environments';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
+
+  constructor(
+    private user_service : UserServiceService
+  ){}
+
+  userData:any
+  token : string = localStorage.getItem("token") || ''
+  baseUrl = environment.baseUrl // baseUrl from File environment 
+  ngOnInit(){
+    this.user_service.user_information(this.token).subscribe((data:any)=>{
+      this.userData = data.data
+      // console.log(this.userData);
+    })
+
+  }
 
 
   // Thay đổi ảnh đại diện khi chọn ảnh mới (xem trước)

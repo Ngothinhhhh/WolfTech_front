@@ -11,4 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class AdminShopComponent {
 
+  logout(){
+    localStorage.removeItem("token")
+    window.location.reload()
+  }
+
 }

@@ -5,6 +5,8 @@ import { ReviewListComponent } from './components/review-list/review-list.compon
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { environment } from '../../../environments/environments';
+import { UserServiceService } from '../../user-service.service';
 
 @Component({
   selector: 'app-profile-user',
@@ -14,5 +16,22 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './profile-user.component.css'
 })
 export class ProfileUserComponent {
+
+  constructor(
+    private user_service : UserServiceService
+  ){}
+
+  userData:any
+  token : string = localStorage.getItem("token") || ''
+  baseUrl = environment.baseUrl // baseUrl from File environment 
+  ngOnInit(){
+    this.user_service.user_information(this.token).subscribe((data:any)=>{
+      this.userData = data.data
+      console.log(this.userData);
+    })
+
+  }
+
+
 
 }

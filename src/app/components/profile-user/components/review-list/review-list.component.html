@@ -26,7 +26,7 @@
                 </div>
                 <!-- Từng order trong đơn mua -->
 
-                <div class="productInfo" *ngFor="let detail of detail_order">
+                <div class="productInfo" *ngFor="let detail of order.order_details">
                     <!-- từng order trong list order -->
                         <div class="price">
                             <a routerLink="//product-detail/{{detail.product_id}}"
@@ -41,10 +41,6 @@
                         </div>
                         <div class="price">
                             <span>{{detail.unit_price | number : '1.0-0'}} đ</span>
-                        </div>
-                        <div class="price">
-                            <!-- <button type="button" class="btnRating" (click)="review_page(detail.product_id,detail.variant_id,order._id,product_details.sort)">Đánh Giá</button> -->
-                            <button type="button" class="btnRating" (click)="review_page(detail.product_id,detail.variant_id,order._id)">Đánh Giá</button>
                         </div>
                 </div>
                 <div class="totalPriceInfo">

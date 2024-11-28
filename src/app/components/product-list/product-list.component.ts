@@ -7,6 +7,7 @@ import { ProductServiceService } from '../../product-service.service';
 import { UserServiceService } from '../../user-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-product-list',
@@ -26,7 +27,7 @@ export class ProductListComponent {
   page:number = 1
   list_product : any[] = []
 
-  baseUrl:string= 'http://localhost:3000/public/images/'
+  baseUrl:string= environment.baseUrl
 
   ngOnInit(){
     let search_query = this.route.snapshot.queryParamMap.get("search_query") || ''

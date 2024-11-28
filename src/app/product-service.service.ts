@@ -63,5 +63,20 @@ export class ProductServiceService {
       }
       return this.http.post( this.url + api , data,this.options)
     }
+
+
+    create_category(category_name:string,s_descrip:string,parentCategory:any,token:string):Observable<any>{
+      let api = 'category/create'
+      const Object = {
+        category_name   : category_name,
+        s_descrip       : s_descrip,
+        parentCategory  : parentCategory
+      }
+      const headers = new HttpHeaders({
+        "Authorization" : "Bearer " + token
+      })
+      const requestOptions =  {headers : headers}
+      return this.http.post(this.url +  api , Object , requestOptions)
+    }
     
 }

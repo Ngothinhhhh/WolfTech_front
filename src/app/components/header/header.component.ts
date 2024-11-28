@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppServiceService } from '../../app-service.service';
 import { UserServiceService } from '../../user-service.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-header',
@@ -15,25 +16,49 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(
     private app_service : AppServiceService,
+    private user_service :UserServiceService ,
     private router : Router
   ){}
 
   length_cart:any
+  login_boolean : boolean = false 
+  userData : any
+  checkAdmin : boolean = false
+  token:string = localStorage.getItem("token") || ''
+  baseUrl = environment.baseUrl
 
   ngOnInit(){
     this.app_service.getData().subscribe((data:any)=>{
       if(data.key == "cart_length"){
+        if(data.value == 0){
+          this.length_cart = 0
+        }
         this.length_cart = data.value
-        // console.log(this.length_cart);
       }
-      // console.log(data);
     })
+    if (this.token) {
+      this.login_boolean = true
+      this.user_service.user_information(this.token).subscribe((data:any)=>{
+        if(data.code == 200){
+          if (data.data.user_role == "seller") {
+            this.checkAdmin = true
+          }
+          this.userData = data.data
+        }
+      })
+    }
 
   }
 
 
   searching(search_query:string){
     this.router.navigate(["/product-list"],{queryParams : { search_query : search_query}})
+  }
+
+  
+  logout(){
+   localStorage.removeItem("token")
+   window.location.reload()
   }
 
   // open form search

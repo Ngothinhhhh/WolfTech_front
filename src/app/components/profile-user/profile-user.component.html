@@ -3,9 +3,9 @@
     <div class="col l-10 l-o-1 m-10 m-o-1 c-12 profileUser">
         <div class="leftProfileUser">
             <div class="infoCard">
-                <img src="https://wolftechecommerce.web.app/resource/img/h%C3%ACnh%203x4.png" alt="">
+                <img [src]="baseUrl + userData.avatar" alt="">
                 <div class="right">
-                    <span class="name">minhngo</span>
+                    <span class="name">{{userData.user_name}}</span>
                 </div>
             </div>
             <div class="menu">

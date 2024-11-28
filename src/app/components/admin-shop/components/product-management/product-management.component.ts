@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
-
+import { environment } from '../../../../../environments/environments';
 import { UserServiceService } from '../../../../user-service.service';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ export class ProductManagementComponent {
   category_id:string= ''
   listProduct : any[] = []
 
-  baseUrl: string = 'http://localhost:3000/public/images/'
+  baseUrl: string = environment.baseUrl
 
 
   ngOnInit(){  

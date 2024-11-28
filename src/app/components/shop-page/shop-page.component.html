@@ -5,7 +5,7 @@
         <div class="shopInfo" *ngIf="dataUser">
             <div class="shopAvatar">
                 <div class="shopAvatarDetail">
-                    <img [src]="baseUrl + dataUser.user_avt_img " alt="">
+                    <img [src]="baseUrl + dataUser.avatar " alt="">
                     <span class="shopName">{{ dataUser.user_name }}</span>
                 </div>
                 <div class="btnOfShopInfoContainer">
@@ -232,7 +232,7 @@
                     <!-- item -->
                     <ng-container *ngIf="listProduct else null_product">
                         <div class="btnSuggestItemContainer" *ngFor="let product of listProduct">
-                            <button routerLink="/product-detail" class="btnSuggestItem">
+                            <button type="button" (click)="moveToProduct(product._id,product.product_slug)"class="btnSuggestItem">
                                 <div class="suggestItemSaleTag">
                                     -50%
                                 </div>
@@ -243,19 +243,11 @@
                                 </div>
                                 <div class="ratingOfProduct">
                                     <div class="starRatingOfProductBox">
-                                        <div class="starRatingOfProduct">
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                        <span style="
-                                            font-weight: 300;
-                                            color: black;
-                                            font-size: 12px;
-                                            padding: 0px;
-                                            margin-left: 5px;
-                                            margin-top: 2px;"
-                                        >
-                                            {{product.product_avg_rating}}
-                                        </span>
+                                        <span class="fa fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></span>
+                                        <span class="fa fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></span>
+                                        <span class="fa fa-star" *ngIf="product.product_avg_rating >= 3" style="color: red;"></span>
+                                        <span class="fa fa-star" *ngIf="product.product_avg_rating >= 4" style="color: red;"></span>
+                                        <span class="fa fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></span>
                                     </div>
                                     <span class="suggestItemSold">Đã bán {{product.product_sold_quantity}}</span>
                                 </div>

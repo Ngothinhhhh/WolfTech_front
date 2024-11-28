@@ -23,6 +23,15 @@ export class UserServiceService {
     return this.http.post(this.url + api, formData) // post (api_name , data , option_headers)
   }
 
+  user_information(token:string){
+    const api = "user/infor"
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api,'',requestOptions)
+  }
+
   user_login(user_email:any, user_password:any) : Observable<any>{
     const api = 'user/login'
     const body = {
@@ -134,9 +143,13 @@ export class UserServiceService {
     const api = 'category/getlistCategory'
     return this.http.post(this.url + api, {Id_seller}, this.options)
   }
-  getAllCategory():Observable<any>{
+  getAllCategory(token:string):Observable<any>{
     const api = 'category/getAllCategory'
-    return this.http.post(this.url + api, '', this.options)
+    const headers = new HttpHeaders({
+      "Authorization" : "Bearer " + token
+    })
+    const requestOptions = { headers : headers}
+    return this.http.post(this.url + api, '', requestOptions)
   }
   // for seller
   getlistCategoryByToken(token:string,page:number):Observable<any>{
@@ -170,5 +183,19 @@ export class UserServiceService {
   searching(search_query:string,sortBy:string,page:number):Observable<any>{
     const api =`products/search?search_query=${search_query}&sortBy=${sortBy}&page=${page}`
     return this.http.get(this.url + api, this.options)
+  }
+
+  recommender(token:string):Observable<any>{
+    let api = "products/recommend" 
+    if(token.trim() != ''){
+      let api1 = "products/recommendToken" 
+      let header = new  HttpHeaders({
+        'Authorization': "Bearer "  + token
+      })
+      const requestOptions = {headers :header}
+      return this.http.get(this.url + api1, requestOptions)
+    }else{
+      return this.http.get(this.url + api, this.options)
+    }
   }
 }

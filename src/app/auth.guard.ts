@@ -17,18 +17,18 @@ export const authGuard: CanActivateFn = (route, state) => {
     router.navigate(["/sign-in"]) // login
     return false
   }
-  else{
-    return service.checkToken(token).pipe(
-      map( data =>{
-        if (data.code == 200) {
-          return true
-        }
-        alert('Vui lòng đăng nhập lại')
-        localStorage.removeItem('token')
-        router.navigate(['/login'])
-        return false
-      })
-    )
-  }
+  return service.checkToken(token).pipe(
+    map( data =>{
+      if (data.code == 200) {
+        // console.log(data.data.data)
+        return true
+      }
+      alert('Vui lòng đăng nhập lại')
+      localStorage.removeItem('token')
+      router.navigate(['/login'])
+      return false
+    })
+  )
+  
 };
 

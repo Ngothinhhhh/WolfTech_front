@@ -41,11 +41,12 @@ export class AddProductComponent {
   categoriesID:string = ''
 
   token:string = ''
+  token1:string = localStorage.getItem("token") || ''
  
   ngOnInit(){
-    this.user_service.getAllCategory().subscribe( (data:any)=>{
+    this.user_service.getAllCategory(this.token1).subscribe( (data:any)=>{
       if (data.code == 200) {
-        //console.log(data);
+        console.log(data.data);
         this.allCategory = data.data
       }else{
         console.log(data.error);
@@ -267,7 +268,7 @@ export class AddProductComponent {
     this.categoriesID = selectedCategoryId
   }
 
-  create_product(product_name:any,product_short_description:any, product_description:any,product_supp_price:any){
+  async create_product(product_name:any,product_short_description:any, product_description:any,product_supp_price:any){
     let formData = new FormData()
     formData.append('product_name', product_name.value);
     formData.append('product_short_description', product_short_description.value);
@@ -275,20 +276,23 @@ export class AddProductComponent {
     formData.append('categoriesID', this.categoriesID);
     formData.append('product_supp_price', product_supp_price.value);
     if(this.product_details.length > 0) {
-      console.log(this.product_details);
+      // console.log(this.product_details);
       formData.append("product_details_arr", JSON.stringify(this.product_details))
     }
     if (this.selectedFile.length > 0 ) {
-      this.selectedFile.forEach(file => formData.append('img_product', file) )
+      for(let file of this.selectedFile){
+        formData.append('img_product', file)
+      }
     }
     if(this.product_variants.length > 0) {
       formData.append("product_variants", JSON.stringify(this.product_variants))
     }
     if(this.product_variants_img.length > 0){
-      this.product_variants_img.forEach( (variant_img:any)=>{
-        formData.append("product_variants_img",variant_img)
-      })
+      for(let variant_img of this.product_variants_img){
+        await formData.append("product_variants_img",variant_img)
+      }
     }
+    console.log(this.product_variants_img);
     this.token = localStorage.getItem("token") || ''
     this.service_product.create_product(formData,this.token).subscribe( data => {
       if(data.code == 200 ){
