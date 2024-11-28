@@ -100,12 +100,12 @@ export class ShopPageComponent {
   }
 
   updatePage(page:number, event: any){
-    // let pagination = document.getElementById('paginationInShopPageID');
-    // pagination?.childNodes.forEach(child => {
-    //   (child as any).classList.remove('active');
-    // })
-    // // console.log(event.target)
-    // event.target.classList.add('active');
+    let pagination = document.getElementById('paginationInShopPageID');
+    pagination?.childNodes.forEach(child => {
+      (child as any).classList.remove('active');
+    })
+    // console.log(event.target)
+    event.target.classList.add('active');
     // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
     this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
     this.update_product(page,this.sortBy,this.category_id)

@@ -19,8 +19,6 @@ export class HomeSuggestComponent {
   token : string = localStorage.getItem("token") || ''
 
   ngOnInit(){
-    // console.log(this.token);
-    // return
     this.user_service.recommender(this.token).subscribe((data:any)=>{
       console.log(data.data);
       this.list_product = data.data

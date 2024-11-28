@@ -60,7 +60,7 @@
             <div class="search">
                 <form action="">
                     <input type="text" name="search_query" placeholder="Tìm kiếm ..." #search_query>
-                    <button class="btnFindInSearch" type="button" (click)="searching(search_query.value)">
+                    <button class="btnFindInSearch" type="button" (click)="searching(search_query.value) ; reset(search_query)">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>

@@ -175,37 +175,7 @@
         <span class="titleProductRating">ĐÁNH GIÁ SẢN PHẨM</span>
         <div class="productCommentContainer">
             <!-- Đánh giá -->
-            <div class="productComment">
-                <div class="topOfProductComment">
-                    <div class="avatarOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/5f1816fd8d30acfa71094fa79e6f5d1f_tn" alt="">
-                    </div>
-                    <div class="userOfProductComment">
-                        <span>minhcornlk9</span>
-                        <span style="color: #555;">2024-02-24 09:28</span>
-                    </div>
-                </div>
-                <div class="contentOfProductComment">
-                    <div class="leftOfContentProductComment">
-
-                    </div>
-                    <div class="textContentOfProductComment">
-                        Sản phẩm quá tuyêht vời. Giá rẻ. Nên mua nha các bạn. Đóng gói tuyêht vời, chắc chắn, ship giao hàng tốt, tận tay người tiêu dùng sản phẩm, mong shop tiếp tục phát huy để mang lại sản phẩm cho người tiêu dùng, các bạn ghé shop mua nhé ạ, k làm các bạn thất vọng đâu, cảm ơn shop đaz đóng gói tận tình, đẹp, bền, chắc chắn, sản phẩm rẻ, phù hợp với túi tiền người mua
-                    </div>
-                </div>
-                <div class="bottomOfProductComment">
-                    <div class="leftOfBottomProductComment">
-
-                    </div>
-                    <div class="mediaContentOfProductComment">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7r98o-ls3l5zywgdl073@resize_w72_nl.webp" alt="">
-                    </div>
-                </div>
-            </div>
+            
             <ng-container *ngIf="recent_reviews.length > 0 else elseBlock">
                 <div class="productComment" *ngFor="let review of recent_reviews">
                     <div class="topOfProductComment">
@@ -216,11 +186,11 @@
                             <span>{{review.user_infor.user_name}}</span>
                             <span style="color: #555;">{{review.review_date}}</span>
                             <span style="color: #555;">
-                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 1"></i>
-                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 2"></i>
-                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 3"></i>
-                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 4"></i>
-                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 5"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 1" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 2" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 3" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 4" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="review.review_rating >= 5" style="color: red;"></i>
                             </span>
                         </div>
                     </div>

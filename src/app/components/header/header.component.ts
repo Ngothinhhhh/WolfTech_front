@@ -52,13 +52,16 @@ export class HeaderComponent {
 
 
   searching(search_query:string){
-    this.router.navigate(["/product-list"],{queryParams : { search_query : search_query}})
+    this.router.navigate(["/product-list"], {queryParams : { search_query : search_query , page : 1 , sortBy : ''} } )
   }
 
-  
   logout(){
    localStorage.removeItem("token")
    window.location.reload()
+  }
+
+  reset(searchQuery: HTMLInputElement){
+    searchQuery.value = '';
   }
 
   // open form search

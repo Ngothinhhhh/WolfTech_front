@@ -151,6 +151,19 @@ export class UserServiceService {
     const requestOptions = { headers : headers}
     return this.http.post(this.url + api, '', requestOptions)
   }
+
+  getListProduct_byCategory(search_query_category : string , sortBy :string, page:number,rating:number,detail:any):Observable<any>{
+    let api = 'category/products'
+    const object = {
+      search_query_category  : search_query_category,
+      sortBy : sortBy,
+      page   : page,
+      rating : rating,
+      detail : detail
+    }
+    return this.http.post(this.url + api, object,this.options)
+  }
+
   // for seller
   getlistCategoryByToken(token:string,page:number):Observable<any>{
     const api = `category?page=${page}`
@@ -180,9 +193,13 @@ export class UserServiceService {
   }
   
 
-  searching(search_query:string,sortBy:string,page:number):Observable<any>{
+  searching(search_query:string,sortBy:string,page:number, rating:number , detail:any):Observable<any>{
     const api =`products/search?search_query=${search_query}&sortBy=${sortBy}&page=${page}`
-    return this.http.get(this.url + api, this.options)
+    const body ={
+      rating: rating ,
+      detail:detail
+    }
+    return this.http.post(this.url + api, body, this.options)
   }
 
   recommender(token:string):Observable<any>{

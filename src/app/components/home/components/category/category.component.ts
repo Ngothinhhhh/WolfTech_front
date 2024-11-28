@@ -24,7 +24,7 @@ export class CategoryComponent {
 
   search_categoryParent(categoryParent_name : string){
     console.log(categoryParent_name);
-    this.router.navigate(["/product-list"] , { queryParams : { search_query_category : categoryParent_name }})
+    this.router.navigate(["/product-list"] , { queryParams : { search_query_category : categoryParent_name , page : 1 , sortBy : '' }})
   }
 
 }

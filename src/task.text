@@ -31,4 +31,13 @@ vnpay vào, và thanh toán thành công thì add 1 document vào Reviews.
 
 - Product-list : Product đag hiển thị lỗi con cac
 
-của tao thịnh ngô : + viết backend order. sau khi có 
+của tao thịnh ngô : + viết backend order. sau khi có .
+
+
+
+###########
+
+- Trang home hiển thị list Sản phẩm đang lỗi giao diện . 
+- Trang List-Product lỗi hiển thị list sản phẩm.
+- Hình phân trang đang lỗi hiển thị.
+- List-product : chỉnh lại sao cho khi click vào các radio , và khi click vào nút reset( ) thì mấy nút này được lại bỏ chọn.
