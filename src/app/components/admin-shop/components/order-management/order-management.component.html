@@ -1,0 +1,110 @@
+<div class="productManagementContainer">
+    <!-- Phần tiêu đề -->
+    <div class="title">
+        <span>Quản lý đơn hàng</span>
+        <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
+    </div>
+    <!-- Bảng sản phẩm -->
+    <div class="productTable">
+        <div class="titleTable">
+            <div class="" style="display: grid;">
+                <span>Order List</span>
+                <!-- <span style="color: #777; font-size: 12px; font-weight: 400;">Xem một số thông tin chính của sản phẩm</span> -->
+            </div>
+            <!-- <button class="btnAddProduct" routerLink="/admin-shop/add-product">Thêm +</button> -->
+        </div>
+        <div class="tableContainer">
+            <!-- Order -->
+            <div class="order">
+                <div class="buyerName">
+                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
+                </div>
+                <div class="buyerName">
+                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
+                </div>
+                <div class="buyerAddress">
+                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
+                </div>
+                <div class="middle">
+                    <div class="status">
+                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
+                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+                    </div>
+                    <div class="payment">  
+                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
+                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
+                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
+                </div>
+            </div>
+             <!-- Order -->
+             <div class="order">
+                <div class="buyerName">
+                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
+                </div>
+                <div class="buyerName">
+                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
+                </div>
+                <div class="buyerAddress">
+                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
+                </div>
+                <div class="middle">
+                    <div class="status">
+                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
+                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+                    </div>
+                    <div class="payment">  
+                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
+                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
+                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
+                </div>
+            </div>
+             <!-- Order -->
+             <div class="order">
+                <div class="buyerName">
+                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
+                </div>
+                <div class="buyerName">
+                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
+                </div>
+                <div class="buyerAddress">
+                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
+                </div>
+                <div class="middle">
+                    <div class="status">
+                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
+                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+                    </div>
+                    <div class="payment">  
+                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
+                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
+                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <button type="button" class="">&laquo;</button>
+            <button type="button" [class.active]="isActive(1)" (click)="goToPage(1)">1</button>
+            <button type="button" [class.active]="isActive(2)" (click)="goToPage(2)">2</button>
+            <button type="button" [class.active]="isActive(3)" (click)="goToPage(3)">3</button>
+            <button type="button" [class.active]="isActive(4)" (click)="goToPage(4)">4</button>
+            <button type="button" [class.active]="isActive(5)" (click)="goToPage(5)">5</button>
+            <button type="button" [class.active]="isActive(6)" (click)="goToPage(6)">6</button>
+            <button type="button" class="" >&raquo;</button>
+        </div>
+
+    </div>
+    <router-outlet></router-outlet>
+</div>

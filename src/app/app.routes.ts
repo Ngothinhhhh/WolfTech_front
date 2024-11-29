@@ -24,6 +24,8 @@ import { AddCategoryComponent } from './components/admin-shop/components/add-cat
 // Guard
 import { authGuard } from './auth.guard';
 import { checkAdminGuard } from './check-admin.guard';
+import { OrderManagementComponent } from './components/admin-shop/components/order-management/order-management.component';
+import { DetailOrderComponent } from './components/admin-shop/components/order-management/components/detail-order/detail-order.component';
 
 export const routes: Routes = [
     {path: "", component: PublicComponent, 
@@ -65,6 +67,11 @@ export const routes: Routes = [
             {path: "category-management", component: CategoryManagementComponent,
                 children: [
                     {path: "add-category", component: AddCategoryComponent},
+                ],
+            },
+            {path: "order-management", component: OrderManagementComponent,
+                children: [
+                    {path: 'detail-order', component: DetailOrderComponent},
                 ],
             },
             {path: "add-product", component: AddProductComponent},

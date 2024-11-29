@@ -87,6 +87,7 @@
 .mainContent{
     padding: 10px;
     background-color: #f5f5f5;
+    position: relative;
 }
 .mainContent .searchBox{
     padding: 5px;

@@ -1,0 +1,78 @@
+<div class="detailOrderContainer">
+    <button class="btnComeBackOrderList" onclick="history.back()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="detailOrder">
+        <span class="titleDetailOrder">Chi tiết đơn đặt hàng</span>
+        <!-- Order -->
+        <div class="order">
+            <div class="buyerName">
+                <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
+            </div>
+            <div class="buyerName">
+                <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
+            </div>
+            <div class="buyerAddress">
+                <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
+            </div>
+            <div class="middle">
+                <div class="status">
+                    <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
+                    <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+                </div>
+                <div class="payment">  
+                    <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
+                    <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
+                    <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .detailOrderContainer{
+        background-color: #efefef2a;
+        backdrop-filter: blur(2px);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .detailOrderContainer .detailOrder{
+        position: absolute;
+        top: 150px;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: .5px solid #efefef;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .detailOrderContainer .btnComeBackOrderList{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 20px;
+        padding: 10px 20px;
+        border: .5px solid #efefef;
+        border-radius: 8px;
+        background-color: #1f1f1f;
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        cursor: pointer;
+        transition: all .2s;
+    }
+    .detailOrderContainer .btnComeBackOrderList i{
+        transition: all .2s;
+    }
+    .detailOrderContainer .btnComeBackOrderList:hover i{
+        transform: translateX(-3px);
+    }
+</style>
