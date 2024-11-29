@@ -26,6 +26,9 @@ export class AddCategoryComponent {
       if (data.code == 200) {
         alert("Tạo Danh mục Thành Công.")
       }
+      else if(data.code == 504){
+        alert(data.error)
+      }
       else{
         console.log(data.error);
       }

@@ -86,6 +86,31 @@ export class UserServiceService {
     const requestOptions = {headers :header}
     return this.http.post(this.url + api,data , requestOptions)
   }
+
+  getListOrder_for_Admin(token:string,page:number,sortBy:string,status:string):Observable<any>{
+    let api = `orders/manage?page=${page}&sortBy=${sortBy}`
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    let objectData ={
+      status : status
+    }
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api, objectData, requestOptions)
+  }
+  detailOrder_for_Admin(token:string,orders_ID:string):Observable<any>{
+    let api = 'orders/detailForSeller'
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    let objectData ={
+      orders_ID : orders_ID
+    }
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api, objectData, requestOptions)
+  }
+
+
   delete_order_cart(token:string):Observable<any>{
     let api = 'orders/deleteCart'
     let header = new  HttpHeaders({
@@ -94,6 +119,8 @@ export class UserServiceService {
     const requestOptions = {headers :header}
     return this.http.post(this.url + api,'', requestOptions)
   }
+
+
 
   shop_detail(Id_seller:string,page:Number,sortBy:string,category_id:string):Observable<any>{
     let api = `product/shop?page=${page}&sortBy=${sortBy}`

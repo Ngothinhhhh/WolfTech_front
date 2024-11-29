@@ -23,38 +23,34 @@ export class OrderManagementComponent {
   token:string = localStorage.getItem("token") || ''
   page:number = 1
   currentPage: number = 1; // Khởi tạo trang hiện tại là trang đầu tiên
-  // sortBy:string= ''
-  // category_id:string= ''
+  sortBy:string= ''
+  order_status:string= ''
   listOrder : any[] = []
 
   baseUrl: string = environment.baseUrl
 
 
   ngOnInit(){  
-    // this.route.queryParamMap.subscribe( params =>{
-    //   this.page = Number(params.get("page")) || 1
-    //   this.sortBy = params.get("sortBy") || ''
-    //   this.category_id = params.get("category_id") || ''
-    //   this.update_data(this.page,this.sortBy,this.category_id)
-    // })
-    
+    this.update_data(this.page , this.sortBy,this.order_status,)
   }
-  update_data(page:number,order_status:string){
-    this.user_service.getList_order(this.token,page,order_status).subscribe( (data:any)=>{
-      if(data.code == 200){
-        this.listOrder = data.data.listProduct
-        // console.log(this.listProduct); 
-      }
-      else{
+
+  update_data(page:number,sortBy:string,order_status:string){
+    this.user_service.getListOrder_for_Admin(this.token,page,sortBy,order_status).subscribe((data:any)=>{
+      if (data.code == 200) {
+        this.listOrder = data.data
+        console.log(data.data);
+      } else {
         console.log(data.error);
       }
     })
   }
+
   goToPage(page:number){
     this.currentPage = page; // Cập nhật trang hiện tại
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
-    // this.update_data(page,this.sortBy,this.category_id)
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
+    this.update_data(page , this.sortBy , this.order_status)
   }
+  
   isActive(page: number): boolean { return this.currentPage === page; }
 
 }

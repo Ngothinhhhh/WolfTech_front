@@ -15,83 +15,32 @@
         </div>
         <div class="tableContainer">
             <!-- Order -->
-            <div class="order">
-                <div class="buyerName">
-                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
-                </div>
-                <div class="buyerName">
-                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
-                </div>
-                <div class="buyerAddress">
-                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
-                </div>
-                <div class="middle">
-                    <div class="status">
-                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
-                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+            <ng-container *ngIf="listOrder.length > 0 else elseBlock">
+                <div class="order" *ngFor="let order of listOrder">
+                    <div class="buyerName">
+                        <span>Mã Đơn Hàng : <span style="color: #222; font-weight: 400;">{{order._id}}</span></span>
                     </div>
-                    <div class="payment">  
-                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
-                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
-                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                    <div class="buyerName">
+                        <span>Tên người nhận : <span style="color: #222; font-weight: 400;">{{order.order_buyer}}</span></span>
                     </div>
-                </div>
-                <div class="bottom">
-                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
-                </div>
-            </div>
-             <!-- Order -->
-             <div class="order">
-                <div class="buyerName">
-                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
-                </div>
-                <div class="buyerName">
-                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
-                </div>
-                <div class="buyerAddress">
-                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
-                </div>
-                <div class="middle">
-                    <div class="status">
-                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
-                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
+                    <div class="middle">
+                        <div class="status">
+                            <span>Trạng thái đơn hàng: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">{{order.order_status}}</span></span>
+                            <span>Thời gian tạo đơn : <span style="color: #222; font-weight: 400; font-size: 14px;">{{order.createdAt}}</span></span>
+                        </div>
+                        <div class="payment">  
+                            <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">{{order.order_total_cost | number : '1.0-0' }}</span> vnđ</span>
+                            <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Phí giao hàng : <span style="color: #222; font-weight: 400; font-size: 18px;">{{order.order_shipping_cost | number : '1.0-0'}}</span> vnđ</span>
+                            <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">{{order.order_payment_cost | number : '1.0-0'}}</span> vnđ</span>
+                        </div>
                     </div>
-                    <div class="payment">  
-                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
-                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
-                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
+                    <div class="bottom">
+                        <button class="btnDetailOrder" routerLink="detail-order" [queryParams]="{ orders_ID : order._id  }">Chi tiết</button>
                     </div>
                 </div>
-                <div class="bottom">
-                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
-                </div>
-            </div>
-             <!-- Order -->
-             <div class="order">
-                <div class="buyerName">
-                    <span>ID: <span style="color: #222; font-weight: 400;">674145e030d75c5e5d68ada6</span></span>
-                </div>
-                <div class="buyerName">
-                    <span>Name: <span style="color: #222; font-weight: 400;">thuynhien</span></span>
-                </div>
-                <div class="buyerAddress">
-                    <span>Address: <span style="color: #222; font-weight: 400;">thuynhien  0393385101  thanhphohochiminh</span></span>
-                </div>
-                <div class="middle">
-                    <div class="status">
-                        <span>Status: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">Successful</span></span>
-                        <span>Created At: <span style="color: #222; font-weight: 400; font-size: 14px;">2024-11-23T02:54:47.117+00:00</span></span>
-                    </div>
-                    <div class="payment">  
-                        <span>Total Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,520,000</span> vnđ</span>
-                        <span style="border-bottom: .5px solid #efefef; padding-bottom: 10px;">Shipping Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">20,000</span> vnđ</span>
-                        <span>Payment Cost: <span style="color: #222; font-weight: 400; font-size: 18px;">5,540,000</span> vnđ</span>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <button class="btnDetailOrder" routerLink="detail-order">Chi tiết</button>
-                </div>
-            </div>
+            </ng-container>
+            <ng-template #elseBlock>Sản phẩm hiện tại đang trống...</ng-template>
+             <!-- Order -->  
         </div>
         <!-- Pagination -->
         <div class="pagination">
