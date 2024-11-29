@@ -41,4 +41,5 @@ của tao thịnh ngô : + viết backend order. sau khi có .
 - Trang List-Product lỗi hiển thị list sản phẩm.
 - Hình phân trang đang lỗi hiển thị.
 - List-product : chỉnh lại sao cho khi click vào các radio , và khi click vào nút reset( ) thì mấy nút này được lại bỏ chọn.
-- TRANG lIST-order của admin : thêm 1 phần sort theo : [ giá giảm dần , giá tăng dần , mới nhất ..] và 1 thanh riêng biệt có thể lọc ra các đơn "Succesfull" hoặc là "Proccessing".
+- TRANG lIST-order của admi n : thêm 1 phần sort theo : [ giá giảm dần , giá tăng dần , mới nhất ..] và 1 thanh riêng biệt có thể lọc ra các đơn "Succesfull" hoặc là "Proccessing".
+

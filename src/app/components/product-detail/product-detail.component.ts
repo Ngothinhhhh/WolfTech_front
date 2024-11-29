@@ -45,6 +45,10 @@ export class ProductDetailComponent {
 
   baseUrl: string = environment.baseUrl
 
+  list_product : any[] = []
+
+
+
   ngOnInit(){
     // get data from param in URL
     this.route.paramMap.subscribe( (params:ParamMap)=>{
@@ -56,14 +60,23 @@ export class ProductDetailComponent {
       this.productId = param.get("idProduct") || ''    
       this.product_service.detail_product(this.productId).subscribe( (data:any)=>{
         this.product_infor = data.data
-        console.log(this.product_infor);
-        
+        // console.log(this.product_infor);
         this.recent_reviews = this.product_infor.recent_reviews
         this.product_imgs = this.product_infor.product_imgs      
         this.product_details = this.product_infor.product_details
         this.product_variants = this.product_infor.product_variants
       })
     })
+
+    this.user_service.recommender(this.token).subscribe((data:any)=>{
+      if (data.code == 200) {
+        console.log(data.data);
+        this.list_product = data.data
+      } else {
+        console.log(data.error);
+      }
+    })
+    
 
   }
 

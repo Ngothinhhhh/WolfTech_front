@@ -334,257 +334,55 @@
             <span class="titleRelatedProductOfShop">CÓ THỂ BẠN CŨNG THÍCH</span>
             
         </div>
-        <div class="row listRelatedProductOfShop">
+        <div class="row listRelatedProductOfShop" >
             <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
+             <ng-container *ngIf="list_product">
+                    
+                    <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer" *ngFor="let product of list_product">
+                        <!-- <button type="button" class="btnSuggestItem" routerLink="/product-detail/{{product.product_slug}}" [queryParams]="{ idProduct : product._id }">
+                            <div class="suggestItemSaleTag">
+                                -50%
+                            </div>
+                            <img [src]="product.product_imgs[0].link" alt="">
+                            <span class="productName">{{ product.product_name }}</span>
+                            <div class="suggestItemPriceSale">
+                                <span class="suggestItemPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
+                            </div>
+                            <div class="ratingOfProduct">
+                                <div class="starRatingOfProductBox">
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 3" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 4" style="color: red;"></i>
+                                    <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></i>
+                                </div>
+                                <span class="suggestItemSold">Đã bán {{product.product_sold_quantity}}</span>
+                            </div>
+                        </button> -->
+
+                        <button class="btnRelatedProductOfShop" routerLink="/product-detail/{{product.product_slug}}" [queryParams]="{ idProduct : product._id }">
+                        <div class="relatedProductOfShopSaleTag">
+                            -50%
+                        </div>
+                        <img [src]="product.product_imgs[0].link" alt="">
+                        <span>{{ product.product_name }}</span>
+                        <div class="relatedProductOfShopPriceSale">
+                            <span class="relatedProductOfShopPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
+                            <span class="relatedProductOfShopSold">
+                                <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 3" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 4" style="color: red;"></i>
+                                <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></i>
+                            </span>
+                            <span class="relatedProductOfShopSold">Đã bán {{product.product_sold_quantity}}</span>
+                            
+
+                        </div>
+                    </button>
                     </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22090-m8b81fd6hthva7@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpje74h6iqt105@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div><!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div><!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnRelatedProductOfShopContainer">
-                <button class="btnRelatedProductOfShop">
-                    <div class="relatedProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="relatedProductOfShopPriceSale">
-                        <span class="relatedProductOfShopPrice">171.000 đ</span>
-                        <span class="relatedProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
+             </ng-container>
+            
         </div>
     </div>
 </div>
