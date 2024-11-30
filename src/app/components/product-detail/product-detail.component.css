@@ -567,12 +567,13 @@
 }
 .productDetailInfo .productRatingContainer .productCommentContainer .productComment .bottomOfProductComment{
     display: flex;
+    flex-wrap: wrap;
 }
 .productDetailInfo .productRatingContainer .productCommentContainer .productComment .bottomOfProductComment .leftOfBottomProductComment{
     width: 5%;
 }
 .productDetailInfo .productRatingContainer .productCommentContainer .productComment .bottomOfProductComment .mediaContentOfProductComment{
-    width: 95%;
+    /* width: 95%; */
     margin-left: -5px;
     display: flex;
     flex-wrap: wrap;
@@ -811,19 +812,25 @@
     /* padding: 10px; */
     display: grid;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border-radius: 5px;
     cursor: pointer;
     /* margin: 15px 5px; */
     position: relative;
     background-color: white;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 .productDetailInfo .relatedProductOfShopContainer .listRelatedProductOfShop .btnRelatedProductOfShopContainer .btnRelatedProductOfShop:hover{
     border: .5px solid #a61713;
 }
+.productDetailInfo .relatedProductOfShopContainer .listRelatedProductOfShop .btnRelatedProductOfShopContainer .btnRelatedProductOfShop .imgContainer{
+    /* height: 60%; */
+}
 .productDetailInfo .relatedProductOfShopContainer .listRelatedProductOfShop .btnRelatedProductOfShopContainer .btnRelatedProductOfShop img{
     width: 100%;
+    height: 100%;
     border-radius: 5px 5px 0px 0px;
 }
 .productDetailInfo .relatedProductOfShopContainer .listRelatedProductOfShop .btnRelatedProductOfShopContainer .btnRelatedProductOfShop span{
@@ -859,6 +866,12 @@
     font-weight: 300;
     color: black;
     font-size: 12px;
+}
+.relatedProductOfShopRating{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
 }
 /* Hết CSS Phần sản phẩm liên quan */
 
@@ -1002,7 +1015,7 @@
         width: 18%;
     }
     .productDetailInfo .productRatingContainer .productCommentContainer .productComment .bottomOfProductComment .mediaContentOfProductComment{
-        width: 82%;
+        /* width: 82%; */
     }
     /* Hết phần đánh giá, bình luận sản phẩm */
     /* Phần các sản phẩm khác của shop */

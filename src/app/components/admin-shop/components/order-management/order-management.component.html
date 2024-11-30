@@ -3,6 +3,19 @@
     <div class="title">
         <span>Quản lý đơn hàng</span>
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
+<<<<<<< HEAD
+=======
+        <div class="filterByPrice">
+            <span class="title">Sắp xếp theo</span>
+            <select  name="sortBy" id="" #sortBy>
+                <option value="">Mặc định</option>
+                <option value="price_asc">Giá tăng dần</option>
+                <option value="price_desc">Giá giảm dần</option>
+                <option value="time_desc">Mới nhất</option>
+                <option value="sales">Lượt mua</option>
+            </select>
+        </div>
+>>>>>>> 0c9c70b4e514c9e29f48fd2b4042ab268be64f23
     </div>
     
     <!-- Bảng sản phẩm -->
@@ -16,6 +29,7 @@
         </div>
         <div class="tableContainer">
             <div class="orderListNav">
+<<<<<<< HEAD
                 <button id="btnDefaultID" type="button" class="btnProcessing checked" (click)="filter_status('')">Mặc định </button>
                 <button id="btnProcessingID" type="button" class="btnProcessing" (click)="filter_status('Processing')"> Processing </button>
                 <button id="btnSuccessfulID" type="button" class="btnSuccessful" (click)="filter_status('Successfull')"> Successful </button>
@@ -25,6 +39,11 @@
                     <option value="price_desc">Giá giảm dần</option>
                     <option value="time_asc">Mới nhất</option>
                 </select>
+=======
+                <button id="btnAllOrderID" type="button" class="btnFilterOrder btnProcessing checked" style="color: #000;" (click)="filter_status('',$event)"> Tất cả đơn hàng </button>
+                <button id="btnProcessingID" type="button" class="btnFilterOrder btnProcessing" (click)="filter_status('Processing',$event)"> Processing </button>
+                <button id="btnSuccessfulID" type="button" class="btnFilterOrder btnSuccessful" (click)="filter_status('Successfull',$event)"> Successful </button>
+>>>>>>> 0c9c70b4e514c9e29f48fd2b4042ab268be64f23
             </div>
             <!-- Order -->
             <ng-container *ngIf="listOrder.length > 0 else elseBlock">

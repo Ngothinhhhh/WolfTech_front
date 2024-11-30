@@ -51,11 +51,18 @@ export class OrderManagementComponent {
     this.update_data(page , this.sortBy , this.order_status)
   }
 
-  filter_status(status:string){
+  filter_status(status:string, event:any){
     this.page = 1
     this.order_status = status
     this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
     this.update_data(this.page, this.sortBy, status)
+    //
+    let btnFilterOrder = (document.getElementsByClassName('btnFilterOrder') as any);
+    // console.log(event.target.classList.add("checked"));
+    for(let i=0; i<btnFilterOrder.length; i++){
+      btnFilterOrder[i].classList.remove('checked');
+    }
+    event.target.classList.add("checked");
   }
 
   change_sortBy(sortBy:string){

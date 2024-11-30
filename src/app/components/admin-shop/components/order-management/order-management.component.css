@@ -178,6 +178,9 @@
 }
 .tableContainer .orderListNav{
     border-bottom: .5px solid #efefef;
+    position: sticky;
+    top: 0px;
+    background: white;
 }
 .tableContainer .orderListNav button{
     transition: ease-out .2s;
@@ -211,6 +214,45 @@
     border: none;
     border-bottom: 3px solid #000;
     border-right: .5px solid #efefef;
+}
+.filterByPrice{
+    margin: 0;
+    padding: 15px;
+    background-color: #efefef;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: fit-content;
+    margin-top: 10px;
+}
+.productManagementContainer .title .filterByPrice .title{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 5px;
+}
+.filterByPrice form button{
+    border: .5px solid #a61713;
+    background: #a61713;
+    padding: 5px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 400;
+}
+.filterByPrice form button:hover{
+    background-color: #971612;
+}
+.filterByPrice select{
+    margin: 0 5px;
+    padding: 5px;
+    border: .5px solid #efefef;
+    background-color: #fff;
+    color: #111;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 /*                           MEDIA QUERY                          */
