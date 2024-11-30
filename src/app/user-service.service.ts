@@ -109,6 +109,18 @@ export class UserServiceService {
     const requestOptions = {headers :header}
     return this.http.post(this.url + api, objectData, requestOptions)
   }
+  update_statusOrder_for_Admin(token :string, order_id:string , status:string):Observable<any>{
+    const api = 'orders/manage/update'
+    let objectData ={
+      status   : status,
+      order_id : order_id
+    }
+    let header = new  HttpHeaders({
+      'Authorization': "Bearer "  + token
+    })
+    const requestOptions = {headers :header}
+    return this.http.post(this.url + api, objectData, requestOptions)
+  }
 
 
   delete_order_cart(token:string):Observable<any>{

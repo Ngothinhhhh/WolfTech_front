@@ -47,14 +47,37 @@ export class OrderManagementComponent {
 
   goToPage(page:number){
     this.currentPage = page; // Cập nhật trang hiện tại
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
     this.update_data(page , this.sortBy , this.order_status)
   }
 
   filter_status(status:string){
     this.page = 1
     this.order_status = status
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
     this.update_data(this.page, this.sortBy, status)
+  }
+
+  change_sortBy(sortBy:string){
+    this.sortBy = sortBy
+    this.page = 1
+    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
+    this.update_data(this.page, sortBy, this.order_status)
+  }
+
+  update_status_order(order_id:string , status_update:string ){
+    console.log(order_id);
+    console.log(status_update);
+    this.user_service.update_statusOrder_for_Admin(this.token , order_id ,status_update).subscribe((data:any)=>{
+      if (data.code == 200) {
+        alert("Thông tin đơn hàng sau khi thay đổi")
+        this.router.navigate(["/admin-shop/order-management/detail-order"] , { queryParams : { orders_ID : order_id }  }  )
+        this.update_data(this.page,this.sortBy,this.order_status)
+        console.log(data.data);
+      } else {
+        console.log(data.error);
+      }
+    })
   }
   
   isActive(page: number): boolean { return this.currentPage === page; }

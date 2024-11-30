@@ -3,16 +3,6 @@
     <div class="title">
         <span>Quản lý đơn hàng</span>
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
-        <div class="filterByPrice">
-            <span>Sắp xếp theo</span>
-            <select  name="sortBy" id="" #sortBy>
-                <option value="">Mặc định</option>
-                <option value="price_asc">Giá tăng dần</option>
-                <option value="price_desc">Giá giảm dần</option>
-                <option value="time_desc">Mới nhất</option>
-                <option value="sales">Lượt mua</option>
-            </select>
-        </div>
     </div>
     
     <!-- Bảng sản phẩm -->
@@ -26,8 +16,15 @@
         </div>
         <div class="tableContainer">
             <div class="orderListNav">
-                <button id="btnProcessingID" type="button" class="btnProcessing checked" (click)="filter_status('Processing')"> Processing </button>
+                <button id="btnDefaultID" type="button" class="btnProcessing checked" (click)="filter_status('')">Mặc định </button>
+                <button id="btnProcessingID" type="button" class="btnProcessing" (click)="filter_status('Processing')"> Processing </button>
                 <button id="btnSuccessfulID" type="button" class="btnSuccessful" (click)="filter_status('Successfull')"> Successful </button>
+                <select  name="sortBy" id="" (change)="change_sortBy(sortBy.value)" #sortBy>
+                    <option value="">Mặc định</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                    <option value="price_desc">Giá giảm dần</option>
+                    <option value="time_asc">Mới nhất</option>
+                </select>
             </div>
             <!-- Order -->
             <ng-container *ngIf="listOrder.length > 0 else elseBlock">
@@ -55,7 +52,13 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <button class="btnUpdateStatusOrder" routerLink="detail-order">Cập nhật trạng thái</button>
+                        <!-- <button class="btnUpdateStatusOrder" routerLink="detail-order">Cập nhật trạng thái</button> -->
+                        <span>Cập nhật trạng thái</span>
+                        <select  name="status_update" id="" (change)="update_status_order(order._id , status_update.value)" #status_update>
+                            <option value="">Hiện tại : {{order.order_status }}</option>
+                            <option value="Successfull">Successfull</option>
+                            <option value="Processing">Processing</option>
+                        </select>
                         <button class="btnDetailOrder" routerLink="detail-order" [queryParams]="{ orders_ID : order._id  }">Chi tiết</button>
                     </div>
                 </div>
