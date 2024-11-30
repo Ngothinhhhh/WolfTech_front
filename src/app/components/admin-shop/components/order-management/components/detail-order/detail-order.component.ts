@@ -34,6 +34,7 @@ export class DetailOrderComponent {
     this.user_service.detailOrder_for_Admin(this.token, orders_ID).subscribe((data:any)=>{
       if (data.code == 200) {
         this.detail_order = data.data
+        console.log(this.detail_order)
       } else {
         console.log(data.error)
       }

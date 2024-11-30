@@ -89,7 +89,7 @@
 } */
 
 .order{
-    /* border: .5px solid #efefef; */
+    border: .5px solid #efefef;
     margin: 10px;
     padding: 10px;
     border-radius: 6px;
@@ -101,7 +101,7 @@
     color: #000;
     padding: 10px 5px;
     border: none;
-    border-bottom: .5px solid #efefef;
+    /* border-bottom: .5px solid #efefef; */
 }
 .order .buyerAddress{
     font-size: 16px;
@@ -143,6 +143,23 @@
     align-items: center;
     justify-content: right;
 }
+.order .bottom .btnUpdateStatusOrder{
+    background: transparent;
+    padding: 10px;
+    border-radius: 4px;
+    border: .5px solid #19703d;
+    font-size: 14px;
+    font-weight: 400;
+    color: #19703d;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    cursor: pointer;
+    transition: all .1s;
+    margin-right: 5px;
+}
+.order .bottom .btnUpdateStatusOrder:hover{
+    background-color: #19703d;
+    color: whitesmoke;
+}
 .order .bottom .btnDetailOrder{
     background: transparent;
     padding: 10px;
@@ -158,6 +175,42 @@
 .order .bottom .btnDetailOrder:hover{
     background-color: #2c3e50;
     color: whitesmoke;
+}
+.tableContainer .orderListNav{
+    border-bottom: .5px solid #efefef;
+}
+.tableContainer .orderListNav button{
+    transition: ease-out .2s;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+.tableContainer .orderListNav button:hover{
+    background-color: #efefef;
+}
+.tableContainer .orderListNav button:hover:active{
+    background-color: #b3b3b3;
+}
+.tableContainer .orderListNav .btnProcessing{
+    padding: 10px 20px;
+    background-color: white;
+    color: #555;
+    border: none;
+    border-right: .5px solid #efefef;
+    border-bottom: 3px solid transparent;
+}
+.tableContainer .orderListNav .btnSuccessful{
+    padding: 10px 20px;
+    background-color: white;
+    color: #27ae60;
+    border: none;
+    border-right: .5px solid #efefef;
+    border-bottom: 3px solid transparent;
+}
+.tableContainer .orderListNav .checked{
+    border: none;
+    border-bottom: 3px solid #000;
+    border-right: .5px solid #efefef;
 }
 
 /*                           MEDIA QUERY                          */

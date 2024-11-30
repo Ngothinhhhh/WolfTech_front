@@ -14,6 +14,10 @@
             <!-- <button class="btnAddProduct" routerLink="/admin-shop/add-product">Thêm +</button> -->
         </div>
         <div class="tableContainer">
+            <div class="orderListNav">
+                <button id="btnProcessingID" type="button" class="btnProcessing checked"> Processing </button>
+                <button id="btnSuccessfulID" type="button" class="btnSuccessful"> Successful </button>
+            </div>
             <!-- Order -->
             <ng-container *ngIf="listOrder.length > 0 else elseBlock">
                 <div class="order" *ngFor="let order of listOrder">
@@ -25,7 +29,12 @@
                     </div>
                     <div class="middle">
                         <div class="status">
-                            <span>Trạng thái đơn hàng: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">{{order.order_status}}</span></span>
+                            <ng-content *ngIf="order.order_status == 'Successfull'">
+                                <span>Trạng thái đơn hàng: <span style="color: #27ae60; font-weight: 600; font-size: 20px;">{{order.order_status}}</span></span>
+                            </ng-content>
+                            <ng-content *ngIf="order.order_status == 'Processing'">
+                                <span>Trạng thái đơn hàng: <span style="color: #555; font-weight: 600; font-size: 20px;">{{order.order_status}}</span></span>
+                            </ng-content>
                             <span>Thời gian tạo đơn : <span style="color: #222; font-weight: 400; font-size: 14px;">{{order.createdAt}}</span></span>
                         </div>
                         <div class="payment">  
@@ -35,11 +44,12 @@
                         </div>
                     </div>
                     <div class="bottom">
+                        <button class="btnUpdateStatusOrder" routerLink="detail-order">Cập nhật trạng thái</button>
                         <button class="btnDetailOrder" routerLink="detail-order" [queryParams]="{ orders_ID : order._id  }">Chi tiết</button>
                     </div>
                 </div>
             </ng-container>
-            <ng-template #elseBlock>Sản phẩm hiện tại đang trống...</ng-template>
+            <ng-template #elseBlock>Chưa có đơn hàng nào...</ng-template>
              <!-- Order -->  
         </div>
         <!-- Pagination -->
