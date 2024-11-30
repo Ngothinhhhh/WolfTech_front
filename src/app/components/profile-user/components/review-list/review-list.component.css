@@ -139,6 +139,122 @@
     color: white;
     transition: all .1s;
 }
+.timeline {
+    position: relative;
+    margin-left: 20px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: green;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: blue;
+}
+.timeline-item.gray::before {
+    background: gray;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.product-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.product-item img {
+    width: 80px;
+    height: 70px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.product-details {
+    flex-grow: 1;
+}
+.product-details p {
+    margin: 0;
+}
+.product-price, .product-quantity, .product-total {
+    width: 100px;
+    text-align: right;
+}
+.product-price {
+    color: #333;
+}
+.product-total {
+    color: #333;
+}
+.insurance {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.insurance input {
+    margin-right: 10px;
+}
+.note {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.shipping-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.shipping-method span {
+    margin-right: 10px;
+}
+.shipping-method a {
+    color: #007bff;
+    text-decoration: none;
+}
+.total-amount {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+}
+
 
 
 /*                           MEDIA QUERY                          */
@@ -188,6 +304,8 @@
         font-weight: 400;
         color: #a61713;
     }
+
+    
     
     
 }

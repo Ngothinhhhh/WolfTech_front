@@ -42,11 +42,10 @@ export class Checkout1Component {
     this.update_cart()
   }
 
-
-
   change_status(){
     this.check = !this.check
   }
+
   update_location(name:any,phone:string,address:string){
     this.infor_shipping = { 
       name:name,
@@ -55,6 +54,7 @@ export class Checkout1Component {
     } 
     this.change_status()
   }
+
   createPayment() {
     const paymentData = {
       amount: this.order_shipping_cost + this.product_amount,  // Ví dụ số tiền
@@ -104,7 +104,8 @@ export class Checkout1Component {
         "order_details": this.order_details,
         "order_shipping_cost": this.order_shipping_cost,
         "order_payment_cost": this.product_amount + this.order_shipping_cost,
-        "order_status": "Processing"
+        // "order_status": "Processing" 
+        "order_status": "Ordered"
       }
       return this.user_service.create_order(data,this.token).subscribe((data:any)=>{
         if(data.code == 200){

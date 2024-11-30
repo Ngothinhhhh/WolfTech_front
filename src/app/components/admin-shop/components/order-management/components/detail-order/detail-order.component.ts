@@ -3,11 +3,13 @@ import { UserServiceService } from '../../../../../../user-service.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detail-order',
   standalone: true,
   imports: [CommonModule],
+  providers : [DatePipe],
   templateUrl: './detail-order.component.html',
   styleUrl: './detail-order.component.css'
 })
@@ -16,7 +18,8 @@ export class DetailOrderComponent {
   constructor(
     private user_service : UserServiceService,
     private route : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private datePipe : DatePipe
   ){}
   
   token : string = localStorage.getItem("token") || ''
@@ -39,6 +42,10 @@ export class DetailOrderComponent {
         console.log(data.error)
       }
     })
+  }
+
+  format_date(date:string){
+    return this.datePipe.transform(date ,'short')
   }
 
 }

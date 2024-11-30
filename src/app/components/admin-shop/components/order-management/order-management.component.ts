@@ -4,11 +4,12 @@ import { environment } from '../../../../../environments/environments';
 import { UserServiceService } from '../../../../user-service.service';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-order-management',
   standalone: true,
   imports: [RouterLink, RouterOutlet,CommonModule],
+  providers :[DatePipe],
   templateUrl: './order-management.component.html',
   styleUrl: './order-management.component.css'
 })
@@ -17,7 +18,8 @@ export class OrderManagementComponent {
   constructor(
     private user_service:UserServiceService,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private datePipe :DatePipe
   ){}
 
   token:string = localStorage.getItem("token") || ''
@@ -28,6 +30,7 @@ export class OrderManagementComponent {
   listOrder : any[] = []
 
   baseUrl: string = environment.baseUrl
+  
 
 
   ngOnInit(){  
@@ -85,6 +88,10 @@ export class OrderManagementComponent {
         console.log(data.error);
       }
     })
+  }
+
+  format_date(date_string:string){
+    return this.datePipe.transform(date_string,'medium')
   }
   
   isActive(page: number): boolean { return this.currentPage === page; }

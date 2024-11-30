@@ -6,11 +6,13 @@ import { ProductServiceService } from '../../../../product-service.service';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { environment } from '../../../../../environments/environments';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
   imports: [RouterOutlet,RouterLink,CommonModule],
+  providers : [DatePipe],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css'
 })
@@ -19,6 +21,7 @@ export class OrderHistoryComponent {
     private user_service    : UserServiceService,
     private product_service : ProductServiceService,
     private router : Router,
+    private datePipe: DatePipe
   ){}
 
   token:string = localStorage.getItem("token") || ''
@@ -26,8 +29,7 @@ export class OrderHistoryComponent {
   detail_order : any[] = [] 
   list_order : any[] = []
   product_details:any[] =[]
-  // order_status : string = "Successfull"
-  order_status : string = "Processing"
+  order_status : string = ""
 
 
   Object_review_array : any[] = []
@@ -41,17 +43,34 @@ export class OrderHistoryComponent {
   order_id:string = ''
   length_order_detail : number = 0
 
+  productDetails: { [productId: string]: any } = {};
+
+  current_review_id :string = ''
   baseUrl: string = environment.baseUrl
 
 
   ngOnInit(){
-    this.updateListOrder()
+    this.updateListOrder() 
+  }
+
+  ngAfterViewInit(){ // sau khi các view đã được khởi tạo
+
   }
 
   updateListOrder(){
     this.user_service.getList_order(this.token,this.page, this.order_status).subscribe((data:any)=>{
       if(data.code == 200 ){
         this.list_order = data.data
+        for( let order of this.list_order ){
+          for( let detail of order.order_details){
+            if (detail.variant_id  && detail.product_id) {
+              this.get_detail_product(detail.product_id,detail.variant_id)
+            }
+            else{
+              console.log("cc");
+            }
+          }
+        }
       }else{
         console.log(data.error);
       }
@@ -72,7 +91,7 @@ export class OrderHistoryComponent {
     }
     this.user_service.create_review(formData,this.token).subscribe((data:any)=>{
       if(data.code == 200){
-        // alert("Đánh giá hoàn tất")
+        alert("Đánh giá hoàn tất")
         // this.router.navigate(["/profile-user/order-history"])
       } else{
         console.log(data.error);
@@ -81,14 +100,39 @@ export class OrderHistoryComponent {
   
   }
 
+  // open_review(product_id:string,variant_id:string,order_id:string,length:number){
+  //   if (this.review_boolean == false ) {
+  //     this.product_id = product_id
+  //     this.variant_id= variant_id
+  //     this.order_id = order_id
+  //     this.length_order_detail = length
+  //     this.current_review_id = order_id
+  //   }
+  //   this.review_boolean = !this.review_boolean 
+  //   // this.current_review_id = current_review_id
+  // }
   open_review(product_id:string,variant_id:string,order_id:string,length:number){
-    if (this.review_boolean == false) {
-      this.product_id = product_id
-      this.variant_id= variant_id
-      this.order_id = order_id
-      this.length_order_detail = length
-    }
-    this.review_boolean = !this.review_boolean 
+    console.log(product_id);
+    console.log(variant_id);
+    console.log(order_id);
+    this.product_id = product_id
+    this.variant_id= variant_id
+    this.order_id = order_id
+    this.length_order_detail = length
+    this.review_boolean = true
+    this.current_review_id = order_id
+  } 
+  close_review(){
+    this.product_id = ''
+    this.variant_id= ''
+    this.order_id = ''
+    this.length_order_detail = 0
+    this.review_boolean = false
+    this.current_review_id = ''
+    console.log(this.product_id);
+    console.log(this.variant_id);
+    console.log(this.order_id);
+
   }
 
   onChangeImage(event:any) {
@@ -97,7 +141,12 @@ export class OrderHistoryComponent {
 
   one_review(){
     this.review_context = (document.getElementById('reviewContextID') as HTMLTextAreaElement).value;
-    this.review_rating = (document.getElementById('starRatingOfProductID') as HTMLTextAreaElement).value;  
+    this.review_rating = (document.getElementById('starRatingOfProductID') as HTMLTextAreaElement).value;
+    // console.log(this.review_context);
+    // console.log(this.review_rating);
+    // console.log(this.product_id);
+    // console.log(this.variant_id);
+    // console.log(this.order_id);
     if (this.review_context != '' && this.review_rating != '' && this.product_id != ''&& this.variant_id != ''&& this.order_id != ''){
       if(this.file_array.length > 0 ){
         // this.create_review(this.product_id,this.variant_id,this.order_id,this.review_rating,this.review_context,this.file_array)
@@ -110,10 +159,9 @@ export class OrderHistoryComponent {
           file_array : this.file_array
         }
         this.Object_review_array.push(object)
-        this.review_boolean = !this.review_boolean
         console.log(this.Object_review_array);
         console.log(this.length_order_detail);
-        if (this.length_order_detail == this.Object_review_array.length) {
+        if (this.length_order_detail >= this.Object_review_array.length) {
           this.create_arr_review()
         }
       }else{
@@ -126,6 +174,7 @@ export class OrderHistoryComponent {
 
   async create_arr_review(){
     for(const element of this.Object_review_array){
+      console.log(element);
       await this.create_review(element.product_id,element.variant_id,element.order_id,element.review_rating,element.review_context,element.file_array)
     }
     // await this.Object_review_array.forEach(element => {
@@ -133,6 +182,26 @@ export class OrderHistoryComponent {
     // }) // not use because forEach không hoạt động với async await, thay vào đó dùng forOf 
     await alert("Đánh giá hoàn tất")
     await this.updateListOrder()
+  }
+
+  format_date(date:string){
+    return this.datePipe.transform(date,'medium')
+  }
+
+  get_detail_product(product_id:string , variant_id:string){
+    if (!this.productDetails[product_id]) {
+      this.user_service.getList_order_filter(product_id,variant_id).subscribe((data:any)=>{
+       if (data.code == 200) {
+        // console.log(data);
+        this.productDetails[product_id] = data.data
+        // console.log(this.productDetails[product_id].product_name);
+       } else {
+        console.log(data.error);
+        
+       }
+      })
+    }
+    
   }
   
 

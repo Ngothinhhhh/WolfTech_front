@@ -7,8 +7,7 @@ import { HomeFlashSaleComponent } from "./components/home/components/home-flash-
 import { AdvertiseComponent } from "./components/home/components/advertise/advertise.component";
 import { HomeSuggestComponent } from "./components/home/components/home-suggest/home-suggest.component";
 import { FooterComponent } from "./components/footer/footer.component";
-
-
+import { CustomDatePipe } from '../CustomDatePipe';
 @Component({
   selector: 'app-root',
   standalone: true,

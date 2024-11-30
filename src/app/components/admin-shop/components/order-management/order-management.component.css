@@ -194,7 +194,7 @@
 .tableContainer .orderListNav button:hover:active{
     background-color: #b3b3b3;
 }
-.tableContainer .orderListNav .btnProcessing{
+.tableContainer .orderListNav .btnFilterOrder{
     padding: 10px 20px;
     background-color: white;
     color: #555;
@@ -202,7 +202,7 @@
     border-right: .5px solid #efefef;
     border-bottom: 3px solid transparent;
 }
-.tableContainer .orderListNav .btnSuccessful{
+.tableContainer .orderListNav .btnFilterOrder{
     padding: 10px 20px;
     background-color: white;
     color: #27ae60;
