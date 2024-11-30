@@ -3,9 +3,6 @@
     <div class="title">
         <span>Quản lý đơn hàng</span>
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
-<<<<<<< HEAD
-=======
->>>>>>> 0c9c70b4e514c9e29f48fd2b4042ab268be64f23
     </div>
     
     <!-- Bảng sản phẩm -->
@@ -19,10 +16,10 @@
         </div>
         <div class="tableContainer">
             <div class="orderListNav">
-                <button id="btnDefaultID" type="button" class="btnProcessing checked" (click)="filter_status('')">Mặc định </button>
-                <button id="btnProcessingID" type="button" class="btnProcessing" (click)="filter_status('Processing')"> Processing </button>
-                <button id="btnSuccessfulID" type="button" class="btnSuccessful" (click)="filter_status('Successfull')"> Successful </button>
-                <select  name="sortBy" id="" (change)="change_sortBy(sortBy.value)" #sortBy>
+                <button id="btnDefaultID" type="button" class="btnFilterOrder btnProcessing checked" (click)="filter_status('',$event)">Tất cả đơn hàng </button>
+                <button id="btnProcessingID" type="button" class="btnFilterOrder btnProcessing" (click)="filter_status('Processing',$event)"> Processing </button>
+                <button id="btnSuccessfulID" type="button" class="btnFilterOrder btnSuccessful" (click)="filter_status('Successfull',$event)"> Successful </button>
+                <select class="filterByPrice" name="sortBy" id="" (change)="change_sortBy(sortBy.value)" #sortBy>
                     <option value="">Mặc định</option>
                     <option value="price_asc">Giá tăng dần</option>
                     <option value="price_desc">Giá giảm dần</option>
@@ -56,8 +53,8 @@
                     </div>
                     <div class="bottom">
                         <!-- <button class="btnUpdateStatusOrder" routerLink="detail-order">Cập nhật trạng thái</button> -->
-                        <span>Cập nhật trạng thái</span>
-                        <select  name="status_update" id="" (change)="update_status_order(order._id , status_update.value)" #status_update>
+                        <span style="margin-right: 5px;">Cập nhật trạng thái: </span>
+                        <select class="selectUpdateStatus" name="status_update" id="" (change)="update_status_order(order._id , status_update.value)" #status_update>
                             <option value="">Hiện tại : {{order.order_status }}</option>
                             <option value="Successfull">Successfull</option>
                             <option value="Processing">Processing</option>
@@ -66,7 +63,12 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-template #elseBlock>Chưa có đơn hàng nào...</ng-template>
+            <ng-template #elseBlock>
+                <div class="" style="text-align: center; padding: 10px; display: grid; align-items: center; justify-content: center;">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-order-history-illustration-download-in-svg-png-gif-file-formats--previous-orders-past-purchases-records-empty-ecommerce-states-pack-e-commerce-shopping-illustrations-9741057.png?f=webp" style="width: 200px;"/>
+                    <span style="display: block; padding: 5px;">Chưa có đơn hàng nào...</span>
+                </div>
+            </ng-template>
              <!-- Order -->  
         </div>
         <!-- Pagination -->
