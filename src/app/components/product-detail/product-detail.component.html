@@ -368,6 +368,8 @@
                         <span>{{ product.product_name }}</span>
                         <div class="relatedProductOfShopPriceSale">
                             <span class="relatedProductOfShopPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
+                        </div>
+                        <div class="relatedProductOfShopRating">
                             <span class="relatedProductOfShopSold">
                                 <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></i>
                                 <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></i>
@@ -376,8 +378,6 @@
                                 <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></i>
                             </span>
                             <span class="relatedProductOfShopSold">Đã bán {{product.product_sold_quantity}}</span>
-                            
-
                         </div>
                     </button>
                     </div>
