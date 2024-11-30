@@ -50,6 +50,12 @@ export class OrderManagementComponent {
     this.router.navigate([], { relativeTo: this.route, queryParams: { page: page , sortBy : this.sortBy , status : this.order_status }, queryParamsHandling: 'merge' });
     this.update_data(page , this.sortBy , this.order_status)
   }
+
+  filter_status(status:string){
+    this.page = 1
+    this.order_status = status
+    this.update_data(this.page, this.sortBy, status)
+  }
   
   isActive(page: number): boolean { return this.currentPage === page; }
 

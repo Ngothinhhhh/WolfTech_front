@@ -3,7 +3,18 @@
     <div class="title">
         <span>Quản lý đơn hàng</span>
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
+        <div class="filterByPrice">
+            <span>Sắp xếp theo</span>
+            <select  name="sortBy" id="" #sortBy>
+                <option value="">Mặc định</option>
+                <option value="price_asc">Giá tăng dần</option>
+                <option value="price_desc">Giá giảm dần</option>
+                <option value="time_desc">Mới nhất</option>
+                <option value="sales">Lượt mua</option>
+            </select>
+        </div>
     </div>
+    
     <!-- Bảng sản phẩm -->
     <div class="productTable">
         <div class="titleTable">
@@ -15,8 +26,8 @@
         </div>
         <div class="tableContainer">
             <div class="orderListNav">
-                <button id="btnProcessingID" type="button" class="btnProcessing checked"> Processing </button>
-                <button id="btnSuccessfulID" type="button" class="btnSuccessful"> Successful </button>
+                <button id="btnProcessingID" type="button" class="btnProcessing checked" (click)="filter_status('Processing')"> Processing </button>
+                <button id="btnSuccessfulID" type="button" class="btnSuccessful" (click)="filter_status('Successfull')"> Successful </button>
             </div>
             <!-- Order -->
             <ng-container *ngIf="listOrder.length > 0 else elseBlock">
