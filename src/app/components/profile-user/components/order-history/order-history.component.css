@@ -191,6 +191,40 @@
     font-weight: bold;
     color: #d9534f;
 }
+.timeline {
+    position: relative;
+    margin-left: 20px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: green;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: blue;
+}
+.timeline-item.gray::before {
+    background: gray;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
 
 
 
