@@ -4,6 +4,7 @@ import { UserServiceService } from '../../user-service.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environments';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,6 +21,7 @@ export class Checkout1Component {
     private http: HttpClient,
     private user_service: UserServiceService,
     private router: Router,
+    private toastr : ToastrService
 
   ) { }
 
@@ -111,7 +113,7 @@ export class Checkout1Component {
         if(data.code == 200){
           this.user_service.delete_order_cart(this.token).subscribe((data:any)=>{
             this.isAvailable = true;
-            alert("Đặt hàng thành công");
+            this.toastr.success("Đã mua hàng thành công");
             (document.getElementById('xxx') as HTMLButtonElement).disabled = true;
             (document.getElementById('xxx') as HTMLButtonElement).style.background = 'pink';
             (document.getElementById('xxxx') as HTMLButtonElement).disabled = true;

@@ -3,9 +3,9 @@
         <i class="fa-solid fa-arrow-left"></i>
     </button>
     <div class="detailOrder">
-        <span class="titleDetailOrder">Chi tiết đơn đặt hàng</span>
+        <span class="titleDetailOrder">Thông tin đơn hàng : </span>
         <!-- Order -->
-        <div class="order">
+        <div class="order" *ngIf="detail_order._id else other_content">
             <div class="buyerName" style="padding-top: 15px;">
                 <span>Mã hóa đơn: <span style="color: #222; font-weight: 400;">{{detail_order._id}}</span></span>
             </div>
@@ -48,5 +48,8 @@
                 <button class="btnDetailOrder" onclick="history.back()">Trở về</button>
             </div>
         </div>
+        
+        <ng-template #other_content>Không có thông tin về đơn hàng này.</ng-template>
+
     </div>
 </div>

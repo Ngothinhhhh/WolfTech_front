@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
 import { UserServiceService } from '../../user-service.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-review',
@@ -14,7 +15,8 @@ export class ReviewComponent {
   constructor(
     private route : ActivatedRoute,
     private user_service : UserServiceService,
-    private router: Router
+    private router: Router,
+    private toastr : ToastrService
   ){}
 
   product_id     : string  = '' 
@@ -111,7 +113,7 @@ create_review(){
   
   this.user_service.create_review(formData,this.token).subscribe((data:any)=>{
     if(data.code == 200){
-      alert("Đánh giá hoàn tất")
+      this.toastr.success("Đánh giá hoàn tất")
       this.router.navigate(["/profile-user/order-history"])
     } else{
       console.log(data.error);

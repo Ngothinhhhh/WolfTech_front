@@ -5,6 +5,7 @@ import { UserServiceService } from '../../../../user-service.service';
 import { ActivatedRoute,ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-order-management',
   standalone: true,
@@ -19,7 +20,8 @@ export class OrderManagementComponent {
     private user_service:UserServiceService,
     private router:Router,
     private route:ActivatedRoute,
-    private datePipe :DatePipe
+    private datePipe :DatePipe,
+    private toastr : ToastrService
   ){}
 
   token:string = localStorage.getItem("token") || ''
@@ -80,7 +82,7 @@ export class OrderManagementComponent {
     console.log(status_update);
     this.user_service.update_statusOrder_for_Admin(this.token , order_id ,status_update).subscribe((data:any)=>{
       if (data.code == 200) {
-        alert("Thông tin đơn hàng sau khi thay đổi")
+        this.toastr.success("Thông tin đơn hàng sau khi thay đổi")
         this.router.navigate(["/admin-shop/order-management/detail-order"] , { queryParams : { orders_ID : order_id }  }  )
         this.update_data(this.page,this.sortBy,this.order_status)
         console.log(data.data);
@@ -95,5 +97,6 @@ export class OrderManagementComponent {
   }
   
   isActive(page: number): boolean { return this.currentPage === page; }
+
 
 }

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { UserServiceService } from '../../user-service.service';
 import { AppServiceService } from '../../app-service.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
   constructor(
     private service : UserServiceService,
-    private app_service : AppServiceService,
+    private toastr : ToastrService,
     private router:Router
 
   ){}
@@ -44,10 +45,10 @@ export class SignUpComponent {
     formData.append('user_gender', gender.value);
     formData.append('user_address', "thanhphohochiminh");        
     this.service.user_register(formData).subscribe((data)=>{
-      if(data.code == 400) alert(data.error)
+      if(data.code == 400) this.toastr.error(data.error)
       else if(data.code == 200){
         this.router.navigate(['/sign-in'])
-        alert("Register successfull")
+        this.toastr.success("Register successfull")
       } 
       else console.log(data.error);
     })

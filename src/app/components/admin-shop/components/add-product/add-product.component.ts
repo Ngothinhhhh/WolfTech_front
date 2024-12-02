@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ProductServiceService } from '../../../../product-service.service';
 import { UserServiceService } from '../../../../user-service.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
 export class AddProductComponent {
   constructor(
     private service_product:ProductServiceService,
-    private user_service:UserServiceService
+    private user_service:UserServiceService,
+    private toastr : ToastrService
   ){}
 
 
@@ -297,9 +299,9 @@ export class AddProductComponent {
     this.service_product.create_product(formData,this.token).subscribe( data => {
       if(data.code == 200 ){
         window.location.reload()
-        alert("OKE")
+        this.toastr.success("OKE")
       } 
-      if(data.code == 504 ) alert("Xem lai cac truong")
+      if(data.code == 504 ) this.toastr.error("Xem lai cac truong")
       if(data.error ) console.log(data.error);
     })
   }

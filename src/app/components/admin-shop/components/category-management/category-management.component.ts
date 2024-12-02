@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductServiceService } from '../../../../product-service.service';
 import { UserServiceService } from '../../../../user-service.service';
 import { RouterOutlet,Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-category-management',
   standalone: true,
@@ -13,7 +14,7 @@ import { RouterOutlet,Router } from '@angular/router';
 })
 export class CategoryManagementComponent {
   constructor(
-    private product_service : ProductServiceService,
+    private toastr : ToastrService,
     private user_service : UserServiceService,
     private route : ActivatedRoute,
     private router: Router
@@ -39,7 +40,7 @@ export class CategoryManagementComponent {
   delete_category(categoriesID:string){
     return this.user_service.delete_category(categoriesID,this.token).subscribe( (data:any)=>{
       if(data.code == 200){
-        alert(data.data)
+        this.toastr.success(data.data)
         this.update_category(this.page)
       }
       else console.log(data.error);

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductServiceService } from '../../../../product-service.service';
 import { environment } from '../../../../../environments/environments';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -13,7 +14,8 @@ import { environment } from '../../../../../environments/environments';
 })
 export class AddCategoryComponent {
   constructor(
-    private product_service : ProductServiceService
+    private product_service : ProductServiceService,
+    private toastr : ToastrService
   ){}
 
   parentCategories:any[] = environment.parentCategories
@@ -24,10 +26,10 @@ export class AddCategoryComponent {
   create_category(category_name:string,s_descrip:string){
     this.product_service.create_category(category_name,s_descrip,this.parentCategory,this.token).subscribe((data:any)=>{
       if (data.code == 200) {
-        alert("Tạo Danh mục Thành Công.")
+        this.toastr.success("Tạo Danh mục Thành Công.")
       }
       else if(data.code == 504){
-        alert(data.error)
+        this.toastr.error(data.error)
       }
       else{
         console.log(data.error);

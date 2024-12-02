@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { environment } from '../../../../../environments/environments';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-history',
@@ -19,7 +20,7 @@ import { DatePipe } from '@angular/common';
 export class OrderHistoryComponent {
   constructor(
     private user_service    : UserServiceService,
-    private product_service : ProductServiceService,
+    private toastr : ToastrService,
     private router : Router,
     private datePipe: DatePipe
   ){}
@@ -57,14 +58,14 @@ export class OrderHistoryComponent {
 
   }
 
-  updateListOrder(){
-    this.user_service.getList_order(this.token,this.page, this.order_status).subscribe((data:any)=>{
+  async updateListOrder(){
+    this.user_service.getList_order(this.token,this.page, this.order_status).subscribe(async (data:any)=>{
       if(data.code == 200 ){
         this.list_order = data.data
         for( let order of this.list_order ){
           for( let detail of order.order_details){
             if (detail.variant_id  && detail.product_id) {
-              this.get_detail_product(detail.product_id,detail.variant_id)
+              await this.get_detail_product(detail.product_id,detail.variant_id)
             }
             else{
               console.log("cc");
@@ -91,7 +92,7 @@ export class OrderHistoryComponent {
     }
     this.user_service.create_review(formData,this.token).subscribe((data:any)=>{
       if(data.code == 200){
-        alert("Đánh giá hoàn tất")
+        this.toastr.success("Đánh giá hoàn tất")
         // this.router.navigate(["/profile-user/order-history"])
       } else{
         console.log(data.error);
@@ -122,6 +123,7 @@ export class OrderHistoryComponent {
     this.review_boolean = true
     this.current_review_id = order_id
   } 
+  
   close_review(){
     this.product_id = ''
     this.variant_id= ''
@@ -165,24 +167,27 @@ export class OrderHistoryComponent {
           this.create_arr_review()
         }
       }else{
-        alert("LOI")
+        this.toastr.error("LOI")
       }
     }else{
-      alert("Error")
+      this.toastr.error("Error")
     }
   }
 
-  async create_arr_review(){
-    for(const element of this.Object_review_array){
-      console.log(element);
-      await this.create_review(element.product_id,element.variant_id,element.order_id,element.review_rating,element.review_context,element.file_array)
+  async create_arr_review() {
+    try {
+      for (const element of this.Object_review_array) {
+        await this.create_review(element.product_id, element.variant_id, element.order_id, element.review_rating, element.review_context, element.file_array);
+      }
+      this.toastr.success("Đánh giá hoàn tất");
+      await this.updateListOrder(); // Đảm bảo updateListOrder cũng là một hàm async nếu cần
+    } catch (error) {
+      this.toastr.error("Có lỗi xảy ra khi đánh giá");
+      console.error(error);
     }
-    // await this.Object_review_array.forEach(element => {
-    //    this.create_review(element.product_id,element.variant_id,element.order_id,element.review_rating,element.review_context,element.file_array)
-    // }) // not use because forEach không hoạt động với async await, thay vào đó dùng forOf 
-    await alert("Đánh giá hoàn tất")
-    await this.updateListOrder()
   }
+  
+  
 
   format_date(date:string){
     return this.datePipe.transform(date,'medium')

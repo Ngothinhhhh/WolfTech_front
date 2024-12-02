@@ -9,6 +9,7 @@ import { ProductServiceService } from '../../product-service.service';
 import { UserServiceService } from '../../user-service.service';
 import { Location } from '@angular/common';
 import { environment } from '../../../environments/environments';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -24,7 +25,8 @@ export class ProductDetailComponent {
     private route:ActivatedRoute,
     private product_service : ProductServiceService,
     private user_service : UserServiceService,
-    private _location: Location
+    private _location: Location,
+    private toastr : ToastrService
   ){}
 
   productId:string = ''
@@ -91,10 +93,10 @@ export class ProductDetailComponent {
   add_cart(){  
     return this.user_service.add_cart(this.quantity,this.productId,this.variant_id,this.token).subscribe((data:any)=>{
       if(data.code == 200){        
-        alert("Thêm thành công")
+        this.toastr.success("Thêm thành công")
       }
       else if(data.code == 204){
-        alert(data.error)
+        this.toastr.success(data.error)
       }
       else{
         console.log(data.error);

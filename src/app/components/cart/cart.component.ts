@@ -8,11 +8,13 @@ import { UserServiceService } from '../../user-service.service';
 import { ProductServiceService } from '../../product-service.service';
 import { AppServiceService } from '../../app-service.service';
 import { environment } from '../../../environments/environments';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink, HeaderComponent, FooterComponent, RouterOutlet,CommonModule],
+  imports: [RouterLink, HeaderComponent, FooterComponent, RouterOutlet,CommonModule,],
+  providers : [ ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -20,7 +22,8 @@ export class CartComponent {
 
   constructor(
     private user_service:UserServiceService,
-    private product_service:ProductServiceService
+    private product_service:ProductServiceService,
+    private toastr : ToastrService
   ){}
 
   private app_service = inject(AppServiceService)
@@ -38,7 +41,7 @@ export class CartComponent {
   remove_cart(product:string,variant_id:string){
     return this.product_service.remove_cart(product,variant_id,this.token).subscribe( (data:any)=>{
       if(data.code == 200){
-        alert("Xóa thành công")
+        this.toastr.success("Xóa thành công");
         this.update_cart()
       } 
       else console.log(data.error);
@@ -48,7 +51,8 @@ export class CartComponent {
   change_quality(quantity:any,product:any,variant_id:any){
     return this.user_service.update_cart(quantity.value,product,variant_id,this.token).subscribe((data:any)=>{
       if(data.code == 200) {
-        alert("Update thành công")
+        this.toastr.success("Update thành công");
+        // alert("Update thành công")
         this.update_cart()
       } 
       console.log(data.error); 

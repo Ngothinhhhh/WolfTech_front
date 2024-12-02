@@ -216,44 +216,42 @@
     border-right: .5px solid #efefef;
 }
 .filterByPrice{
-    margin: 0;
-    padding: 15px;
-    background-color: #efefef;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    height: fit-content;
-    margin-top: 10px;
-}
-.productManagementContainer .title .filterByPrice .title{
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    transition: ease-out .2s;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
-    font-weight: 500;
-    color: black;
-    margin: 0px 5px;
+    border-right: .5px solid #efefef;
+    border-bottom: 3px solid transparent;
 }
-.filterByPrice form button{
-    border: .5px solid #a61713;
-    background: #a61713;
-    padding: 5px;
-    color: #fff;
+.filterByPrice:hover{
+    background-color: #efefef;
+}
+.filterByPrice:active{
+    background-color: #b3b3b3;
+}
+.selectUpdateStatus{
+    background: transparent;
+    padding: 9.5px;
     border-radius: 4px;
-    cursor: pointer;
+    border: .5px solid #000;
+    font-size: 14px;
     font-weight: 400;
-}
-.filterByPrice form button:hover{
-    background-color: #971612;
-}
-.filterByPrice select{
-    margin: 0 5px;
-    padding: 5px;
-    border: .5px solid #efefef;
-    background-color: #fff;
-    color: #111;
-    border-radius: 4px;
-    font-weight: 500;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     cursor: pointer;
+    transition: all .1s;
+    margin-right: 5px;
 }
+.selectUpdateStatus:hover{
+    background-color: #efefef;
+}
+.selectUpdateStatus:active{
+    background-color: #b3b3b3;
+}
+
 
 /*                           MEDIA QUERY                          */
 /***** 1. Thiết bị có kích thước màn hình 740px - 1023px (màn hình tablet và laptop nhỏ) *****/

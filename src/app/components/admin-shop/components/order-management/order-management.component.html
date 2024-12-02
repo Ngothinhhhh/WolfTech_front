@@ -4,6 +4,10 @@
         <span>Quản lý đơn hàng</span>
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
     </div>
+    <div class="searchBox">
+        <input type="text" placeholder="Tìm kiếm..." name="order_id" id="" value="" #order_id>
+        <button class="btnDetailOrder" routerLink="detail-order" [queryParams]="{ orders_ID : order_id.value  }"><i class="fas fa-search"></i>Chi tiết</button>
+    </div>     
     
     <!-- Bảng sản phẩm -->
     <div class="productTable">
@@ -35,6 +39,9 @@
                         <span>Mã Đơn Hàng : <span style="color: #222; font-weight: 400;">{{order._id}}</span></span>
                     </div>
                     <div class="buyerName">
+                        <span>Mã tài khoản : <span style="color: #222; font-weight: 400;">{{order.customer_id}}</span></span>
+                    </div>
+                    <div class="buyerName">
                         <span>Tên người nhận : <span style="color: #222; font-weight: 400;">{{order.order_buyer}}</span></span>
                     </div>
                     <div class="middle">
@@ -55,8 +62,8 @@
                     </div>
                     <div class="bottom">
                         <!-- <button class="btnUpdateStatusOrder" routerLink="detail-order">Cập nhật trạng thái</button> -->
-                        <span>Cập nhật trạng thái</span>
-                        <select  name="status_update" id="" (change)="update_status_order(order._id , status_update.value)" #status_update>
+                        <span style="margin-right: 5px;">Cập nhật trạng thái: </span>
+                        <select class="selectUpdateStatus" name="status_update" id="" (change)="update_status_order(order._id , status_update.value)" #status_update>
                             <option value="">Hiện tại : {{order.order_status }}</option>
                             <option value="Ordered">Ordered - Đã lên đơn</option>
                             <option value="Shipping">Shipping - Đang được vận chuyển</option>
@@ -67,7 +74,12 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-template #elseBlock>Chưa có đơn hàng nào...</ng-template>
+            <ng-template #elseBlock>
+                <div class="" style="text-align: center; padding: 10px; display: grid; align-items: center; justify-content: center;">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-order-history-illustration-download-in-svg-png-gif-file-formats--previous-orders-past-purchases-records-empty-ecommerce-states-pack-e-commerce-shopping-illustrations-9741057.png?f=webp" style="width: 200px;"/>
+                    <span style="display: block; padding: 5px;">Chưa có đơn hàng nào...</span>
+                </div>
+            </ng-template>
              <!-- Order -->  
         </div>
         <!-- Pagination -->
