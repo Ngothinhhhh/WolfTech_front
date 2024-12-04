@@ -332,38 +332,37 @@
     scroll-snap-type: x;
     scroll-behavior: smooth;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer{
+
+.listOtherProductOfShop .btnSuggestItemContainer{
     padding: 5px;
+    width: 20%;
+    height: 315px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer button{
+.listOtherProductOfShop .btnSuggestItem{
     border: .5px solid #0000001c;
-    /* padding: 10px; */
-    display: grid;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
     cursor: pointer;
-    /* margin: 15px 5px; */
     position: relative;
     background-color: white;
     padding: 0;
-}
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop:hover{
-    border: .5px solid #a61713;
-}
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop img{
+    height: 100%;
     width: 100%;
-    border-radius: 5px 5px 0px 0px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop span{
-    font-size: 16px;
-    font-weight: 400;
-    color: black;
-    text-align: left;
-    padding: 5px;
-    margin: 3px 0px;
+.listOtherProductOfShop .btnSuggestItem .ratingOfProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopSaleTag{
+.listOtherProductOfShop .btnSuggestItem .ratingOfProduct .starRatingOfProduct .checked{ 
+    color: #a61713;
+    font-weight: 600;
+}
+.listOtherProductOfShop .btnSuggestItem .ratingOfProduct .starRatingOfProductBox{
+   display: flex;
+   align-items: center;
+}
+.listOtherProductOfShop .btnSuggestItem .suggestItemSaleTag{
     background-color: #feeeeac8;
     /* color: orangered; */
     color: #a61713;
@@ -373,22 +372,51 @@
     padding: 3px;
     border-radius: 0px 5px 0px 0px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale{
+.listOtherProductOfShop .btnSuggestItem:hover{
+    /* border: .5px solid orangered; */
+    /* border: .5px solid #a61713; */
+    transition: all .2s;
+    transform: translateY(-2px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.listOtherProductOfShop .btnSuggestItem .suggestItemPriceSale{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin: 8px 5px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale .otherProductOfShopPrice{
+.listOtherProductOfShop .btnSuggestItem .suggestItemPriceSale .suggestItemPrice{
     /* color: orangered; */
     color: #a61713;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
 }
-.otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale .otherProductOfShopSold{
+.listOtherProductOfShop .btnSuggestItem .suggestItemPriceSale .suggestItemSold{
     font-weight: 300;
     color: black;
     font-size: 12px;
 }
+.listOtherProductOfShop .btnSuggestItem img{
+    width: 100%;
+    height: 60%;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 5px 5px 0px 0px;
+}
+.listOtherProductOfShop .btnSuggestItem .productName{
+    font-size: 15px;
+    font-weight: 400;
+    color: #222;
+    text-align: left;
+    margin: 5px;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Hết css phần các sản phẩm gợi ý */
 
 /* CSS phần Tất cả sản phẩm trong Shop page */
