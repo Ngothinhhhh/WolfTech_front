@@ -65,10 +65,14 @@ export class Checkout1Component {
     };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post<any>('http://localhost:8888/order/create_payment_url', paymentData,{headers})
+    
+
+    this.http.post<any>('http://localhost:5000/payment', paymentData,{headers})
       .subscribe( (response:any) => {
         // Chuyển hướng người dùng tới URL thanh toán nhận được từ server
-        window.location.href = response.redirectUrl;
+        window.location.href = response.payUrl;
+        // console.log(response.redirectUrl);
+        
       }, (error:any) => {
         console.error('Lỗi khi tạo URL thanh toán:', error);
       });

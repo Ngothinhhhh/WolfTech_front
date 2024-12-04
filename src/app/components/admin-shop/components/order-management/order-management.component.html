@@ -5,7 +5,7 @@
         <span style="color: #444; font-size: 16px; font-weight: 400;">Kiểm tra, xử lý các đơn đặt hàng</span>
     </div>
     <div class="searchBox">
-        <input type="text" placeholder="Tìm kiếm..." name="order_id" id="" value="" #order_id>
+        <input type="text" placeholder="Tìm theo mã đơn hàng..." name="order_id" id="" value="" #order_id>
         <button class="btnDetailOrder" routerLink="detail-order" [queryParams]="{ orders_ID : order_id.value  }"><i class="fas fa-search"></i>Chi tiết</button>
     </div>     
     

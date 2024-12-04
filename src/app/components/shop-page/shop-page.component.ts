@@ -135,6 +135,4 @@ export class ShopPageComponent {
     this.router.navigate([`/product-detail/${product_slug}`] , { queryParams : { idProduct : product_id}})
   }
 
-  // Thêm phương thức để cuộn đến một phần tử cụ thể
-  // scrollToElement(elementId: string) { const element = document.getElementById(elementId); if (element) { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable,map,Subject } from 'rxjs';
+import { Observable,map,Subject,BehaviorSubject } from 'rxjs';
 
 
 
@@ -18,7 +18,9 @@ export class AppServiceService {
 
   constructor(
     private http : HttpClient
-  ) { }
+  ) {
+    const length_cart :string =  '0'
+   }
 
   checkToken(token:any): Observable<any>{
     let api = 'checkToken'
@@ -34,13 +36,13 @@ export class AppServiceService {
   sendData(data:{key:string,value:any}){
     this.datasubject.next(data) // Phát dữ liệu tới tất cả các observer đã đăng ký
   }
+
   getData(){
     return this.datasubject.asObservable()  // Trả về một Observable để các observer có thể đăng ký và nhận dữ liệu
   }
   // nhận dữ liệu 
   send_data(object:any): Observable<any>{
     let api = 'create_payment_url'
-    
   return this.http.post(this.vnpay + api,object,this.options)
   }
 
