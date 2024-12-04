@@ -35,7 +35,7 @@ export class ShopPageComponent {
     private route:ActivatedRoute,
     private user_service:UserServiceService,
     private router: Router,
-    private _location: Location,
+    private location: Location,
   ){}
 
   ngOnInit(){
@@ -88,29 +88,24 @@ export class ShopPageComponent {
 
   productByCondition(page:number,sortBy:string,categoryId:string,event: any){
     this.sortBy = sortBy;
-    // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: this.page, sortBy: this.sortBy, category_id: categoryId, idSeller: this.idSeller }, queryParamsHandling: 'merge',})
-    // let listCategoryOfProduct = (document.getElementsByClassName('categoryOfProduct') as any);
-    // for(let i of listCategoryOfProduct){
-    //   i.classList.remove('active');
-    // }
-    // (document.getElementById(categoryId) as HTMLElement).classList.add('active');
+    this.category_id = categoryId
+    this.location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
     this.update_product(page,sortBy,categoryId);
     this.handleClickTabShopPage('btnAllProductID');
   }
 
-  updatePage(page:number, event: any){
+  updatePage(page: number, event: any) {
+    this.page = page;
     let pagination = document.getElementById('paginationInShopPageID');
     pagination?.childNodes.forEach(child => {
-      (child as any).classList.remove('active');
-    })
-    // console.log(event.target)
+      (child as HTMLElement).classList.remove('active');
+    });
     event.target.classList.add('active');
-    // this._location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
-    this.update_product(page,this.sortBy,this.category_id)
+    this.location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
+    this.update_product(page, this.sortBy, this.category_id);
   }
 
+  
   update_product(page:number,sortBy:string,categoryId:string){
     return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
       if(data.code == 200){        

@@ -10,6 +10,7 @@ import { UserServiceService } from '../../user-service.service';
 import { Location } from '@angular/common';
 import { environment } from '../../../environments/environments';
 import { ToastrService } from 'ngx-toastr';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-product-detail',
@@ -25,7 +26,7 @@ export class ProductDetailComponent {
     private route:ActivatedRoute,
     private product_service : ProductServiceService,
     private user_service : UserServiceService,
-    private _location: Location,
+    private location: Location,
     private toastr : ToastrService
   ){}
 
@@ -48,10 +49,11 @@ export class ProductDetailComponent {
   baseUrl: string = environment.baseUrl
 
   list_product : any[] = []
+  top_rating_shop : any[] = []
 
 
 
-  ngOnInit(){
+  ngOnInit(){ // các leenjg trong ngOnInit() không được thực hiện đồng bộ
     // get data from param in URL
     this.route.paramMap.subscribe( (params:ParamMap)=>{
       this.product_slug = params.get("product_slug") || ''
@@ -62,7 +64,14 @@ export class ProductDetailComponent {
       this.productId = param.get("idProduct") || ''    
       this.product_service.detail_product(this.productId).subscribe( (data:any)=>{
         this.product_infor = data.data
-        // console.log(this.product_infor);
+        this.product_service.top_rating_by_IDseller(this.product_infor.userID._id).subscribe((data:any)=>{
+          if (data.code == 200) {
+            this.top_rating_shop = data.data
+            // console.log(this.top_rating_shop = data.data)
+          } else {
+            console.log(data.error);
+          }
+        })
         this.recent_reviews = this.product_infor.recent_reviews
         this.product_imgs = this.product_infor.product_imgs      
         this.product_details = this.product_infor.product_details
@@ -72,15 +81,19 @@ export class ProductDetailComponent {
 
     this.user_service.recommender(this.token).subscribe((data:any)=>{
       if (data.code == 200) {
-        console.log(data.data);
+        // console.log(data.data);
         this.list_product = data.data
       } else {
         console.log(data.error);
       }
     })
     
+    
 
   }
+
+  
+  
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -91,18 +104,25 @@ export class ProductDetailComponent {
   }
 
   add_cart(){  
-    return this.user_service.add_cart(this.quantity,this.productId,this.variant_id,this.token).subscribe((data:any)=>{
-      if(data.code == 200){        
-        this.toastr.success("Thêm thành công")
-      }
-      else if(data.code == 204){
-        this.toastr.success(data.error)
-      }
-      else{
-        console.log(data.error);
-      }
-    })
+    if (this.token) {
+      this.user_service.add_cart(this.quantity,this.productId,this.variant_id,this.token).subscribe((data:any)=>{
+        if(data.code == 200){        
+          this.toastr.success("Thêm thành công")
+        }
+        else if(data.code == 204){
+          this.toastr.success(data.error)
+        }
+        else{
+          console.log(data.error);
+        }
+      })
+    } else {
+      this.toastr.error("Bạn cần đăng nhập để mua hàng.")
+    }
+  }
 
+  buy_now(){
+    this.toastr.success("Thêm vào giỏ hàng rồi mua sau nè.")
   }
 
   // tăng giảm số lượng sản phẩm muốn mua
@@ -162,6 +182,7 @@ export class ProductDetailComponent {
       (child as any).classList.remove('active');
     })
     event.target.classList.add('active');
+    // this.location.go(`/product-detail/${this.product_slug}?idProduct=${this.productId}?page_review=${page}`)
     this.getList_review(page, this.productId)
   }
 

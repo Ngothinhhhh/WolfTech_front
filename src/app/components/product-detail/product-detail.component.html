@@ -30,7 +30,7 @@
             <div class="ratingOfProduct">
                 <div><i class="fa-solid fa-comment"></i>{{product_infor.review_count}} Đánh Giá</div>
                 <div class="starRatingOfProduct"><b>Điểm đánh giá :</b>
-                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 1" style="color: red;"></span>
+                    <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 0" style="color: red;"></span>
                     <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 2" style="color: red;"></span>
                     <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 3" style="color: red;"></span>
                     <span class="fa fa-star" *ngIf="product_infor.product_avg_rating >= 4" style="color: red;"></span>
@@ -81,10 +81,10 @@
                 </div>
             </div>
             <div class="btnBuyProduct">
-                <button class="btnAddToCart" (click)="add_cart()" >
+                <button class="btnAddToCart" (click)="add_cart()">
                     <i class="fa-solid fa-cart-plus"></i> Thêm Vào Giỏ Hàng
                 </button>
-                <button class="btnOrderNow">
+                <button class="btnOrderNow" (click)="buy_now()">
                     Mua Ngay
                 </button>
             </div>
@@ -176,7 +176,7 @@
         <div class="productCommentContainer">
             <!-- Đánh giá -->
             
-            <ng-container *ngIf="recent_reviews.length > 0 else elseBlock">
+            <ng-container *ngIf="recent_reviews.length > 0 else elseBlock1">
                 <div class="productComment" *ngFor="let review of recent_reviews">
                     <div class="topOfProductComment">
                         <div class="avatarOfProductComment">
@@ -184,7 +184,8 @@
                         </div>
                         <div class="userOfProductComment">
                             <span>{{review.user_infor.user_name}}</span>
-                            <span style="color: #555;">{{review.review_date}}</span>
+                            <span style="color: #555;" *ngIf="review.review_date">{{review.review_date}}</span>
+                            <span style="color: #555;" *ngIf="review.createdAt">{{review.createdAt}}</span>
                             <span style="color: #555;">
                                 <i class="fa-solid fa-star" *ngIf="review.review_rating >= 1" style="color: red;"></i>
                                 <i class="fa-solid fa-star" *ngIf="review.review_rating >= 2" style="color: red;"></i>
@@ -210,7 +211,7 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-template #elseBlock>Mua hàng để trải nghiệm ngay.</ng-template>
+            <ng-template #elseBlock1>Mua hàng và để lại đánh giá ngay bây giờ.....</ng-template>
             
         </div>
         <!-- Pagination -->
@@ -243,86 +244,25 @@
         </div>
         <div class="row listOtherProductOfShop">
             <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
+            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer" *ngFor="let product of top_rating_shop">
+                <button class="btnRelatedProductOfShop" routerLink="/product-detail/{{product.product_slug}}" [queryParams]="{ idProduct : product._id }">
+                    <div class="relatedProductOfShopSaleTag">
                         -50%
                     </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22090-m8b81fd6hthva7@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    <img [src]="product.product_imgs[0].link" alt="">
+                    <span>{{ product.product_name }}</span>
+                    <div class="relatedProductOfShopPriceSale">
+                        <span class="relatedProductOfShopPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
                     </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvcrh2vd6gel00@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpje74h6iqt105@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/8463cbd5e2468b63f8a83f63c2ebf411@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/b8a07c67a7b0bff34e66aa8ace1c0aee@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
-                    </div>
-                </button>
-            </div>
-            <!-- Item -->
-            <div class="col l-2 m-3 c-4 btnOtherProductOfShopContainer">
-                <button class="btnOtherProductOfShop">
-                    <div class="otherProductOfShopSaleTag">
-                        -50%
-                    </div>
-                    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22100-ips092ft3pivdb@resize_w450_nl.webp" alt="">
-                    <span>Combo 3 chai Nước giặt OMO</span>
-                    <div class="otherProductOfShopPriceSale">
-                        <span class="otherProductOfShopPrice">171.000 đ</span>
-                        <span class="otherProductOfShopSold">Đã bán 7,5k</span>
+                    <div class="relatedProductOfShopRating">
+                        <span class="relatedProductOfShopSold">
+                            <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 1" style="color: red;"></i>
+                            <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 2" style="color: red;"></i>
+                            <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 3" style="color: red;"></i>
+                            <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 4" style="color: red;"></i>
+                            <i class="fa-solid fa-star" *ngIf="product.product_avg_rating >= 5" style="color: red;"></i>
+                        </span>
+                        <span class="relatedProductOfShopSold">Đã bán {{product.product_sold_quantity}}</span>
                     </div>
                 </button>
             </div>

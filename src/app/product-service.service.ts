@@ -78,5 +78,13 @@ export class ProductServiceService {
       const requestOptions =  {headers : headers}
       return this.http.post(this.url +  api , Object , requestOptions)
     }
+
+    top_rating_by_IDseller(Id_seller : string):Observable<any>{
+      let api = 'product/top_rating'
+      const data = {
+        Id_seller : Id_seller
+      }
+      return this.http.post(this.url + api , data , this.options)
+    }
     
 }

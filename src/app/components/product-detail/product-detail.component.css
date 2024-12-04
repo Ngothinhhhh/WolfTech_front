@@ -674,67 +674,80 @@
     overflow-x: auto;
     scrollbar-width: none;
     margin: 0;
-    /* padding: 5px; */
     scroll-snap-type: x;
     scroll-behavior: smooth;
+    padding: 10px; /* Thêm padding để tạo khoảng cách */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer{
-    padding: 5px;
+    padding: 10px; /* Tăng padding để tạo khoảng cách */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer button{
-    border: .5px solid #0000001c;
-    /* padding: 10px; */
+    border: 1px solid #0000001c; /* Tăng độ dày của viền */
     display: grid;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 10px; /* Tăng độ cong của viền */
     cursor: pointer;
-    /* margin: 15px 5px; */
-    position: relative;
     background-color: white;
-    padding: 0;
+    padding: 10px; /* Thêm padding để tăng kích thước */
+    width: 200px; /* Đặt kích thước cố định cho các nút */
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Thêm bóng để tạo hiệu ứng nổi */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop:hover{
-    border: .5px solid #a61713;
+    border: 1px solid #a61713;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Thêm bóng khi hover */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop img{
     width: 100%;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 10px 10px 0 0; /* Tăng độ cong của viền trên */
+    height: 150px; /* Đặt kích thước cố định cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop span{
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px; /* Tăng kích thước chữ */
+    font-weight: 500; /* Tăng độ đậm của chữ */
     color: black;
     text-align: left;
-    padding: 5px;
-    margin: 3px 0px;
+    padding: 10px; /* Tăng padding để tạo khoảng cách */
+    margin: 5px 0; /* Tăng khoảng cách giữa các phần tử */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopSaleTag{
     background-color: #feeeeac8;
-    /* color: orangered; */
     color: #a61713;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 3px;
-    border-radius: 0px 5px 0px 0px;
+    padding: 5px; /* Tăng padding để dễ nhìn hơn */
+    border-radius: 0 10px 0 0; /* Tăng độ cong của viền */
+    font-size: 14px; /* Tăng kích thước chữ */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    padding: 5px 10px; /* Thêm padding để tạo khoảng cách */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale .otherProductOfShopPrice{
-    /* color: orangered; */
     color: #a61713;
-    font-weight: 300;
-    font-size: 15px;
+    font-weight: 400; /* Tăng độ đậm của chữ */
+    font-size: 16px; /* Tăng kích thước chữ */
 }
+
 .productDetailInfo .otherProductOfShopContainer .listOtherProductOfShop .btnOtherProductOfShopContainer .btnOtherProductOfShop .otherProductOfShopPriceSale .otherProductOfShopSold{
     font-weight: 300;
     color: black;
-    font-size: 12px;
+    font-size: 13px; /* Tăng kích thước chữ */
 }
+
 /* Hết CSS phần sản phẩm khác của shop */
 
 /* CSS Phần sản phẩm liên quan */
