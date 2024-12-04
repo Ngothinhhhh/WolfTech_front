@@ -4,6 +4,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { ProductServiceService } from '../../product-service.service';
+import { Location } from '@angular/common';
 import { UserServiceService } from '../../user-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,7 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent {
   constructor(
-    private product_service :ProductServiceService,
+    private location :Location,
     private user_service : UserServiceService,
     private route : ActivatedRoute,
     private router : Router
@@ -136,8 +137,14 @@ export class ProductListComponent {
       (child as any).classList.remove('active');
     })
     event.target.classList.add('active');
-    this.router.navigate([], { relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge' });
-    this.getListProduct_byCategory(this.search_query_category, this.sortBy, page , this.rating, this.detail)
+    if (this.search_query) {
+      this.location.go(`/product-list?search_query=${this.search_query}&page=${page}&sortBy=${this.sortBy}&rating=${this.rating}`)
+      this.searching(this.search_query,this.sortBy, page, this.rating , this.detail)
+    } else {
+      this.location.go(`/product-list?search_query=${this.search_query_category}&page=${page}&sortBy=${this.sortBy}&rating=${this.rating}`)
+      this.getListProduct_byCategory(this.search_query_category, this.sortBy, page , this.rating, this.detail)
+
+    }
   }
 
   reset(){

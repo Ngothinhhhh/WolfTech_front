@@ -183,9 +183,9 @@
                             <img [src]="baseUrl + review.user_infor.user_avatar" alt="">
                         </div>
                         <div class="userOfProductComment">
-                            <span>{{review.user_infor.user_name}}</span>
-                            <span style="color: #555;" *ngIf="review.review_date">{{review.review_date}}</span>
-                            <span style="color: #555;" *ngIf="review.createdAt">{{review.createdAt}}</span>
+                            <span><b>{{review.user_infor.user_name}}</b></span>
+                            <span style="color: #555;" *ngIf="review.review_date">{{ format_date1(review.review_date) }}</span>
+                            <span style="color: #555;" *ngIf="review.createdAt">{{ format_date1(review.createdAt) }}</span>
                             <span style="color: #555;">
                                 <i class="fa-solid fa-star" *ngIf="review.review_rating >= 1" style="color: red;"></i>
                                 <i class="fa-solid fa-star" *ngIf="review.review_rating >= 2" style="color: red;"></i>
@@ -231,7 +231,13 @@
         <div class="topOfOtherProduct">
             <span class="titleOtherProductOfShop">CÁC SẢN PHẨM KHÁC CỦA SHOP</span>
             <div class="rightOfTopOtherProduct">
-                <a href="#">Xem tất cả</a>
+                <a routerLink="/shop-page/{{product_infor.userID.user_name}}"
+                 [queryParams]="{
+                    idSeller : product_infor.userID._id,
+                    category_id : '' ,
+                    page : 1,
+                    sortBy : ''
+                  }" >Xem sản phẩm cửa hàng</a>
                 <div class="btnMoveOtherProductContainer">
                     <button id="btnMoveOtherProductLeftID">
                         <i class="fa-solid fa-caret-left"></i>

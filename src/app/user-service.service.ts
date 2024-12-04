@@ -198,7 +198,7 @@ export class UserServiceService {
       sortBy : sortBy,
       page   : page,
       rating : rating,
-      detail : detail
+      detail : detail,
     }
     return this.http.post(this.url + api, object,this.options)
   }
@@ -236,10 +236,11 @@ export class UserServiceService {
     const api =`products/search?search_query=${search_query}&sortBy=${sortBy}&page=${page}`
     const body ={
       rating: rating ,
-      detail:detail
+      detail:detail,
     }
     return this.http.post(this.url + api, body, this.options)
   }
+
 
   recommender(token:string):Observable<any>{
     let api = "products/recommend" 

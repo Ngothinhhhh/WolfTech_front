@@ -21,10 +21,6 @@ export class SignUpComponent {
 
   ){}
   ngOnInit(){
-    // return this.app_service.checkToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY2ZmJlZmM0NTUyOTQxYzgyNjEzNDA0ZCIsInVzZXJfZW1haWwiOiJ0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRoaW5oIiwidXNlcl9waG9uZSI6IjEyMzQxMTEifSwiaWF0IjoxNzMwNzM1MDYxLCJleHAiOjE3MzA3NzEwNjF9.iMnK2g4Ghb7FLnGX5wks2iei-HL1e5GnwmL0mn1_tIw').subscribe( data => {
-    //   if(data.code == 200) console.log(data.data);
-    //   else console.log(data.error);
-    // })
   }
 
   selectedFile: File | null = null

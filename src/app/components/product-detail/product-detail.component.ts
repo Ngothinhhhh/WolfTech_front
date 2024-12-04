@@ -11,11 +11,13 @@ import { Location } from '@angular/common';
 import { environment } from '../../../environments/environments';
 import { ToastrService } from 'ngx-toastr';
 import { log } from 'node:console';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
   imports: [RouterLink,CommonModule, HeaderComponent, FooterComponent, RouterOutlet],
+  providers : [DatePipe],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -27,7 +29,8 @@ export class ProductDetailComponent {
     private product_service : ProductServiceService,
     private user_service : UserServiceService,
     private location: Location,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private datePipe : DatePipe
   ){}
 
   productId:string = ''
@@ -93,7 +96,9 @@ export class ProductDetailComponent {
   }
 
   
-  
+  format_date1(date_string:string){
+    return this.datePipe.transform(date_string,'medium')
+  }
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);

@@ -1,4 +1,4 @@
-import { Component,ChangeDetectorRef } from '@angular/core';
+import { Component,ViewChild , ElementRef } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet ,Router} from '@angular/router';
@@ -8,6 +8,8 @@ import { Location } from '@angular/common';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { __param } from 'tslib';
 import { environment } from '../../../environments/environments';
+import { DatePipe } from '@angular/common';
+import { ProductServiceService } from '../../product-service.service';
 
 
 
@@ -15,6 +17,7 @@ import { environment } from '../../../environments/environments';
   selector: 'app-shop-page',
   standalone: true,
   imports: [RouterOutlet,CommonModule],
+  providers : [ DatePipe],
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css'
 })
@@ -27,6 +30,7 @@ export class ShopPageComponent {
   listProduct :any[] = []
   listCategory :any[] = []
   dataUser :any
+  top_rating_product : any[] = []
   url:string = ''
 
   baseUrl: string = environment.baseUrl
@@ -34,6 +38,7 @@ export class ShopPageComponent {
   constructor(
     private route:ActivatedRoute,
     private user_service:UserServiceService,
+    private product_service:ProductServiceService,
     private router: Router,
     private location: Location,
   ){}
@@ -49,6 +54,15 @@ export class ShopPageComponent {
       this.sortBy = params.get("sortBy") || ''
       this.category_id = params.get("category_id") || ''
 
+      this.product_service.top_rating_by_IDseller(this.idSeller).subscribe((data:any)=>{
+        if(data.code == 200 ){
+          // binding ra dfum tôi , tôi gán rồi qua kia binding thôi
+          this.top_rating_product = data.data
+          console.log(data.data);
+        } 
+        else console.log(data.error);
+      })
+
       this.update_product(this.page,this.sortBy,this.category_id)
     })
 
@@ -57,7 +71,6 @@ export class ShopPageComponent {
         this.listCategory = data.data
       } 
       else console.log(data.error);
-      
     }) 
 
     
@@ -89,7 +102,7 @@ export class ShopPageComponent {
   productByCondition(page:number,sortBy:string,categoryId:string,event: any){
     this.sortBy = sortBy;
     this.category_id = categoryId
-    this.location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${sortBy}`);
+    this.location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${categoryId}&page=${page}&sortBy=${this.sortBy}`);
     this.update_product(page,sortBy,categoryId);
     this.handleClickTabShopPage('btnAllProductID');
   }
@@ -104,7 +117,6 @@ export class ShopPageComponent {
     this.location.go(`/shop-page/${this.shop_name}?idSeller=${this.idSeller}&category_id=${this.category_id}&page=${page}&sortBy=${this.sortBy}`);
     this.update_product(page, this.sortBy, this.category_id);
   }
-
   
   update_product(page:number,sortBy:string,categoryId:string){
     return this.user_service.shop_detail(this.idSeller,page,sortBy,categoryId).subscribe( (data:any)=>{
@@ -119,7 +131,6 @@ export class ShopPageComponent {
     })
   }
 
-  
   moveToProduct(product_id:string,product_slug:string){
     this.router.navigate([`/product-detail/${product_slug}`] , { queryParams : { idProduct : product_id}})
   }
