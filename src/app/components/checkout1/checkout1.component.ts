@@ -66,7 +66,6 @@ export class Checkout1Component {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     
-
     this.http.post<any>('http://localhost:5000/payment', paymentData,{headers})
       .subscribe( (response:any) => {
         // Chuyển hướng người dùng tới URL thanh toán nhận được từ server
